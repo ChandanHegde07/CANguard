@@ -3,6 +3,24 @@ __pycache__/
 *.pyc
 .DS_Store
 
+# Build artifacts
+*.egg-info/
+dist/
+build/
+
 # HCRL dataset files — large binary data, not tracked in VCS
 HCRL Car-Hacking/*.csv
 HCRL Car-Hacking/*.txt
+
+# Runtime data / artifacts (Phase 1+)
+data/raw/
+data/processed/
+data/features/
+models/*.pkl
+models/*.joblib
+results/*
+!results/**/.gitkeep
+!data/**/.gitkeep
+!models/**/.gitkeep
+.pytest_cache
+.ruff_cache

@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "canguard"
+version = "0.1.0"
+description = "Behavioral CAN Bus Intrusion Detection System (PIRD)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Chandan" }]
+dependencies = [
+    "numpy>=1.21",
+    "pandas>=1.4",
+    "scikit-learn>=1.0",
+    "matplotlib>=3.5",
+    "seaborn>=0.11",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "ruff>=0.1",
+    "jupyter>=1.0",
+    "nbconvert>=7.0",
+]
+
+[project.urls]
+homepage = "https://github.com/yourname/CANguard"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 100
+target-version = ["py39"]
+
+[tool.ruff]
+line-length = 100
+fix = true
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,14 @@
+# Core runtime
+numpy>=1.21
+pandas>=1.4
+scikit-learn>=1.0
+matplotlib>=3.5
+seaborn>=0.11
+
+# Dev / testing
+pytest>=7.0
+pytest-cov>=4.0
+black>=23.0
+ruff>=0.1
+jupyter>=1.0
+nbconvert>=7.0
