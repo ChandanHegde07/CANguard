@@ -1,0 +1,30 @@
+# Ablation: residual IF per feature-group subset (demonstrates config-driven ablation).
+dataset: hcrl
+data_dir: HCRL Car-Hacking
+sample_size: 60000
+window_size: 30
+datasets: [RPM, gear]
+
+# Each variant is resolved by the runner and stored separately.
+variants:
+  - name: v1_full
+  - name: iat_only
+    feature_groups: [iat]
+  - name: no_iat
+    exclude_groups: [iat]
+
+split:
+  calib_frac: 0.4
+  train_frac: 0.2
+  test_frac: 0.4
+
+detector:
+  kind: isolation_forest
+  n_estimators: 200
+  random_state: 0
+
+evaluation:
+  val_holdout_fraction: 0.2
+  fpr_target: 0.01
+
+output_dir: results/hcrl/ablation

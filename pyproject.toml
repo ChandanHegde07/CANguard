@@ -13,6 +13,7 @@ authors = [{ name = "Chandan" }]
 dependencies = [
     "numpy>=1.21",
     "pandas>=1.4",
+    "scipy>=1.7",
     "scikit-learn>=1.0",
     "matplotlib>=3.5",
     "seaborn>=0.11",
@@ -44,6 +45,20 @@ fix = true
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "N", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+# Test code: keep ML-conventional uppercase X and verbatim notebook
+# references (incl. variable named `l`) for fidelity.
+"tests/*.py" = ["N806", "E741"]
+# Detector/evaluation API: `X`, `X_test` are the standard sklearn/sci-kit
+# matrix arguments.
+"src/canguard/detectors/*.py" = ["N803"]
+"src/canguard/evaluation/*.py" = ["N806"]
+# Notebook build scripts embed literal cell source lines (long on purpose).
+"notebooks/_build_*.py" = ["E501", "E741"]
+# Research notebooks: allow long prose-heavy cell lines and compact semicolon
+# statements inside presentation cells.
+"notebooks/*.ipynb" = ["E501", "E702"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

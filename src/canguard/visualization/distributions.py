@@ -1,0 +1,97 @@
+"""Histogram visualization of anomaly score distributions."""
+
+from __future__ import annotations
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+def _style_ax(ax, title: str, xlabel: str = "Anomaly score") -> None:
+    ax.set_title(title)
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel("Density")
+
+
+def plot_score_distribution(
+    scores: np.ndarray,
+    y_test: np.ndarray,
+    threshold: float | None = None,
+    title: str = "Score distribution",
+    ax=None,
+):
+    """Plot normal vs attack anomaly-score histograms with an optional threshold.
+
+    Parameters
+    ----------
+    scores : np.ndarray
+        Anomaly scores on a test set (higher = more anomalous).
+    y_test : np.ndarray
+        Binary ground-truth labels (1 = attack).
+    threshold : float | None
+        If given, draws a vertical line at ``threshold``.
+    title : str
+        Plot title.
+    ax : matplotlib.axes.Axes | None
+        Axes to draw on; if None, a new figure/axes is created.
+
+    Returns
+    -------
+    matplotlib.axes.Axes
+    """
+    if ax is None:
+        _, ax = plt.subplots(figsize=(6, 4))
+    y_test = np.asarray(y_test)
+    scores = np.asarray(scores)
+    ax.hist(
+        scores[y_test == 0],
+        bins=50,
+        alpha=0.5,
+        label="Normal",
+        color="steelblue",
+        density=True,
+    )
+    ax.hist(
+        scores[y_test == 1],
+        bins=50,
+        alpha=0.5,
+        label="Attack",
+        color="crimson",
+        density=True,
+    )
+    if threshold is not None:
+        ax.axvline(threshold, color="k", ls="--", lw=1.5, label=f"thresh={threshold:.2f}")
+    ax.legend(fontsize=8)
+    _style_ax(ax, title)
+    return ax
+
+
+def plot_score_distribution_grid(results: dict, names: list[str], ncols: int = 2, figsize=(12, 8)):
+    """Plot a grid of score distributions, one panel per dataset.
+
+    Parameters
+    ----------
+    results : dict
+        Mapping of dataset name -> result dict containing ``scores_test``,
+        ``y_test``, and ``threshold``.
+    names : list[str]
+        Ordered dataset names to plot (row-major grid).
+    ncols : int
+        Number of columns in the subplot grid.
+    figsize : tuple
+        Figure size.
+
+    Returns
+    -------
+    matplotlib.figure.Figure
+    """
+    n = len(names)
+    nrows = int(np.ceil(n / ncols))
+    fig, axes = plt.subplots(nrows, ncols, figsize=figsize)
+    axes = np.atleast_1d(axes).flatten()
+    for ax, name in zip(axes, names):
+        r = results[name]
+        plot_score_distribution(r["scores_test"], r["y_test"], r["threshold"], title=name, ax=ax)
+    for ax in axes[n:]:
+        ax.set_visible(False)
+    fig.tight_layout()
+    return fig
