@@ -33,7 +33,7 @@ Pipeline: per-ID sliding windows → behavioral features (14) → z-score residu
 | Path | Description |
 |------|-------------|
 | `src/canguard/` | Library: `data`, `features`, `detectors`, `evaluation`, `visualization` |
-| `notebooks/` | Thin notebooks orchestrating the library |
+| `notebooks/` | Research notebooks: `eda_hcrl`, `feature_eng_hcrl`, `pird_hcrl`, `pird_v2_extensions` |
 | `experiments/` | Config-driven CLI runners (`--config *.yaml`) |
 | `tests/` | `pytest` suite (45 tests) |
 | `configs/` | Experiment config files |
