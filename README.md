@@ -81,3 +81,7 @@ Per-ID residuals work well on RPM/gear but **fail on DoS** (novel-ID flooding no
 
 - [ROAD](https://www.nist.gov/programs-projects/road-real-ornl-automotive-drivermodel-data) — attacks injected over legitimate IDs
 - can-train-and-test — synthetic CAN attacks with configurable stealth level
+
+## License
+
+This project is licensed under the [Apache License 2.0](LICENSE).
