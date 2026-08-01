@@ -2,31 +2,57 @@
 
 Behavioral CAN Bus Intrusion Detection System using the HCRL Car-Hacking Dataset (DoS, fuzzing, RPM spoofing, gear spoofing — Hyundai YF Sonata).
 
-## Architecture
+## System Architecture
 
-```
-HCRL Car-Hacking CSVs
-      │
-      ▼
-canguard.data (HCRLLoader, factory)
-      │
-      ▼
-canguard.features (PerIDWindow → FeaturePipeline → BEHAVIORAL_FEATURES)
-      │
-      ▼
-per-ID residual transform (fit_per_id_stats → transform_residuals)
-      │
-      ▼
-canguard.detectors (IsolationForestDetector)
-      │
-      ▼
-canguard.evaluation (metrics, threshold, cross-attack)
-      │
-      ▼
-canguard.visualization → figures/
+```mermaid
+flowchart TD
+    subgraph Data
+        CSV[("HCRL Car-Hacking CSVs")] --> Loader["canguard.data<br/>HCRLLoader + factory"]
+        Loader --> Schema["Canonical schema<br/>timestamp, can_id, dlc, data_0..7, label"]
+    end
+
+    subgraph Features
+        Schema --> Win["canguard.features<br/>PerIDWindow sliding window"]
+        Win --> BFeats["14 BEHAVIORAL_FEATURES<br/>IAT • DLC • payload • misc"]
+        BFeats --> Residual["per-ID z-score residual<br/>fit_per_id_stats → transform_residuals"]
+        Residual --> Split["temporal split<br/>40% calib / 20% train / 40% test"]
+    end
+
+    subgraph Detection
+        Split --> IF["canguard.detectors<br/>IsolationForestDetector<br/>(normal-only, 200 trees)"]
+    end
+
+    subgraph Evaluation
+        IF --> Metrics["canguard.evaluation<br/>precision • recall • F1 • ROC • PR"]
+        IF --> Cross["cross-attack matrix<br/>sweep thresholds • ablation"]
+        Metrics --> Viz["canguard.visualization"]
+        Viz --> Figs["figures/ (.png)"]
+        Metrics --> Res["results/ (.json)"]
+    end
 ```
 
-Pipeline: per-ID sliding windows → behavioral features (14) → z-score residuals per ID → Isolation Forest (normal-only train) → precision/recall/F1/ROC/PR.
+**Pipeline**: per-ID sliding windows → 14 behavioral features → z-score residuals per ID → Isolation Forest (normal-only train) → metrics / figures / results.
+
+## Data Flow
+
+```mermaid
+sequenceDiagram
+    participant CSV as Raw CSV
+    participant L as HCRLLoader
+    participant F as FeaturePipeline
+    participant R as ResidualTransform
+    participant D as IsolationForest
+    participant E as Evaluation
+
+    CSV->>L: rows (DLC-aware parse)
+    L->>F: canonical DataFrame
+    F->>F: per-ID sliding windows (14 features)
+    F->>R: feature windows
+    R->>R: per-ID z-score residualization
+    R->>D: residual vectors (train-only normals)
+    D->>E: anomaly scores + threshold
+    E->>E: metrics, cross-attack, figures, results
+```
 
 ## Project Structure
 
