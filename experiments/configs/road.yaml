@@ -1,0 +1,33 @@
+# ROAD dataset PIRD validation experiment.
+#
+# Design note: ROAD captures are independent driving sessions, so temporal
+# structure does not span captures. We evaluate per-capture: per-ID residuals
+# are fitted on the pre-injection normal frames of each attack capture, then
+# Isolation Forest is trained on additional normals and scored on the full
+# capture. This is the faithful application of PIRD to multi-capture ROAD.
+dataset: road
+data_dir: road
+window_size: 30
+
+# Frames sampled per capture after parsing (keeps the Python feature loop
+# tractable; captures are 5k-213k frames each).
+max_frames_per_capture: 100000
+random_state: 0
+
+capture_sample:
+  # Number of attacker-named captures to evaluate per attack type.
+  per_type: 3
+
+detector:
+  kind: isolation_forest
+  n_estimators: 200
+  random_state: 0
+
+evaluation:
+  fpr_target: 0.01
+  # Fraction of normal (pre-attack) frames reserved as validation for
+  # threshold selection within each capture.
+  val_holdout_fraction: 0.2
+
+output_dir: results/road
+figures_dir: figures/road

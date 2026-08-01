@@ -7,11 +7,13 @@ from pathlib import Path
 
 from .base import BaseDatasetLoader
 from .hcrl import HCRLLoader
+from .road import RoadLoader
 
 logger = logging.getLogger(__name__)
 
 _REGISTRY: dict[str, type[BaseDatasetLoader]] = {
     "hcrl": HCRLLoader,
+    "road": RoadLoader,
 }
 
 
