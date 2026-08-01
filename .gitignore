@@ -25,3 +25,4 @@ results/*
 !models/**/.gitkeep
 .pytest_cache
 .ruff_cache
+road/*
