@@ -11,6 +11,7 @@ from .hbos import HBOSDetector
 from .isolation_forest import IsolationForestDetector
 from .lof import LOFDetector
 from .one_class_svm import OneClassSVMDetector
+from .sequence_autoencoder import SequenceAutoencoderDetector
 
 DetectorFactory = Callable[..., BaseAnomalyDetector]
 
@@ -21,6 +22,8 @@ _REGISTRY: dict[str, DetectorFactory] = {
     "hbos": HBOSDetector,
     "elliptic_envelope": EllipticEnvelopeDetector,
     "autoencoder": AutoencoderDetector,
+    # External comparison baseline (CANet / sequence-AE inspired); not a SOTA claim.
+    "sequence_autoencoder": SequenceAutoencoderDetector,
 }
 
 

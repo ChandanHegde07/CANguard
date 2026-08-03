@@ -8,6 +8,7 @@ from .isolation_forest import IsolationForestDetector
 from .lof import LOFDetector
 from .one_class_svm import OneClassSVMDetector
 from .registry import create_detector, list_detectors, register_detector
+from .sequence_autoencoder import SequenceAutoencoderDetector
 
 __all__ = [
     "AutoencoderDetector",
@@ -17,6 +18,7 @@ __all__ = [
     "IsolationForestDetector",
     "LOFDetector",
     "OneClassSVMDetector",
+    "SequenceAutoencoderDetector",
     "create_detector",
     "list_detectors",
     "register_detector",

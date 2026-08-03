@@ -1,0 +1,5 @@
+{
+  "phase": "workshop",
+  "road_protocol_required": "pre_injection_v1",
+  "manuscript_road_summary": "tables/road_manuscript_summary.csv"
+}

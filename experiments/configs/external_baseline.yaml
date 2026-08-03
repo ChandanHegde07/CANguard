@@ -1,0 +1,40 @@
+# External sequence-AE baseline (workshop comparison point; not a SOTA claim)
+phase: workshop
+seed: 0
+detector: sequence_autoencoder
+
+detector_params:
+  sequence_autoencoder:
+    seq_len: 5
+    hidden_layer_sizes: [32, 16, 32]
+    max_iter: 60
+    max_train_samples: 5000
+    random_state: 0
+
+hcrl:
+  data_dir: data
+  datasets: [DoS, Fuzzy, RPM, gear]
+  sample_size: 60000
+  window_size: 30
+  split:
+    calib_frac: 0.4
+    train_frac: 0.2
+    test_frac: 0.4
+
+road:
+  data_dir: road/road
+  window_size: 30
+  max_frames_per_capture: 80000
+  capture_sample:
+    per_type: 1
+    skip_masquerade: true
+    skip_unlabeled: true
+
+evaluation:
+  val_holdout_fraction: 0.2
+  fpr_target: 0.01
+
+representations: [raw, residual]
+cache_dir: .cache/phase_c
+output_dir: experiments
+tables_dir: tables

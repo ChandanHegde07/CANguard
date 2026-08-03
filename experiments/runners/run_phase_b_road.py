@@ -246,6 +246,8 @@ def run_phase_b(config: dict) -> dict:
                         "detector": det_name,
                         "seed": seed,
                         "protocol": "pre_injection_v1",
+                        "protocol_version": "pre_injection_v1",
+                        "phase": "B",
                         "n_pre": prep["n_pre"],
                         "n_test": prep["n_test"],
                         "n_test_attack": prep["n_test_attack"],

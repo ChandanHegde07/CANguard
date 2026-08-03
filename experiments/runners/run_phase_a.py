@@ -36,6 +36,7 @@ from canguard.exp import (
     save_json,
 )
 from canguard.exp.matrix import build_raw_and_residual_splits, build_window_table, resolve_data_path
+from canguard.exp.metadata import PHASE_A, PROTOCOL_HCRL_TEMPORAL, tag_dataframe
 from canguard.visualization import plot_roc_pr
 
 logger = logging.getLogger("canguard")
@@ -328,6 +329,7 @@ def run_phase_a(config: dict) -> dict:
                     )
 
     df = pd.DataFrame(all_rows)
+    df = tag_dataframe(df, protocol_version=PROTOCOL_HCRL_TEMPORAL, phase=PHASE_A)
     rep_df = df[df["experiment"] == "representation"].copy()
     base_df = df[df["experiment"] == "baseline"].copy()
 
