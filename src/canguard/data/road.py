@@ -42,6 +42,7 @@ import json
 import re
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 from .base import CAN_SCHEMA, BaseDatasetLoader
@@ -104,40 +105,50 @@ def _parse_log(path: Path, metadata: dict | None) -> pd.DataFrame:
                 "attack_type",
             ]
         )
+    cols = cols.reset_index(drop=True)
     ts = cols[0].astype(float)
     can_id = cols[1].str.lower()
-    hex_data = cols[2]
-    first_ts = ts.iloc[0]
+    hex_data = cols[2].astype(str)
+    first_ts = float(ts.iloc[0])
     elapsed = ts - first_ts
 
-    # DLC / data bytes (ROAD is DLC=8; kept general in case of shorter frames).
-    data_bytes = hex_data.apply(lambda h: [h[i : i + 2] for i in range(0, len(h) - 1, 2)])
-    dlc = data_bytes.apply(len).astype(int)
-    data_cols = {
-        f"data_{i}": data_bytes.apply(lambda b: b[i] if i < len(b) else None) for i in range(8)
-    }
+    # DLC / data bytes (ROAD is DLC=8; vectorized hex splits).
+    dlc = (hex_data.str.len() // 2).astype(int)
+    data_cols = {f"data_{i}": hex_data.str.slice(i * 2, i * 2 + 2) for i in range(8)}
+    for i in range(8):
+        col = data_cols[f"data_{i}"]
+        data_cols[f"data_{i}"] = col.where(col.str.len() == 2, None)
 
-    df = pd.DataFrame({"timestamp": ts, "can_id": can_id, "dlc": dlc, **data_cols})
+    df = pd.DataFrame(
+        {
+            "timestamp": ts.to_numpy(),
+            "can_id": can_id.to_numpy(),
+            "dlc": dlc.to_numpy(),
+            **{k: v.to_numpy() for k, v in data_cols.items()},
+            "elapsed": elapsed.to_numpy(),
+        }
+    )
 
-    in_interval = pd.Series(False, index=df.index)
+    in_interval = np.zeros(len(df), dtype=bool)
     if start_sec is not None and end_sec is not None:
-        in_interval = (elapsed >= start_sec) & (elapsed <= end_sec)
+        in_interval = (df["elapsed"].to_numpy() >= start_sec) & (
+            df["elapsed"].to_numpy() <= end_sec
+        )
 
     if injection_id == "XXX":
         is_attack = in_interval
     elif injection_id is not None:
         try:
-            inj_int = int(injection_id, 16)
-            id_match = can_id.apply(int, base=16) == inj_int
+            inj_int = int(str(injection_id), 16)
+            id_vals = can_id.map(lambda x: int(str(x), 16)).to_numpy()
+            is_attack = in_interval & (id_vals == inj_int)
         except ValueError:
-            id_match = pd.Series(False, index=df.index)
-        is_attack = in_interval & id_match
+            is_attack = np.zeros(len(df), dtype=bool)
     else:
-        is_attack = pd.Series(False, index=df.index)
+        is_attack = np.zeros(len(df), dtype=bool)
 
     df["is_attack"] = is_attack.astype(int)
-    # attack_type = attack token for attack rows, "R" otherwise.
-    df["attack_type"] = df["is_attack"].map({1: attack_type, 0: "R"})
+    df["attack_type"] = np.where(df["is_attack"] == 1, attack_type, "R")
     return df
 
 

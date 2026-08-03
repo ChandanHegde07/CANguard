@@ -27,3 +27,7 @@ results/*
 .ruff_cache
 road/*
 papers/*
+
+data/
+road/
+.cache/

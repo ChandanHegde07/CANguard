@@ -1,0 +1,306 @@
+16:34:27 | INFO | wrote experiments\phase_c\runs\20260803T110427Z\config.json
+16:34:27 | INFO | === Prepare matrices ===
+16:34:27 | INFO | Loading data\DoS_dataset.csv (sample_size=60000)
+16:34:27 | INFO | Creating HCRLLoader loader
+16:35:02 | INFO |   59230 windows from 60000 frames
+16:35:02 | INFO | cache write: 0ff29cfb9148324044e07c96.parquet
+16:35:03 | INFO | HCRL DoS ready train=11846 test=23692
+16:35:03 | INFO | Loading data\Fuzzy_dataset.csv (sample_size=60000)
+16:35:03 | INFO | Creating HCRLLoader loader
+16:35:36 | INFO |   51734 windows from 60000 frames
+16:35:36 | INFO | cache write: 12c7c7d05a1a2824693b13b9.parquet
+16:35:36 | INFO | HCRL Fuzzy ready train=10346 test=20695
+16:35:36 | INFO | Loading data\RPM_dataset.csv (sample_size=60000)
+16:35:36 | INFO | Creating HCRLLoader loader
+16:36:13 | INFO |   59261 windows from 60000 frames
+16:36:13 | INFO | cache write: 9a589c7a047a5ddec5e1a27b.parquet
+16:36:13 | INFO | HCRL RPM ready train=11852 test=23705
+16:36:13 | INFO | Loading data\gear_dataset.csv (sample_size=60000)
+16:36:13 | INFO | Creating HCRLLoader loader
+16:36:51 | INFO |   59253 windows from 60000 frames
+16:36:51 | INFO | cache write: 30ec30dd6d22f1ca386bf17e.parquet
+16:36:51 | INFO | HCRL gear ready train=11850 test=23702
+16:37:14 | INFO | cache write: 6d646163ca1a74d3420e7ade.parquet
+16:37:15 | INFO | ROAD correlated_signal_attack_1 pre=18348 test=58619 atk=4201
+16:37:29 | INFO | cache write: e1e6ce6913c2d2f42a36390d.parquet
+16:37:29 | INFO | ROAD fuzzing_attack_1 pre=8885 test=37083 atk=9969
+16:37:47 | INFO | cache write: f116eab7d23afcf321c8c0db.parquet
+16:37:47 | INFO | ROAD max_engine_coolant_temp_attack pre=44985 test=13992 atk=102
+16:38:11 | INFO | cache write: 459c040c4587ae569f6aece7.parquet
+16:38:11 | INFO | ROAD max_speedometer_attack_1 pre=4650 test=72319 atk=4916
+16:38:31 | INFO | cache write: 0bae04e7a18e57b71e6f03ee.parquet
+16:38:31 | INFO | ROAD reverse_light_off_attack_1 pre=37066 test=27825 atk=1373
+16:38:55 | INFO | cache write: ef19bbe0f1d0d464b4fb74ce.parquet
+16:38:55 | INFO | ROAD reverse_light_on_attack_1 pre=16032 test=60931 atk=4012
+16:38:55 | INFO | === Multi-seed ===
+16:38:55 | INFO | multiseed HCRL DoS raw isolation_forest seed=0
+16:38:57 | INFO | multiseed HCRL DoS raw isolation_forest seed=1
+16:38:59 | INFO | multiseed HCRL DoS raw isolation_forest seed=2
+16:39:01 | INFO | multiseed HCRL DoS raw isolation_forest seed=3
+16:39:03 | INFO | multiseed HCRL DoS raw isolation_forest seed=4
+16:39:05 | INFO | multiseed HCRL DoS raw one_class_svm seed=0
+16:39:08 | INFO | multiseed HCRL DoS raw one_class_svm seed=1
+16:39:10 | INFO | multiseed HCRL DoS raw one_class_svm seed=2
+16:39:12 | INFO | multiseed HCRL DoS raw one_class_svm seed=3
+16:39:14 | INFO | multiseed HCRL DoS raw one_class_svm seed=4
+16:39:16 | INFO | multiseed HCRL DoS raw lof seed=0
+16:39:18 | INFO | multiseed HCRL DoS raw lof seed=1
+16:39:20 | INFO | multiseed HCRL DoS raw lof seed=2
+16:39:23 | INFO | multiseed HCRL DoS raw lof seed=3
+16:39:25 | INFO | multiseed HCRL DoS raw lof seed=4
+16:39:27 | INFO | multiseed HCRL DoS raw hbos seed=0
+16:39:28 | INFO | multiseed HCRL DoS raw hbos seed=1
+16:39:29 | INFO | multiseed HCRL DoS raw hbos seed=2
+16:39:31 | INFO | multiseed HCRL DoS raw hbos seed=3
+16:39:32 | INFO | multiseed HCRL DoS raw hbos seed=4
+16:39:34 | INFO | multiseed HCRL DoS raw elliptic_envelope seed=0
+16:39:36 | INFO | multiseed HCRL DoS raw elliptic_envelope seed=1
+16:39:38 | INFO | multiseed HCRL DoS raw elliptic_envelope seed=2
+16:39:40 | INFO | multiseed HCRL DoS raw elliptic_envelope seed=3
+16:39:42 | INFO | multiseed HCRL DoS raw elliptic_envelope seed=4
+16:39:44 | INFO | multiseed HCRL DoS raw autoencoder seed=0
+16:39:46 | INFO | multiseed HCRL DoS raw autoencoder seed=1
+16:39:48 | INFO | multiseed HCRL DoS raw autoencoder seed=2
+16:39:51 | INFO | multiseed HCRL DoS raw autoencoder seed=3
+16:39:53 | INFO | multiseed HCRL DoS raw autoencoder seed=4
+16:39:55 | INFO | multiseed HCRL DoS residual isolation_forest seed=0
+16:39:57 | INFO | multiseed HCRL DoS residual isolation_forest seed=1
+16:39:59 | INFO | multiseed HCRL DoS residual isolation_forest seed=2
+16:40:01 | INFO | multiseed HCRL DoS residual isolation_forest seed=3
+16:40:03 | INFO | multiseed HCRL DoS residual isolation_forest seed=4
+16:40:05 | INFO | multiseed HCRL DoS residual one_class_svm seed=0
+16:40:08 | INFO | multiseed HCRL DoS residual one_class_svm seed=1
+16:40:10 | INFO | multiseed HCRL DoS residual one_class_svm seed=2
+16:40:12 | INFO | multiseed HCRL DoS residual one_class_svm seed=3
+16:40:14 | INFO | multiseed HCRL DoS residual one_class_svm seed=4
+16:40:16 | INFO | multiseed HCRL DoS residual lof seed=0
+16:40:19 | INFO | multiseed HCRL DoS residual lof seed=1
+16:40:22 | INFO | multiseed HCRL DoS residual lof seed=2
+16:40:25 | INFO | multiseed HCRL DoS residual lof seed=3
+16:40:28 | INFO | multiseed HCRL DoS residual lof seed=4
+16:40:32 | INFO | multiseed HCRL DoS residual hbos seed=0
+16:40:33 | INFO | multiseed HCRL DoS residual hbos seed=1
+16:40:34 | INFO | multiseed HCRL DoS residual hbos seed=2
+16:40:36 | INFO | multiseed HCRL DoS residual hbos seed=3
+16:40:37 | INFO | multiseed HCRL DoS residual hbos seed=4
+16:40:38 | INFO | multiseed HCRL DoS residual elliptic_envelope seed=0
+16:40:40 | INFO | multiseed HCRL DoS residual elliptic_envelope seed=1
+16:40:43 | INFO | multiseed HCRL DoS residual elliptic_envelope seed=2
+16:40:45 | INFO | multiseed HCRL DoS residual elliptic_envelope seed=3
+16:40:47 | INFO | multiseed HCRL DoS residual elliptic_envelope seed=4
+16:40:49 | INFO | multiseed HCRL DoS residual autoencoder seed=0
+16:40:51 | INFO | multiseed HCRL DoS residual autoencoder seed=1
+16:40:53 | INFO | multiseed HCRL DoS residual autoencoder seed=2
+16:40:55 | INFO | multiseed HCRL DoS residual autoencoder seed=3
+16:40:58 | INFO | multiseed HCRL DoS residual autoencoder seed=4
+16:41:00 | INFO | multiseed HCRL Fuzzy raw isolation_forest seed=0
+16:41:02 | INFO | multiseed HCRL Fuzzy raw isolation_forest seed=1
+16:41:04 | INFO | multiseed HCRL Fuzzy raw isolation_forest seed=2
+16:41:06 | INFO | multiseed HCRL Fuzzy raw isolation_forest seed=3
+16:41:08 | INFO | multiseed HCRL Fuzzy raw isolation_forest seed=4
+16:41:10 | INFO | multiseed HCRL Fuzzy raw one_class_svm seed=0
+16:41:12 | INFO | multiseed HCRL Fuzzy raw one_class_svm seed=1
+16:41:14 | INFO | multiseed HCRL Fuzzy raw one_class_svm seed=2
+16:41:16 | INFO | multiseed HCRL Fuzzy raw one_class_svm seed=3
+16:41:18 | INFO | multiseed HCRL Fuzzy raw one_class_svm seed=4
+16:41:20 | INFO | multiseed HCRL Fuzzy raw lof seed=0
+16:41:22 | INFO | multiseed HCRL Fuzzy raw lof seed=1
+16:41:24 | INFO | multiseed HCRL Fuzzy raw lof seed=2
+16:41:26 | INFO | multiseed HCRL Fuzzy raw lof seed=3
+16:41:28 | INFO | multiseed HCRL Fuzzy raw lof seed=4
+16:41:30 | INFO | multiseed HCRL Fuzzy raw hbos seed=0
+16:41:31 | INFO | multiseed HCRL Fuzzy raw hbos seed=1
+16:41:32 | INFO | multiseed HCRL Fuzzy raw hbos seed=2
+16:41:34 | INFO | multiseed HCRL Fuzzy raw hbos seed=3
+16:41:35 | INFO | multiseed HCRL Fuzzy raw hbos seed=4
+16:41:36 | INFO | multiseed HCRL Fuzzy raw elliptic_envelope seed=0
+16:41:38 | INFO | multiseed HCRL Fuzzy raw elliptic_envelope seed=1
+16:41:40 | INFO | multiseed HCRL Fuzzy raw elliptic_envelope seed=2
+16:41:42 | INFO | multiseed HCRL Fuzzy raw elliptic_envelope seed=3
+16:41:43 | INFO | multiseed HCRL Fuzzy raw elliptic_envelope seed=4
+16:41:45 | INFO | multiseed HCRL Fuzzy raw autoencoder seed=0
+16:41:47 | INFO | multiseed HCRL Fuzzy raw autoencoder seed=1
+16:41:50 | INFO | multiseed HCRL Fuzzy raw autoencoder seed=2
+16:41:52 | INFO | multiseed HCRL Fuzzy raw autoencoder seed=3
+16:41:54 | INFO | multiseed HCRL Fuzzy raw autoencoder seed=4
+16:41:56 | INFO | multiseed HCRL Fuzzy residual isolation_forest seed=0
+16:41:58 | INFO | multiseed HCRL Fuzzy residual isolation_forest seed=1
+16:42:00 | INFO | multiseed HCRL Fuzzy residual isolation_forest seed=2
+16:42:02 | INFO | multiseed HCRL Fuzzy residual isolation_forest seed=3
+16:42:04 | INFO | multiseed HCRL Fuzzy residual isolation_forest seed=4
+16:42:05 | INFO | multiseed HCRL Fuzzy residual one_class_svm seed=0
+16:42:07 | INFO | multiseed HCRL Fuzzy residual one_class_svm seed=1
+16:42:09 | INFO | multiseed HCRL Fuzzy residual one_class_svm seed=2
+16:42:11 | INFO | multiseed HCRL Fuzzy residual one_class_svm seed=3
+16:42:13 | INFO | multiseed HCRL Fuzzy residual one_class_svm seed=4
+16:42:15 | INFO | multiseed HCRL Fuzzy residual lof seed=0
+16:42:17 | INFO | multiseed HCRL Fuzzy residual lof seed=1
+16:42:20 | INFO | multiseed HCRL Fuzzy residual lof seed=2
+16:42:22 | INFO | multiseed HCRL Fuzzy residual lof seed=3
+16:42:25 | INFO | multiseed HCRL Fuzzy residual lof seed=4
+16:42:27 | INFO | multiseed HCRL Fuzzy residual hbos seed=0
+16:42:28 | INFO | multiseed HCRL Fuzzy residual hbos seed=1
+16:42:29 | INFO | multiseed HCRL Fuzzy residual hbos seed=2
+16:42:30 | INFO | multiseed HCRL Fuzzy residual hbos seed=3
+16:42:31 | INFO | multiseed HCRL Fuzzy residual hbos seed=4
+16:42:33 | INFO | multiseed HCRL Fuzzy residual elliptic_envelope seed=0
+16:42:34 | INFO | multiseed HCRL Fuzzy residual elliptic_envelope seed=1
+16:42:36 | INFO | multiseed HCRL Fuzzy residual elliptic_envelope seed=2
+16:42:38 | INFO | multiseed HCRL Fuzzy residual elliptic_envelope seed=3
+16:42:40 | INFO | multiseed HCRL Fuzzy residual elliptic_envelope seed=4
+16:42:42 | INFO | multiseed HCRL Fuzzy residual autoencoder seed=0
+16:42:44 | INFO | multiseed HCRL Fuzzy residual autoencoder seed=1
+16:42:46 | INFO | multiseed HCRL Fuzzy residual autoencoder seed=2
+16:42:48 | INFO | multiseed HCRL Fuzzy residual autoencoder seed=3
+16:42:50 | INFO | multiseed HCRL Fuzzy residual autoencoder seed=4
+16:42:52 | INFO | multiseed HCRL RPM raw isolation_forest seed=0
+16:42:54 | INFO | multiseed HCRL RPM raw isolation_forest seed=1
+16:42:56 | INFO | multiseed HCRL RPM raw isolation_forest seed=2
+16:42:59 | INFO | multiseed HCRL RPM raw isolation_forest seed=3
+16:43:01 | INFO | multiseed HCRL RPM raw isolation_forest seed=4
+16:43:03 | INFO | multiseed HCRL RPM raw one_class_svm seed=0
+16:43:05 | INFO | multiseed HCRL RPM raw one_class_svm seed=1
+16:43:07 | INFO | multiseed HCRL RPM raw one_class_svm seed=2
+16:43:10 | INFO | multiseed HCRL RPM raw one_class_svm seed=3
+16:43:12 | INFO | multiseed HCRL RPM raw one_class_svm seed=4
+16:43:14 | INFO | multiseed HCRL RPM raw lof seed=0
+16:43:16 | INFO | multiseed HCRL RPM raw lof seed=1
+16:43:18 | INFO | multiseed HCRL RPM raw lof seed=2
+16:43:20 | INFO | multiseed HCRL RPM raw lof seed=3
+16:43:22 | INFO | multiseed HCRL RPM raw lof seed=4
+16:43:24 | INFO | multiseed HCRL RPM raw hbos seed=0
+16:43:25 | INFO | multiseed HCRL RPM raw hbos seed=1
+16:43:27 | INFO | multiseed HCRL RPM raw hbos seed=2
+16:43:28 | INFO | multiseed HCRL RPM raw hbos seed=3
+16:43:29 | INFO | multiseed HCRL RPM raw hbos seed=4
+16:43:31 | INFO | multiseed HCRL RPM raw elliptic_envelope seed=0
+16:43:33 | INFO | multiseed HCRL RPM raw elliptic_envelope seed=1
+16:43:35 | INFO | multiseed HCRL RPM raw elliptic_envelope seed=2
+16:43:37 | INFO | multiseed HCRL RPM raw elliptic_envelope seed=3
+16:43:39 | INFO | multiseed HCRL RPM raw elliptic_envelope seed=4
+16:43:41 | INFO | multiseed HCRL RPM raw autoencoder seed=0
+16:43:44 | INFO | multiseed HCRL RPM raw autoencoder seed=1
+16:43:46 | INFO | multiseed HCRL RPM raw autoencoder seed=2
+16:43:48 | INFO | multiseed HCRL RPM raw autoencoder seed=3
+16:43:51 | INFO | multiseed HCRL RPM raw autoencoder seed=4
+16:43:53 | INFO | multiseed HCRL RPM residual isolation_forest seed=0
+16:43:55 | INFO | multiseed HCRL RPM residual isolation_forest seed=1
+16:43:57 | INFO | multiseed HCRL RPM residual isolation_forest seed=2
+16:44:00 | INFO | multiseed HCRL RPM residual isolation_forest seed=3
+16:44:02 | INFO | multiseed HCRL RPM residual isolation_forest seed=4
+16:44:04 | INFO | multiseed HCRL RPM residual one_class_svm seed=0
+16:44:06 | INFO | multiseed HCRL RPM residual one_class_svm seed=1
+16:44:08 | INFO | multiseed HCRL RPM residual one_class_svm seed=2
+16:44:10 | INFO | multiseed HCRL RPM residual one_class_svm seed=3
+16:44:12 | INFO | multiseed HCRL RPM residual one_class_svm seed=4
+16:44:14 | INFO | multiseed HCRL RPM residual lof seed=0
+16:44:17 | INFO | multiseed HCRL RPM residual lof seed=1
+16:44:20 | INFO | multiseed HCRL RPM residual lof seed=2
+16:44:23 | INFO | multiseed HCRL RPM residual lof seed=3
+16:44:26 | INFO | multiseed HCRL RPM residual lof seed=4
+16:44:29 | INFO | multiseed HCRL RPM residual hbos seed=0
+16:44:30 | INFO | multiseed HCRL RPM residual hbos seed=1
+16:44:32 | INFO | multiseed HCRL RPM residual hbos seed=2
+16:44:34 | INFO | multiseed HCRL RPM residual hbos seed=3
+16:44:35 | INFO | multiseed HCRL RPM residual hbos seed=4
+16:44:37 | INFO | multiseed HCRL RPM residual elliptic_envelope seed=0
+16:44:39 | INFO | multiseed HCRL RPM residual elliptic_envelope seed=1
+16:44:41 | INFO | multiseed HCRL RPM residual elliptic_envelope seed=2
+16:44:43 | INFO | multiseed HCRL RPM residual elliptic_envelope seed=3
+16:44:45 | INFO | multiseed HCRL RPM residual elliptic_envelope seed=4
+16:44:47 | INFO | multiseed HCRL RPM residual autoencoder seed=0
+16:44:49 | INFO | multiseed HCRL RPM residual autoencoder seed=1
+16:44:52 | INFO | multiseed HCRL RPM residual autoencoder seed=2
+16:44:54 | INFO | multiseed HCRL RPM residual autoencoder seed=3
+16:44:56 | INFO | multiseed HCRL RPM residual autoencoder seed=4
+16:44:59 | INFO | multiseed HCRL gear raw isolation_forest seed=0
+16:45:01 | INFO | multiseed HCRL gear raw isolation_forest seed=1
+16:45:03 | INFO | multiseed HCRL gear raw isolation_forest seed=2
+16:45:05 | INFO | multiseed HCRL gear raw isolation_forest seed=3
+16:45:07 | INFO | multiseed HCRL gear raw isolation_forest seed=4
+16:45:09 | INFO | multiseed HCRL gear raw one_class_svm seed=0
+16:45:12 | INFO | multiseed HCRL gear raw one_class_svm seed=1
+16:45:14 | INFO | multiseed HCRL gear raw one_class_svm seed=2
+16:45:16 | INFO | multiseed HCRL gear raw one_class_svm seed=3
+16:45:18 | INFO | multiseed HCRL gear raw one_class_svm seed=4
+16:45:20 | INFO | multiseed HCRL gear raw lof seed=0
+16:45:22 | INFO | multiseed HCRL gear raw lof seed=1
+16:45:24 | INFO | multiseed HCRL gear raw lof seed=2
+16:45:26 | INFO | multiseed HCRL gear raw lof seed=3
+16:45:28 | INFO | multiseed HCRL gear raw lof seed=4
+16:45:30 | INFO | multiseed HCRL gear raw hbos seed=0
+16:45:32 | INFO | multiseed HCRL gear raw hbos seed=1
+16:45:33 | INFO | multiseed HCRL gear raw hbos seed=2
+16:45:35 | INFO | multiseed HCRL gear raw hbos seed=3
+16:45:36 | INFO | multiseed HCRL gear raw hbos seed=4
+16:45:38 | INFO | multiseed HCRL gear raw elliptic_envelope seed=0
+16:45:40 | INFO | multiseed HCRL gear raw elliptic_envelope seed=1
+16:45:42 | INFO | multiseed HCRL gear raw elliptic_envelope seed=2
+16:45:44 | INFO | multiseed HCRL gear raw elliptic_envelope seed=3
+16:45:46 | INFO | multiseed HCRL gear raw elliptic_envelope seed=4
+16:45:48 | INFO | multiseed HCRL gear raw autoencoder seed=0
+16:45:50 | INFO | multiseed HCRL gear raw autoencoder seed=1
+16:45:53 | INFO | multiseed HCRL gear raw autoencoder seed=2
+16:45:55 | INFO | multiseed HCRL gear raw autoencoder seed=3
+16:45:57 | INFO | multiseed HCRL gear raw autoencoder seed=4
+16:46:00 | INFO | multiseed HCRL gear residual isolation_forest seed=0
+16:46:02 | INFO | multiseed HCRL gear residual isolation_forest seed=1
+16:46:04 | INFO | multiseed HCRL gear residual isolation_forest seed=2
+16:46:06 | INFO | multiseed HCRL gear residual isolation_forest seed=3
+16:46:08 | INFO | multiseed HCRL gear residual isolation_forest seed=4
+16:46:10 | INFO | multiseed HCRL gear residual one_class_svm seed=0
+16:46:12 | INFO | multiseed HCRL gear residual one_class_svm seed=1
+16:46:14 | INFO | multiseed HCRL gear residual one_class_svm seed=2
+16:46:16 | INFO | multiseed HCRL gear residual one_class_svm seed=3
+16:46:18 | INFO | multiseed HCRL gear residual one_class_svm seed=4
+16:46:21 | INFO | multiseed HCRL gear residual lof seed=0
+16:46:24 | INFO | multiseed HCRL gear residual lof seed=1
+16:46:27 | INFO | multiseed HCRL gear residual lof seed=2
+16:46:30 | INFO | multiseed HCRL gear residual lof seed=3
+16:46:33 | INFO | multiseed HCRL gear residual lof seed=4
+16:46:36 | INFO | multiseed HCRL gear residual hbos seed=0
+16:46:38 | INFO | multiseed HCRL gear residual hbos seed=1
+16:46:39 | INFO | multiseed HCRL gear residual hbos seed=2
+16:46:41 | INFO | multiseed HCRL gear residual hbos seed=3
+16:46:42 | INFO | multiseed HCRL gear residual hbos seed=4
+16:46:44 | INFO | multiseed HCRL gear residual elliptic_envelope seed=0
+16:46:46 | INFO | multiseed HCRL gear residual elliptic_envelope seed=1
+16:46:48 | INFO | multiseed HCRL gear residual elliptic_envelope seed=2
+16:46:50 | INFO | multiseed HCRL gear residual elliptic_envelope seed=3
+16:46:52 | INFO | multiseed HCRL gear residual elliptic_envelope seed=4
+16:46:54 | INFO | multiseed HCRL gear residual autoencoder seed=0
+16:46:57 | INFO | multiseed HCRL gear residual autoencoder seed=1
+16:46:59 | INFO | multiseed HCRL gear residual autoencoder seed=2
+16:47:05 | INFO | multiseed HCRL gear residual autoencoder seed=3
+16:47:14 | INFO | multiseed HCRL gear residual autoencoder seed=4
+16:47:23 | INFO | multiseed ROAD correlated_signal_attack_1 raw isolation_forest seed=0
+16:47:40 | INFO | multiseed ROAD correlated_signal_attack_1 raw isolation_forest seed=1
+16:47:57 | INFO | multiseed ROAD correlated_signal_attack_1 raw isolation_forest seed=2
+16:48:15 | INFO | multiseed ROAD correlated_signal_attack_1 raw isolation_forest seed=3
+16:48:33 | INFO | multiseed ROAD correlated_signal_attack_1 raw isolation_forest seed=4
+16:48:50 | INFO | multiseed ROAD correlated_signal_attack_1 raw one_class_svm seed=0
+16:49:08 | INFO | multiseed ROAD correlated_signal_attack_1 raw one_class_svm seed=1
+16:49:27 | INFO | multiseed ROAD correlated_signal_attack_1 raw one_class_svm seed=2
+16:49:43 | INFO | multiseed ROAD correlated_signal_attack_1 raw one_class_svm seed=3
+16:50:02 | INFO | multiseed ROAD correlated_signal_attack_1 raw one_class_svm seed=4
+16:50:19 | INFO | multiseed ROAD correlated_signal_attack_1 raw lof seed=0
+16:50:35 | INFO | multiseed ROAD correlated_signal_attack_1 raw lof seed=1
+16:50:52 | INFO | multiseed ROAD correlated_signal_attack_1 raw lof seed=2
+16:51:09 | INFO | multiseed ROAD correlated_signal_attack_1 raw lof seed=3
+16:51:26 | INFO | multiseed ROAD correlated_signal_attack_1 raw lof seed=4
+16:51:42 | INFO | multiseed ROAD correlated_signal_attack_1 raw hbos seed=0
+16:51:54 | INFO | multiseed ROAD correlated_signal_attack_1 raw hbos seed=1
+16:52:05 | INFO | multiseed ROAD correlated_signal_attack_1 raw hbos seed=2
+16:52:17 | INFO | multiseed ROAD correlated_signal_attack_1 raw hbos seed=3
+16:52:28 | INFO | multiseed ROAD correlated_signal_attack_1 raw hbos seed=4
+16:52:39 | INFO | multiseed ROAD correlated_signal_attack_1 raw elliptic_envelope seed=0
+16:52:53 | INFO | multiseed ROAD correlated_signal_attack_1 raw elliptic_envelope seed=1
+16:53:06 | INFO | multiseed ROAD correlated_signal_attack_1 raw elliptic_envelope seed=2
+16:53:19 | INFO | multiseed ROAD correlated_signal_attack_1 raw elliptic_envelope seed=3
+16:53:33 | INFO | multiseed ROAD correlated_signal_attack_1 raw elliptic_envelope seed=4
+16:53:47 | INFO | multiseed ROAD correlated_signal_attack_1 raw autoencoder seed=0
+16:54:02 | INFO | multiseed ROAD correlated_signal_attack_1 raw autoencoder seed=1
+16:54:17 | INFO | multiseed ROAD correlated_signal_attack_1 raw autoencoder seed=2
+16:54:33 | INFO | multiseed ROAD correlated_signal_attack_1 raw autoencoder seed=3
+16:54:49 | INFO | multiseed ROAD correlated_signal_attack_1 raw autoencoder seed=4
+16:55:05 | INFO | multiseed ROAD correlated_signal_attack_1 residual isolation_forest seed=0

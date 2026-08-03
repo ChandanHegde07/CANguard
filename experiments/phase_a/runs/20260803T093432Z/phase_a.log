@@ -1,0 +1,132 @@
+15:04:32 | INFO | wrote experiments\phase_a\runs\20260803T093432Z\config.json
+15:04:32 | INFO | Loading data\DoS_dataset.csv (sample_size=60000)
+15:04:32 | INFO | Creating HCRLLoader loader
+15:05:18 | INFO |   59230 windows from 60000 frames
+15:05:19 | INFO | cache write: 0ff29cfb9148324044e07c96.parquet
+15:05:19 | INFO | [DoS] raw train=11846 test=23692 residual IDs fitted=24
+15:05:19 | INFO | Loading data\Fuzzy_dataset.csv (sample_size=60000)
+15:05:19 | INFO | Creating HCRLLoader loader
+15:06:02 | INFO |   51734 windows from 60000 frames
+15:06:03 | INFO | cache write: 12c7c7d05a1a2824693b13b9.parquet
+15:06:03 | INFO | [Fuzzy] raw train=10346 test=20695 residual IDs fitted=25
+15:06:03 | INFO | Loading data\RPM_dataset.csv (sample_size=60000)
+15:06:03 | INFO | Creating HCRLLoader loader
+15:06:51 | INFO |   59261 windows from 60000 frames
+15:06:51 | INFO | cache write: 9a589c7a047a5ddec5e1a27b.parquet
+15:06:51 | INFO | [RPM] raw train=11852 test=23705 residual IDs fitted=24
+15:06:51 | INFO | Loading data\gear_dataset.csv (sample_size=60000)
+15:06:51 | INFO | Creating HCRLLoader loader
+15:07:39 | INFO |   59253 windows from 60000 frames
+15:07:39 | INFO | cache write: 30ec30dd6d22f1ca386bf17e.parquet
+15:07:39 | INFO | [gear] raw train=11850 test=23702 residual IDs fitted=24
+15:07:39 | INFO | === DoS | raw | isolation_forest ===
+15:07:43 | INFO |   F1=0.000 Rec=0.000 FPR=0.0011 ROC=0.826 PR=0.459 runtime=0.39s
+15:07:43 | INFO | === DoS | raw | one_class_svm ===
+15:07:46 | INFO |   F1=0.019 Rec=0.010 FPR=0.0072 ROC=0.986 PR=0.872 runtime=0.34s
+15:07:46 | INFO | === DoS | raw | lof ===
+15:07:49 | INFO |   F1=0.000 Rec=0.000 FPR=0.0041 ROC=0.963 PR=0.744 runtime=0.18s
+15:07:49 | INFO | === DoS | raw | hbos ===
+15:07:52 | INFO |   F1=0.019 Rec=0.010 FPR=0.0116 ROC=0.251 PR=0.300 runtime=0.01s
+15:07:52 | INFO | === DoS | raw | elliptic_envelope ===
+15:07:55 | INFO |   F1=0.000 Rec=0.000 FPR=0.0073 ROC=0.658 PR=0.296 runtime=0.28s
+15:07:55 | INFO | === DoS | raw | autoencoder ===
+15:07:58 | INFO |   F1=0.019 Rec=0.010 FPR=0.0096 ROC=0.869 PR=0.497 runtime=0.55s
+15:07:58 | INFO | === DoS | residual | isolation_forest ===
+15:08:03 | INFO |   F1=0.017 Rec=0.010 FPR=0.0550 ROC=0.894 PR=0.630 runtime=0.43s
+15:08:03 | INFO | === DoS | residual | one_class_svm ===
+15:08:07 | INFO |   F1=0.017 Rec=0.010 FPR=0.0620 ROC=0.791 PR=0.395 runtime=0.38s
+15:08:07 | INFO | === DoS | residual | lof ===
+15:08:11 | INFO |   F1=0.000 Rec=0.000 FPR=0.0178 ROC=0.850 PR=0.469 runtime=1.48s
+15:08:11 | INFO | === DoS | residual | hbos ===
+15:08:14 | INFO |   F1=0.178 Rec=0.137 FPR=0.1325 ROC=0.756 PR=0.512 runtime=0.01s
+15:08:14 | INFO | === DoS | residual | elliptic_envelope ===
+15:08:17 | INFO |   F1=0.013 Rec=0.010 FPR=0.1581 ROC=0.678 PR=0.310 runtime=0.23s
+15:08:17 | INFO | === DoS | residual | autoencoder ===
+15:08:21 | INFO |   F1=0.017 Rec=0.010 FPR=0.0562 ROC=0.621 PR=0.277 runtime=0.61s
+15:08:21 | INFO | === Fuzzy | raw | isolation_forest ===
+15:08:24 | INFO |   F1=0.163 Rec=0.106 FPR=0.0135 ROC=0.867 PR=0.291 runtime=0.31s
+15:08:24 | INFO | === Fuzzy | raw | one_class_svm ===
+15:08:27 | INFO |   F1=0.413 Rec=0.399 FPR=0.0356 ROC=0.610 PR=0.227 runtime=0.26s
+15:08:27 | INFO | === Fuzzy | raw | lof ===
+15:08:31 | INFO |   F1=0.139 Rec=0.091 FPR=0.0144 ROC=0.665 PR=0.175 runtime=0.17s
+15:08:31 | INFO | === Fuzzy | raw | hbos ===
+15:08:33 | INFO |   F1=0.209 Rec=0.164 FPR=0.0267 ROC=0.778 PR=0.253 runtime=0.01s
+15:08:33 | INFO | === Fuzzy | raw | elliptic_envelope ===
+15:08:37 | INFO |   F1=0.250 Rec=0.331 FPR=0.0880 ROC=0.839 PR=0.221 runtime=0.30s
+15:08:37 | INFO | === Fuzzy | raw | autoencoder ===
+15:08:40 | INFO |   F1=0.042 Rec=0.025 FPR=0.0115 ROC=0.813 PR=0.227 runtime=0.53s
+15:08:40 | INFO | === Fuzzy | residual | isolation_forest ===
+15:08:44 | INFO |   F1=0.473 Rec=0.978 FPR=0.1441 ROC=0.973 PR=0.759 runtime=0.37s
+15:08:44 | INFO | === Fuzzy | residual | one_class_svm ===
+15:08:48 | INFO |   F1=0.524 Rec=0.704 FPR=0.0657 ROC=0.802 PR=0.618 runtime=0.32s
+15:08:48 | INFO | === Fuzzy | residual | lof ===
+15:08:52 | INFO |   F1=0.504 Rec=0.432 FPR=0.0189 ROC=0.839 PR=0.555 runtime=1.11s
+15:08:52 | INFO | === Fuzzy | residual | hbos ===
+15:08:54 | INFO |   F1=0.425 Rec=0.829 FPR=0.1383 ROC=0.912 PR=0.557 runtime=0.01s
+15:08:54 | INFO | === Fuzzy | residual | elliptic_envelope ===
+15:08:58 | INFO |   F1=0.388 Rec=0.807 FPR=0.1574 ROC=0.935 PR=0.692 runtime=0.24s
+15:08:58 | INFO | === Fuzzy | residual | autoencoder ===
+15:09:02 | INFO |   F1=0.370 Rec=0.938 FPR=0.2089 ROC=0.938 PR=0.629 runtime=0.69s
+15:09:02 | INFO | === RPM | raw | isolation_forest ===
+15:09:07 | INFO |   F1=0.000 Rec=0.000 FPR=0.0034 ROC=0.855 PR=0.431 runtime=0.54s
+15:09:07 | INFO | === RPM | raw | one_class_svm ===
+15:09:11 | INFO |   F1=0.000 Rec=0.000 FPR=0.0101 ROC=0.975 PR=0.776 runtime=0.33s
+15:09:11 | INFO | === RPM | raw | lof ===
+15:09:14 | INFO |   F1=0.001 Rec=0.001 FPR=0.0604 ROC=0.737 PR=0.304 runtime=0.22s
+15:09:14 | INFO | === RPM | raw | hbos ===
+15:09:17 | INFO |   F1=0.000 Rec=0.000 FPR=0.0095 ROC=0.616 PR=0.376 runtime=0.01s
+15:09:17 | INFO | === RPM | raw | elliptic_envelope ===
+15:09:23 | INFO |   F1=0.000 Rec=0.000 FPR=0.0123 ROC=0.847 PR=0.414 runtime=0.22s
+15:09:23 | INFO | === RPM | raw | autoencoder ===
+15:09:28 | INFO |   F1=0.971 Rec=0.992 FPR=0.0137 ROC=0.994 PR=0.916 runtime=0.94s
+15:09:28 | INFO | === RPM | residual | isolation_forest ===
+15:09:33 | INFO |   F1=0.992 Rec=0.999 FPR=0.0042 ROC=0.999 PR=0.991 runtime=0.48s
+15:09:33 | INFO | === RPM | residual | one_class_svm ===
+15:09:37 | INFO |   F1=0.893 Rec=1.000 FPR=0.0631 ROC=1.000 PR=0.999 runtime=0.40s
+15:09:37 | INFO | === RPM | residual | lof ===
+15:09:42 | INFO |   F1=0.905 Rec=1.000 FPR=0.0550 ROC=1.000 PR=0.999 runtime=1.29s
+15:09:42 | INFO | === RPM | residual | hbos ===
+15:09:45 | INFO |   F1=0.977 Rec=1.000 FPR=0.0126 ROC=1.000 PR=1.000 runtime=0.01s
+15:09:45 | INFO | === RPM | residual | elliptic_envelope ===
+15:09:49 | INFO |   F1=0.974 Rec=1.000 FPR=0.0143 ROC=1.000 PR=1.000 runtime=0.25s
+15:09:49 | INFO | === RPM | residual | autoencoder ===
+15:09:53 | INFO |   F1=0.896 Rec=1.000 FPR=0.0609 ROC=1.000 PR=1.000 runtime=0.67s
+15:09:53 | INFO | === gear | raw | isolation_forest ===
+15:09:57 | INFO |   F1=0.000 Rec=0.000 FPR=0.0071 ROC=0.709 PR=0.293 runtime=0.40s
+15:09:57 | INFO | === gear | raw | one_class_svm ===
+15:10:00 | INFO |   F1=0.000 Rec=0.000 FPR=0.0080 ROC=0.938 PR=0.670 runtime=0.33s
+15:10:00 | INFO | === gear | raw | lof ===
+15:10:04 | INFO |   F1=0.365 Rec=0.225 FPR=0.0025 ROC=0.960 PR=0.871 runtime=0.22s
+15:10:04 | INFO | === gear | raw | hbos ===
+15:10:07 | INFO |   F1=0.000 Rec=0.000 FPR=0.0031 ROC=0.578 PR=0.263 runtime=0.01s
+15:10:07 | INFO | === gear | raw | elliptic_envelope ===
+15:10:12 | INFO |   F1=0.000 Rec=0.000 FPR=0.0394 ROC=0.635 PR=0.249 runtime=0.31s
+15:10:12 | INFO | === gear | raw | autoencoder ===
+15:10:16 | INFO |   F1=0.002 Rec=0.001 FPR=0.0072 ROC=0.984 PR=0.854 runtime=0.65s
+15:10:16 | INFO | === gear | residual | isolation_forest ===
+15:10:20 | INFO |   F1=0.946 Rec=0.998 FPR=0.0316 ROC=0.999 PR=0.996 runtime=0.41s
+15:10:20 | INFO | === gear | residual | one_class_svm ===
+15:10:23 | INFO |   F1=0.955 Rec=1.000 FPR=0.0267 ROC=0.999 PR=0.996 runtime=0.35s
+15:10:23 | INFO | === gear | residual | lof ===
+15:10:28 | INFO |   F1=0.989 Rec=0.996 FPR=0.0052 ROC=1.000 PR=1.000 runtime=1.39s
+15:10:28 | INFO | === gear | residual | hbos ===
+15:10:31 | INFO |   F1=0.918 Rec=0.998 FPR=0.0497 ROC=0.998 PR=0.984 runtime=0.01s
+15:10:31 | INFO | === gear | residual | elliptic_envelope ===
+15:10:35 | INFO |   F1=0.854 Rec=1.000 FPR=0.0960 ROC=0.998 PR=0.971 runtime=0.27s
+15:10:35 | INFO | === gear | residual | autoencoder ===
+15:10:39 | INFO |   F1=0.961 Rec=1.000 FPR=0.0227 ROC=1.000 PR=1.000 runtime=0.76s
+15:10:39 | INFO | wrote tables\baseline_results.csv
+15:10:39 | INFO | wrote tables\representation_results.csv
+15:10:39 | INFO | wrote tables\representation_delta.csv
+15:10:39 | INFO | wrote tables\statistics.csv
+15:10:39 | INFO | wrote experiments\phase_a\runs\20260803T093432Z\baseline_results.csv
+15:10:39 | INFO | wrote experiments\phase_a\runs\20260803T093432Z\representation_results.csv
+15:10:39 | INFO | wrote experiments\phase_a\runs\20260803T093432Z\representation_delta.csv
+15:10:39 | INFO | wrote experiments\phase_a\runs\20260803T093432Z\statistics.csv
+15:10:39 | INFO | wrote experiments\phase_a\runs\20260803T093432Z\hypothesis_verdict.json
+15:10:39 | INFO | wrote tables\hypothesis_verdict.json
+15:10:39 | INFO | wrote experiments\baselines\results.csv
+15:10:39 | INFO | wrote experiments\representation\results.csv
+15:10:39 | INFO | wrote experiments\statistics\results.csv
+15:10:57 | INFO | Hypothesis verdict: A_supported
+15:10:57 | INFO | Phase A run dir: experiments\phase_a\runs\20260803T093432Z

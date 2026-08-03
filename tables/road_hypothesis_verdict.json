@@ -1,0 +1,12 @@
+{
+  "verdict": "A_supported",
+  "n_cells": 36,
+  "frac_f1_positive": 0.8888888888888888,
+  "frac_roc_positive": 0.8055555555555556,
+  "median_delta_f1": 0.2649390866111983,
+  "median_delta_roc_auc": 0.15974941556949096,
+  "targeted_frac_f1_positive": 0.8666666666666667,
+  "fuzzing_frac_f1_positive": 1.0,
+  "protocol": "pre_injection_v1",
+  "note": "includes max_speedometer re-run after frame-selection fix"
+}

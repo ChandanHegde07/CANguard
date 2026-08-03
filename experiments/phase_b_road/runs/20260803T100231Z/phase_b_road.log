@@ -1,0 +1,152 @@
+15:32:31 | INFO | wrote experiments\phase_b_road\runs\20260803T100231Z\config.json
+15:32:31 | INFO | ROAD root: C:\Users\mukun\can\CANguard\road\road
+15:32:31 | INFO | Evaluating 6 captures
+15:32:31 | INFO | ---- prepare correlated_signal_attack_1 ----
+15:33:47 | INFO | cache write: cdbe1c53acc22a6fda25adcf.parquet
+15:33:47 | INFO |   pre=19585 test=39473 attack_test=3211 ids=65
+15:33:47 | INFO | === correlated_signal_attack_1 | raw | isolation_forest ===
+15:34:01 | INFO |   F1=0.000 Rec=0.000 FPR=0.0144 ROC=0.803
+15:34:01 | INFO | === correlated_signal_attack_1 | raw | one_class_svm ===
+15:34:14 | INFO |   F1=0.000 Rec=0.000 FPR=0.0153 ROC=0.781
+15:34:14 | INFO | === correlated_signal_attack_1 | raw | lof ===
+15:34:27 | INFO |   F1=0.000 Rec=0.000 FPR=0.0148 ROC=0.485
+15:34:27 | INFO | === correlated_signal_attack_1 | raw | hbos ===
+15:34:37 | INFO |   F1=0.000 Rec=0.000 FPR=0.0137 ROC=0.393
+15:34:37 | INFO | === correlated_signal_attack_1 | raw | elliptic_envelope ===
+15:34:48 | INFO |   F1=0.000 Rec=0.000 FPR=0.0178 ROC=0.771
+15:34:48 | INFO | === correlated_signal_attack_1 | raw | autoencoder ===
+15:35:01 | INFO |   F1=0.000 Rec=0.000 FPR=0.0098 ROC=0.774
+15:35:01 | INFO | === correlated_signal_attack_1 | residual | isolation_forest ===
+15:35:14 | INFO |   F1=0.533 Rec=0.997 FPR=0.1543 ROC=0.959
+15:35:14 | INFO | === correlated_signal_attack_1 | residual | one_class_svm ===
+15:35:28 | INFO |   F1=0.339 Rec=1.000 FPR=0.3452 ROC=0.945
+15:35:28 | INFO | === correlated_signal_attack_1 | residual | lof ===
+15:35:49 | INFO |   F1=0.373 Rec=0.999 FPR=0.2979 ROC=0.941
+15:35:49 | INFO | === correlated_signal_attack_1 | residual | hbos ===
+15:35:59 | INFO |   F1=0.462 Rec=0.998 FPR=0.2058 ROC=0.933
+15:35:59 | INFO | === correlated_signal_attack_1 | residual | elliptic_envelope ===
+15:36:10 | INFO |   F1=0.501 Rec=0.999 FPR=0.1759 ROC=0.941
+15:36:10 | INFO | === correlated_signal_attack_1 | residual | autoencoder ===
+15:36:21 | INFO |   F1=0.491 Rec=0.999 FPR=0.1837 ROC=0.941
+15:36:21 | INFO | ---- prepare fuzzing_attack_1 ----
+15:37:10 | INFO | cache write: a36f94748eb51796222760a7.parquet
+15:37:10 | INFO |   pre=8885 test=37083 attack_test=9969 ids=34
+15:37:10 | INFO | === fuzzing_attack_1 | raw | isolation_forest ===
+15:37:15 | INFO |   F1=0.108 Rec=0.059 FPR=0.0108 ROC=0.588
+15:37:15 | INFO | === fuzzing_attack_1 | raw | one_class_svm ===
+15:37:20 | INFO |   F1=0.177 Rec=0.102 FPR=0.0182 ROC=0.610
+15:37:20 | INFO | === fuzzing_attack_1 | raw | lof ===
+15:37:26 | INFO |   F1=0.029 Rec=0.016 FPR=0.0207 ROC=0.479
+15:37:26 | INFO | === fuzzing_attack_1 | raw | hbos ===
+15:37:30 | INFO |   F1=0.106 Rec=0.059 FPR=0.0188 ROC=0.602
+15:37:30 | INFO | === fuzzing_attack_1 | raw | elliptic_envelope ===
+15:37:40 | INFO |   F1=0.229 Rec=0.144 FPR=0.0416 ROC=0.604
+15:37:40 | INFO | === fuzzing_attack_1 | raw | autoencoder ===
+15:38:04 | INFO |   F1=0.111 Rec=0.060 FPR=0.0084 ROC=0.589
+15:38:04 | INFO | === fuzzing_attack_1 | residual | isolation_forest ===
+15:38:15 | INFO |   F1=0.206 Rec=0.174 FPR=0.1919 ROC=0.502
+15:38:15 | INFO | === fuzzing_attack_1 | residual | one_class_svm ===
+15:38:21 | INFO |   F1=0.254 Rec=0.304 FPR=0.4018 ROC=0.467
+15:38:21 | INFO | === fuzzing_attack_1 | residual | lof ===
+15:38:28 | INFO |   F1=0.250 Rec=0.298 FPR=0.4010 ROC=0.458
+15:38:28 | INFO | === fuzzing_attack_1 | residual | hbos ===
+15:38:32 | INFO |   F1=0.203 Rec=0.181 FPR=0.2235 ROC=0.487
+15:38:32 | INFO | === fuzzing_attack_1 | residual | elliptic_envelope ===
+15:38:39 | INFO |   F1=0.249 Rec=0.282 FPR=0.3633 ROC=0.486
+15:38:39 | INFO | === fuzzing_attack_1 | residual | autoencoder ===
+15:38:43 | INFO |   F1=0.246 Rec=0.276 FPR=0.3558 ROC=0.459
+15:38:43 | INFO | ---- prepare max_engine_coolant_temp_attack ----
+15:39:59 | INFO | cache write: cc5d63ad2c26205dd83c28c0.parquet
+15:39:59 | INFO |   pre=44985 test=13992 attack_test=102 ids=70
+15:39:59 | INFO | === max_engine_coolant_temp_attack | raw | isolation_forest ===
+15:40:06 | INFO |   F1=0.000 Rec=0.000 FPR=0.0096 ROC=0.977
+15:40:06 | INFO | === max_engine_coolant_temp_attack | raw | one_class_svm ===
+15:40:12 | INFO |   F1=0.026 Rec=0.029 FPR=0.0094 ROC=0.985
+15:40:12 | INFO | === max_engine_coolant_temp_attack | raw | lof ===
+15:40:18 | INFO |   F1=0.000 Rec=0.000 FPR=0.0119 ROC=0.770
+15:40:18 | INFO | === max_engine_coolant_temp_attack | raw | hbos ===
+15:40:22 | INFO |   F1=0.000 Rec=0.000 FPR=0.0122 ROC=0.806
+15:40:22 | INFO | === max_engine_coolant_temp_attack | raw | elliptic_envelope ===
+15:40:28 | INFO |   F1=0.550 Rec=0.833 FPR=0.0088 ROC=0.992
+15:40:28 | INFO | === max_engine_coolant_temp_attack | raw | autoencoder ===
+15:40:35 | INFO |   F1=0.542 Rec=0.735 FPR=0.0072 ROC=0.995
+15:40:35 | INFO | === max_engine_coolant_temp_attack | residual | isolation_forest ===
+15:40:42 | INFO |   F1=0.266 Rec=1.000 FPR=0.0405 ROC=1.000
+15:40:42 | INFO | === max_engine_coolant_temp_attack | residual | one_class_svm ===
+15:40:47 | INFO |   F1=0.170 Rec=1.000 FPR=0.0716 ROC=0.991
+15:40:47 | INFO | === max_engine_coolant_temp_attack | residual | lof ===
+15:40:58 | INFO |   F1=0.178 Rec=1.000 FPR=0.0677 ROC=1.000
+15:40:58 | INFO | === max_engine_coolant_temp_attack | residual | hbos ===
+15:41:02 | INFO |   F1=0.264 Rec=1.000 FPR=0.0410 ROC=1.000
+15:41:02 | INFO | === max_engine_coolant_temp_attack | residual | elliptic_envelope ===
+15:41:07 | INFO |   F1=0.217 Rec=1.000 FPR=0.0529 ROC=1.000
+15:41:07 | INFO | === max_engine_coolant_temp_attack | residual | autoencoder ===
+15:41:14 | INFO |   F1=0.211 Rec=1.000 FPR=0.0548 ROC=1.000
+15:41:14 | INFO | ---- prepare max_speedometer_attack_1 ----
+15:43:24 | INFO | cache write: d6a5383f10bbf0516acd3625.parquet
+15:43:24 | WARNING | skip max_speedometer_attack_1: too few post-start windows (0)
+15:43:24 | INFO | ---- prepare reverse_light_off_attack_1 ----
+15:45:11 | INFO | cache write: 63bc0d9ae3c62baa79774b5e.parquet
+15:45:11 | INFO |   pre=37066 test=27825 attack_test=1373 ids=70
+15:45:12 | INFO | === reverse_light_off_attack_1 | raw | isolation_forest ===
+15:45:23 | INFO |   F1=0.000 Rec=0.000 FPR=0.0131 ROC=0.783
+15:45:23 | INFO | === reverse_light_off_attack_1 | raw | one_class_svm ===
+15:45:33 | INFO |   F1=0.000 Rec=0.000 FPR=0.0088 ROC=0.809
+15:45:33 | INFO | === reverse_light_off_attack_1 | raw | lof ===
+15:45:43 | INFO |   F1=0.006 Rec=0.004 FPR=0.0113 ROC=0.690
+15:45:43 | INFO | === reverse_light_off_attack_1 | raw | hbos ===
+15:45:50 | INFO |   F1=0.000 Rec=0.000 FPR=0.0118 ROC=0.725
+15:45:50 | INFO | === reverse_light_off_attack_1 | raw | elliptic_envelope ===
+15:46:01 | INFO |   F1=0.000 Rec=0.000 FPR=0.0173 ROC=0.896
+15:46:01 | INFO | === reverse_light_off_attack_1 | raw | autoencoder ===
+15:46:13 | INFO |   F1=0.000 Rec=0.000 FPR=0.0346 ROC=0.898
+15:46:13 | INFO | === reverse_light_off_attack_1 | residual | isolation_forest ===
+15:46:25 | INFO |   F1=0.711 Rec=0.980 FPR=0.0403 ROC=0.986
+15:46:25 | INFO | === reverse_light_off_attack_1 | residual | one_class_svm ===
+15:46:35 | INFO |   F1=0.502 Rec=1.000 FPR=0.1028 ROC=0.990
+15:46:35 | INFO | === reverse_light_off_attack_1 | residual | lof ===
+15:46:52 | INFO |   F1=0.496 Rec=1.000 FPR=0.1056 ROC=0.992
+15:46:52 | INFO | === reverse_light_off_attack_1 | residual | hbos ===
+15:47:01 | INFO |   F1=0.557 Rec=0.996 FPR=0.0822 ROC=0.991
+15:47:01 | INFO | === reverse_light_off_attack_1 | residual | elliptic_envelope ===
+15:47:06 | INFO |   F1=0.592 Rec=1.000 FPR=0.0716 ROC=0.991
+15:47:06 | INFO | === reverse_light_off_attack_1 | residual | autoencoder ===
+15:47:16 | INFO |   F1=0.543 Rec=1.000 FPR=0.0874 ROC=0.993
+15:47:16 | INFO | ---- prepare reverse_light_on_attack_1 ----
+15:48:49 | INFO | cache write: 07c0b17021ad3c38715468a4.parquet
+15:48:50 | INFO |   pre=42732 test=34233 attack_test=2767 ids=70
+15:48:50 | INFO | === reverse_light_on_attack_1 | raw | isolation_forest ===
+15:49:01 | INFO |   F1=0.000 Rec=0.000 FPR=0.0133 ROC=0.799
+15:49:01 | INFO | === reverse_light_on_attack_1 | raw | one_class_svm ===
+15:49:12 | INFO |   F1=0.000 Rec=0.000 FPR=0.0141 ROC=0.722
+15:49:12 | INFO | === reverse_light_on_attack_1 | raw | lof ===
+15:49:23 | INFO |   F1=0.000 Rec=0.000 FPR=0.0388 ROC=0.560
+15:49:23 | INFO | === reverse_light_on_attack_1 | raw | hbos ===
+15:49:31 | INFO |   F1=0.000 Rec=0.000 FPR=0.0146 ROC=0.814
+15:49:31 | INFO | === reverse_light_on_attack_1 | raw | elliptic_envelope ===
+15:49:41 | INFO |   F1=0.000 Rec=0.000 FPR=0.0152 ROC=0.850
+15:49:41 | INFO | === reverse_light_on_attack_1 | raw | autoencoder ===
+15:49:54 | INFO |   F1=0.887 Rec=0.945 FPR=0.0162 ROC=0.989
+15:49:54 | INFO | === reverse_light_on_attack_1 | residual | isolation_forest ===
+15:50:07 | INFO |   F1=0.777 Rec=1.000 FPR=0.0506 ROC=0.993
+15:50:07 | INFO | === reverse_light_on_attack_1 | residual | one_class_svm ===
+15:50:19 | INFO |   F1=0.662 Rec=1.000 FPR=0.0896 ROC=0.993
+15:50:19 | INFO | === reverse_light_on_attack_1 | residual | lof ===
+15:50:41 | INFO |   F1=0.786 Rec=1.000 FPR=0.0479 ROC=0.996
+15:50:41 | INFO | === reverse_light_on_attack_1 | residual | hbos ===
+15:50:50 | INFO |   F1=0.757 Rec=1.000 FPR=0.0564 ROC=0.987
+15:50:50 | INFO | === reverse_light_on_attack_1 | residual | elliptic_envelope ===
+15:51:00 | INFO |   F1=0.770 Rec=1.000 FPR=0.0527 ROC=0.996
+15:51:00 | INFO | === reverse_light_on_attack_1 | residual | autoencoder ===
+15:51:11 | INFO |   F1=0.714 Rec=1.000 FPR=0.0705 ROC=0.996
+15:51:11 | INFO | wrote tables\road_representation_results.csv
+15:51:11 | INFO | wrote tables\road_representation_delta.csv
+15:51:11 | INFO | wrote tables\road_baseline_results.csv
+15:51:11 | INFO | wrote tables\road_hypothesis_verdict.json
+15:51:12 | INFO | wrote experiments\phase_b_road\runs\20260803T100231Z\road_representation_results.csv
+15:51:12 | INFO | wrote experiments\phase_b_road\runs\20260803T100231Z\road_representation_delta.csv
+15:51:12 | INFO | wrote experiments\phase_b_road\runs\20260803T100231Z\road_hypothesis_verdict.json
+15:51:12 | INFO | wrote experiments\road_representation\results.csv
+15:51:12 | INFO | wrote experiments\road_representation\delta.csv
+15:51:14 | INFO | ROAD hypothesis verdict: A_supported
+15:51:14 | INFO | Run dir: experiments\phase_b_road\runs\20260803T100231Z

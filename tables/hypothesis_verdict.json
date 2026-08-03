@@ -1,0 +1,186 @@
+{
+  "verdict": "A_supported",
+  "n_cells": 24,
+  "frac_f1_positive": 0.8333333333333334,
+  "frac_roc_positive": 0.875,
+  "median_delta_f1": 0.3461885524683924,
+  "median_delta_roc_auc": 0.11525661323385011,
+  "spoof_frac_f1_positive": 0.9166666666666666,
+  "n_f1_positive": 20,
+  "n_roc_positive": 21,
+  "per_cell": [
+    {
+      "dataset": "DoS",
+      "detector": "autoencoder",
+      "delta_f1": -0.0023055022472404547,
+      "delta_roc_auc": -0.24779624564993796,
+      "residual_helps_f1": false
+    },
+    {
+      "dataset": "DoS",
+      "detector": "elliptic_envelope",
+      "delta_f1": 0.013310384394721745,
+      "delta_roc_auc": 0.01940329901531901,
+      "residual_helps_f1": true
+    },
+    {
+      "dataset": "DoS",
+      "detector": "hbos",
+      "delta_f1": 0.15896071302419826,
+      "delta_roc_auc": 0.5053738510712611,
+      "residual_helps_f1": true
+    },
+    {
+      "dataset": "DoS",
+      "detector": "isolation_forest",
+      "delta_f1": 0.016875181844631947,
+      "delta_roc_auc": 0.06774595902701441,
+      "residual_helps_f1": true
+    },
+    {
+      "dataset": "DoS",
+      "detector": "lof",
+      "delta_f1": 0.0,
+      "delta_roc_auc": -0.11313442007920405,
+      "residual_helps_f1": false
+    },
+    {
+      "dataset": "DoS",
+      "detector": "one_class_svm",
+      "delta_f1": -0.002695306733425138,
+      "delta_roc_auc": -0.19512009052636425,
+      "residual_helps_f1": false
+    },
+    {
+      "dataset": "Fuzzy",
+      "detector": "autoencoder",
+      "delta_f1": 0.3279509624150785,
+      "delta_roc_auc": 0.1246040746659336,
+      "residual_helps_f1": true
+    },
+    {
+      "dataset": "Fuzzy",
+      "detector": "elliptic_envelope",
+      "delta_f1": 0.13776645041705288,
+      "delta_roc_auc": 0.09571755480586686,
+      "residual_helps_f1": true
+    },
+    {
+      "dataset": "Fuzzy",
+      "detector": "hbos",
+      "delta_f1": 0.21610709198544806,
+      "delta_roc_auc": 0.13372913138579767,
+      "residual_helps_f1": true
+    },
+    {
+      "dataset": "Fuzzy",
+      "detector": "isolation_forest",
+      "delta_f1": 0.3100175537966897,
+      "delta_roc_auc": 0.10590915180176663,
+      "residual_helps_f1": true
+    },
+    {
+      "dataset": "Fuzzy",
+      "detector": "lof",
+      "delta_f1": 0.3644261425217064,
+      "delta_roc_auc": 0.17391167468222557,
+      "residual_helps_f1": true
+    },
+    {
+      "dataset": "Fuzzy",
+      "detector": "one_class_svm",
+      "delta_f1": 0.11058220230469346,
+      "delta_roc_auc": 0.19146394684974855,
+      "residual_helps_f1": true
+    },
+    {
+      "dataset": "RPM",
+      "detector": "autoencoder",
+      "delta_f1": -0.07443699134905069,
+      "delta_roc_auc": 0.005940359363382441,
+      "residual_helps_f1": false
+    },
+    {
+      "dataset": "RPM",
+      "detector": "elliptic_envelope",
+      "delta_f1": 0.973559589581689,
+      "delta_roc_auc": 0.15321258242383173,
+      "residual_helps_f1": true
+    },
+    {
+      "dataset": "RPM",
+      "detector": "hbos",
+      "delta_f1": 0.9766429136975456,
+      "delta_roc_auc": 0.3842288826758593,
+      "residual_helps_f1": true
+    },
+    {
+      "dataset": "RPM",
+      "detector": "isolation_forest",
+      "delta_f1": 0.9917538213998391,
+      "delta_roc_auc": 0.14411101290645822,
+      "residual_helps_f1": true
+    },
+    {
+      "dataset": "RPM",
+      "detector": "lof",
+      "delta_f1": 0.9039203114791332,
+      "delta_roc_auc": 0.26267527268526947,
+      "residual_helps_f1": true
+    },
+    {
+      "dataset": "RPM",
+      "detector": "one_class_svm",
+      "delta_f1": 0.8928700687658343,
+      "delta_roc_auc": 0.024395603555554146,
+      "residual_helps_f1": true
+    },
+    {
+      "dataset": "gear",
+      "detector": "autoencoder",
+      "delta_f1": 0.959465955551739,
+      "delta_roc_auc": 0.015602402395007986,
+      "residual_helps_f1": true
+    },
+    {
+      "dataset": "gear",
+      "detector": "elliptic_envelope",
+      "delta_f1": 0.8543546006232574,
+      "delta_roc_auc": 0.36346710839527674,
+      "residual_helps_f1": true
+    },
+    {
+      "dataset": "gear",
+      "detector": "hbos",
+      "delta_f1": 0.9177114603567014,
+      "delta_roc_auc": 0.4192988475650641,
+      "residual_helps_f1": true
+    },
+    {
+      "dataset": "gear",
+      "detector": "isolation_forest",
+      "delta_f1": 0.9456729456729457,
+      "delta_roc_auc": 0.2904117227734482,
+      "residual_helps_f1": true
+    },
+    {
+      "dataset": "gear",
+      "detector": "lof",
+      "delta_f1": 0.6242914284501209,
+      "delta_roc_auc": 0.0401280859053339,
+      "residual_helps_f1": true
+    },
+    {
+      "dataset": "gear",
+      "detector": "one_class_svm",
+      "delta_f1": 0.9548162404912474,
+      "delta_roc_auc": 0.06166236601777708,
+      "residual_helps_f1": true
+    }
+  ],
+  "decision_rule": {
+    "A_supported": "frac_f1>=0.70 & median_dF1>0 & frac_roc>=0.60",
+    "B_partially_supported": "frac_f1>=0.50 OR (median_dF1>0 & spoof_frac>=0.75)",
+    "C_rejected": "otherwise"
+  }
+}

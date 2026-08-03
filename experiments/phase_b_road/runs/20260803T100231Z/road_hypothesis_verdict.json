@@ -1,0 +1,230 @@
+{
+  "verdict": "A_supported",
+  "n_cells": 30,
+  "frac_f1_positive": 0.9,
+  "frac_roc_positive": 0.8,
+  "median_delta_f1": 0.4172450359643002,
+  "median_delta_roc_auc": 0.1597494155694909,
+  "targeted_frac_f1_positive": 0.875,
+  "fuzzing_frac_f1_positive": 1.0,
+  "n_f1_positive": 27,
+  "n_roc_positive": 24,
+  "per_cell": [
+    {
+      "capture": "correlated_signal_attack_1",
+      "detector": "autoencoder",
+      "delta_f1": 0.49059776792539367,
+      "delta_roc_auc": 0.16752554392329433,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "correlated_signal_attack_1",
+      "detector": "elliptic_envelope",
+      "delta_f1": 0.501211221380011,
+      "delta_roc_auc": 0.17020266756140856,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "correlated_signal_attack_1",
+      "detector": "hbos",
+      "delta_f1": 0.46184883637149654,
+      "delta_roc_auc": 0.5394532311394903,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "correlated_signal_attack_1",
+      "detector": "isolation_forest",
+      "delta_f1": 0.5332223147377185,
+      "delta_roc_auc": 0.1553750026559363,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "correlated_signal_attack_1",
+      "detector": "lof",
+      "delta_f1": 0.3726412355571039,
+      "delta_roc_auc": 0.4560109793699925,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "correlated_signal_attack_1",
+      "detector": "one_class_svm",
+      "delta_f1": 0.33905284831846255,
+      "delta_roc_auc": 0.16412382848304552,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "fuzzing_attack_1",
+      "detector": "autoencoder",
+      "delta_f1": 0.1348737915436803,
+      "delta_roc_auc": -0.1306777646390171,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "fuzzing_attack_1",
+      "detector": "elliptic_envelope",
+      "delta_f1": 0.01914849802666352,
+      "delta_roc_auc": -0.11785408780644802,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "fuzzing_attack_1",
+      "detector": "hbos",
+      "delta_f1": 0.09641345543473644,
+      "delta_roc_auc": -0.11445013361587625,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "fuzzing_attack_1",
+      "detector": "isolation_forest",
+      "delta_f1": 0.09718173282189516,
+      "delta_roc_auc": -0.08648018009772918,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "fuzzing_attack_1",
+      "detector": "lof",
+      "delta_f1": 0.2202853488521781,
+      "delta_roc_auc": -0.020763773909934502,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "fuzzing_attack_1",
+      "detector": "one_class_svm",
+      "delta_f1": 0.07711003229613916,
+      "delta_roc_auc": -0.14334995763550645,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "max_engine_coolant_temp_attack",
+      "detector": "autoencoder",
+      "delta_f1": -0.33011728175679456,
+      "delta_roc_auc": 0.005280283459676127,
+      "residual_helps_f1": false
+    },
+    {
+      "capture": "max_engine_coolant_temp_attack",
+      "detector": "elliptic_envelope",
+      "delta_f1": -0.33290941613160047,
+      "delta_roc_auc": 0.007548807860077056,
+      "residual_helps_f1": false
+    },
+    {
+      "capture": "max_engine_coolant_temp_attack",
+      "detector": "hbos",
+      "delta_f1": 0.26390685640362227,
+      "delta_roc_auc": 0.1943886841993816,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "max_engine_coolant_temp_attack",
+      "detector": "isolation_forest",
+      "delta_f1": 0.26597131681877445,
+      "delta_roc_auc": 0.023335309645816538,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "max_engine_coolant_temp_attack",
+      "detector": "lof",
+      "delta_f1": 0.1783216783216783,
+      "delta_roc_auc": 0.23021852369457496,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "max_engine_coolant_temp_attack",
+      "detector": "one_class_svm",
+      "delta_f1": 0.1447518914502895,
+      "delta_roc_auc": 0.005659311960925395,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "reverse_light_off_attack_1",
+      "detector": "autoencoder",
+      "delta_f1": 0.5429023329379201,
+      "delta_roc_auc": 0.09425708526838439,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "reverse_light_off_attack_1",
+      "detector": "elliptic_envelope",
+      "delta_f1": 0.591937917654667,
+      "delta_roc_auc": 0.09438798239887902,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "reverse_light_off_attack_1",
+      "detector": "hbos",
+      "delta_f1": 0.5566632756866734,
+      "delta_roc_auc": 0.2667447276871605,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "reverse_light_off_attack_1",
+      "detector": "isolation_forest",
+      "delta_f1": 0.711040676175383,
+      "delta_roc_auc": 0.20374738604983522,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "reverse_light_off_attack_1",
+      "detector": "lof",
+      "delta_f1": 0.48979432770478926,
+      "delta_roc_auc": 0.3023092770436391,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "reverse_light_off_attack_1",
+      "detector": "one_class_svm",
+      "delta_f1": 0.5024702653247941,
+      "delta_roc_auc": 0.18081637847454224,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "reverse_light_on_attack_1",
+      "detector": "autoencoder",
+      "delta_f1": -0.17348304984319152,
+      "delta_roc_auc": 0.007345162294598362,
+      "residual_helps_f1": false
+    },
+    {
+      "capture": "reverse_light_on_attack_1",
+      "detector": "elliptic_envelope",
+      "delta_f1": 0.7695730774579335,
+      "delta_roc_auc": 0.14612748184368918,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "reverse_light_on_attack_1",
+      "detector": "hbos",
+      "delta_f1": 0.7571487207552332,
+      "delta_roc_auc": 0.1724849793414044,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "reverse_light_on_attack_1",
+      "detector": "isolation_forest",
+      "delta_f1": 0.7767017543859649,
+      "delta_roc_auc": 0.1936604446660274,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "reverse_light_on_attack_1",
+      "detector": "lof",
+      "delta_f1": 0.7858562908264698,
+      "delta_roc_auc": 0.4363355829644636,
+      "residual_helps_f1": true
+    },
+    {
+      "capture": "reverse_light_on_attack_1",
+      "detector": "one_class_svm",
+      "delta_f1": 0.6624371558534834,
+      "delta_roc_auc": 0.2707618156170468,
+      "residual_helps_f1": true
+    }
+  ],
+  "protocol": "pre_injection_v1",
+  "decision_rule": {
+    "A_supported": "frac_f1>=0.70 & median_dF1>0 & frac_roc>=0.60",
+    "B_partially_supported": "frac_f1>=0.50 OR (median_dF1>0 & targeted_frac>=0.75)",
+    "C_rejected": "otherwise"
+  }
+}

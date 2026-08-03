@@ -4,8 +4,7 @@ Fits per-ID mean/std from normal calibration windows, then normalizes any
 window by its ID's baseline (z-score). IDs unseen in calibration fall back to
 global normal statistics. NaNs in source features become 0.0 residuals.
 
-Port of ``fit_per_id_stats`` / ``transform_residuals`` from ``pird_hcrl.ipynb``
--- no algorithm changes.
+Vectorized implementation; numerically equivalent to the notebook port.
 """
 
 from __future__ import annotations
@@ -26,32 +25,16 @@ GlobalStats = tuple[dict[str, float], dict[str, float]]
 def fit_per_id_stats(
     df_calib: pd.DataFrame, feature_cols: list[str]
 ) -> tuple[PerIdStats, GlobalStats]:
-    """Fit per-ID and global normal statistics from calibration windows.
-
-    Parameters
-    ----------
-    df_calib : pd.DataFrame
-        Calibration window table containing ``is_attack`` and ``can_id`` columns.
-    feature_cols : list[str]
-        Feature columns to compute statistics over.
-
-    Returns
-    -------
-    per_id_stats : PerIdStats
-        ``{can_id: (mean_dict, std_dict)}`` for IDs with at least
-        ``MIN_WINDOWS_PER_ID`` normal windows.
-    global_stats : GlobalStats
-        ``(mean_dict, std_dict)`` over all calibration normals (fallback).
-    """
-    norm = df_calib[df_calib["is_attack"] == 0].copy()
+    """Fit per-ID and global normal statistics from calibration windows."""
+    norm = df_calib[df_calib["is_attack"] == 0]
     stats: PerIdStats = {}
     for cid, grp in norm.groupby("can_id"):
         if len(grp) >= MIN_WINDOWS_PER_ID:
-            mu = {f: grp[f].mean() for f in feature_cols}
-            sd = {f: grp[f].std() for f in feature_cols}
-            stats[cid] = (mu, sd)
-    gmu = {f: norm[f].mean() for f in feature_cols}
-    gsd = {f: norm[f].std() for f in feature_cols}
+            mu = {f: float(grp[f].mean()) for f in feature_cols}
+            sd = {f: float(grp[f].std()) for f in feature_cols}
+            stats[str(cid)] = (mu, sd)
+    gmu = {f: float(norm[f].mean()) for f in feature_cols}
+    gsd = {f: float(norm[f].std()) for f in feature_cols}
     return stats, (gmu, gsd)
 
 
@@ -64,48 +47,42 @@ def transform_residuals(
 ) -> pd.DataFrame:
     """Residualize ``df`` features against per-ID (or global) baselines.
 
-    For each row, if its ``can_id`` was fitted per-ID, use that mean/std;
-    otherwise use the global fallback. Residual ``r = (x - mu) / (std + EPS)``.
-    NaN source values are mapped to ``0.0``. Metadata columns (``can_id``,
-    ``timestamp``, ``is_attack``, ``attack_frac``) are carried through.
-
-    Parameters
-    ----------
-    df : pd.DataFrame
-        Window table with rows to residualize.
-    per_id_stats : PerIdStats
-        Output of :func:`fit_per_id_stats`.
-    global_stats : GlobalStats
-        Output of :func:`fit_per_id_stats`.
-    feature_cols : list[str]
-        Feature columns to residualize.
-    suffix : str
-        Suffix appended to residual column names (default ``"_res"``).
-
-    Returns
-    -------
-    pd.DataFrame
-        Residualized table: one ``f + suffix`` column per ``feature_cols`` entry,
-        plus the metadata columns.
+    Residual ``r = (x - mu) / (std + EPS)``. NaN source values → 0.0.
     """
     gmu, gsd = global_stats
-    rows = []
-    for _, row in df.iterrows():
-        cid = row["can_id"]
+    n = len(df)
+    # Precompute global arrays
+    gmu_arr = np.array([gmu[f] for f in feature_cols], dtype=float)
+    gsd_arr = np.array([gsd[f] for f in feature_cols], dtype=float)
+
+    # Map each unique can_id to mean/std arrays
+    ids = df["can_id"].astype(str).values
+    unique_ids = pd.unique(ids)
+    id_to_mu: dict[str, np.ndarray] = {}
+    id_to_sd: dict[str, np.ndarray] = {}
+    for cid in unique_ids:
         if cid in per_id_stats:
-            mu, sd = per_id_stats[cid]
+            mu_d, sd_d = per_id_stats[cid]
+            id_to_mu[cid] = np.array([mu_d[f] for f in feature_cols], dtype=float)
+            id_to_sd[cid] = np.array([sd_d[f] for f in feature_cols], dtype=float)
         else:
-            mu, sd = gmu, gsd
-        r: dict = {}
-        for f in feature_cols:
-            val = row.get(f, np.nan)
-            if pd.isna(val):
-                r[f + suffix] = 0.0
-            else:
-                r[f + suffix] = (val - mu[f]) / (sd[f] + EPS)
-        r["can_id"] = cid
-        r["timestamp"] = row["timestamp"]
-        r["is_attack"] = row["is_attack"]
-        r["attack_frac"] = row.get("attack_frac", 0.0)
-        rows.append(r)
-    return pd.DataFrame(rows)
+            id_to_mu[cid] = gmu_arr
+            id_to_sd[cid] = gsd_arr
+
+    X = df[feature_cols].to_numpy(dtype=float, copy=True)
+    mu_mat = np.vstack([id_to_mu[c] for c in ids])
+    sd_mat = np.vstack([id_to_sd[c] for c in ids])
+
+    with np.errstate(invalid="ignore"):
+        R = (X - mu_mat) / (sd_mat + EPS)
+    R = np.where(np.isnan(R), 0.0, R)
+
+    out = {f + suffix: R[:, j] for j, f in enumerate(feature_cols)}
+    out["can_id"] = ids
+    out["timestamp"] = df["timestamp"].values
+    out["is_attack"] = df["is_attack"].values
+    if "attack_frac" in df.columns:
+        out["attack_frac"] = df["attack_frac"].values
+    else:
+        out["attack_frac"] = np.zeros(n, dtype=float)
+    return pd.DataFrame(out)

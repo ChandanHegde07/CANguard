@@ -6,7 +6,7 @@
 # Isolation Forest is trained on additional normals and scored on the full
 # capture. This is the faithful application of PIRD to multi-capture ROAD.
 dataset: road
-data_dir: road
+data_dir: road/road
 window_size: 30
 
 # Frames sampled per capture after parsing (keeps the Python feature loop
