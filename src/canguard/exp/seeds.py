@@ -1,4 +1,3 @@
-"""Deterministic seed management for Phase A experiments."""
 
 from __future__ import annotations
 

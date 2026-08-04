@@ -1,4 +1,3 @@
-"""Top false positive / false negative catalog with residual attributions."""
 
 from __future__ import annotations
 

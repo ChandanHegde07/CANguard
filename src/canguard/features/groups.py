@@ -1,9 +1,3 @@
-"""Canonical feature definitions and feature-group metadata.
-
-These names are the exact ones produced by the per-ID sliding-window pipeline
-and consumed by the residual transform and detectors. Import these constants
-rather than re-declaring strings, so experiments never drift.
-"""
 
 from __future__ import annotations
 

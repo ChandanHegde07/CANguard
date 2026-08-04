@@ -1,9 +1,3 @@
-"""Paired statistical tests for representation comparisons.
-
-McNemar's test compares paired binary predictions on the same windows
-(residual vs raw, or detector A vs B). Block bootstrap remains preferred for
-metric CIs under temporal dependence.
-"""
 
 from __future__ import annotations
 
@@ -12,16 +6,7 @@ from scipy import stats
 
 
 def mcnemar_test(y_true: np.ndarray, pred_a: np.ndarray, pred_b: np.ndarray) -> dict:
-    """McNemar test on paired predictions (continuity-corrected chi-square).
 
-    Contests whether the two classifiers disagree in a biased way.
-    Only windows where exactly one of (pred_a, pred_b) is correct contribute.
-
-    Appropriate when:
-      * same test instances
-      * binary decisions
-      * interest is disagreement, not independent samples
-    """
     y_true = np.asarray(y_true).astype(int)
     pred_a = np.asarray(pred_a).astype(int)
     pred_b = np.asarray(pred_b).astype(int)
@@ -61,7 +46,6 @@ def paired_bootstrap_delta(
     seed: int = 0,
     metric: str = "f1",
 ) -> dict:
-    """Block-bootstrap CI for metric(B) - metric(A) on paired indices."""
     from .metrics import compute_metrics
 
     y_true = np.asarray(y_true)

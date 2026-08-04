@@ -1,9 +1,3 @@
-"""Manuscript-facing table formatters and ROAD summary generation.
-
-Rules:
-  * ROAD numbers only from corrected pre_injection_v1 tables.
-  * Never print mean ± std when n_captures == 1 (use n/a (n=1)).
-"""
 
 from __future__ import annotations
 
@@ -21,7 +15,6 @@ from .metadata import (
 
 
 def format_mean_std(mean: float, std: float | None, n: int, decimals: int = 3) -> str:
-    """Format mean ± std for manuscript; suppress std when n < 2."""
     if mean != mean:  # NaN
         return "n/a"
     m = f"{float(mean):.{decimals}f}"
@@ -38,7 +31,6 @@ def build_road_attack_summary(
     representation: str = "residual",
     metric_cols: tuple[str, ...] = ("f1", "recall", "precision", "roc_auc", "pr_auc", "fpr"),
 ) -> pd.DataFrame:
-    """Aggregate ROAD per-attack-type metrics with n_captures; corrected protocol only."""
     df = ensure_protocol_column(road_results)
     assert_road_protocol_ok(df)
 

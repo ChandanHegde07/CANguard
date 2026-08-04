@@ -1,4 +1,3 @@
-"""Histogram-Based Outlier Score (HBOS) — lightweight pure-NumPy implementation."""
 
 from __future__ import annotations
 
@@ -8,10 +7,6 @@ from .base import BaseAnomalyDetector
 
 
 class HBOSDetector(BaseAnomalyDetector):
-    """Univariate histogram outlier scores summed across features.
-
-    Higher score = more anomalous. Independent of sklearn's contamination API.
-    """
 
     name = "hbos"
 

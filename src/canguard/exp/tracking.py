@@ -1,4 +1,3 @@
-"""Experiment run directories and result persistence."""
 
 from __future__ import annotations
 

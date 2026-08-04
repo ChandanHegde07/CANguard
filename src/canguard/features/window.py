@@ -1,9 +1,3 @@
-"""Per-ID sliding-window feature extraction.
-
-Port of the feature pipeline from ``feature_eng_hcrl.ipynb`` and
-``pird_hcrl.ipynb``. No algorithm changes: the per-window feature math is
-identical to the notebook cells.
-"""
 
 from __future__ import annotations
 
@@ -16,11 +10,7 @@ VALID_LABEL_POLICIES = ("any", "majority", "last")
 
 
 class PerIDWindow:
-    """Fixed-size sliding window of recent messages for a single CAN ID.
 
-    Accumulates timestamps, DLCs, payload bytes, and attack flags; recomputes
-    IAT / DLC / byte statistics over the current window contents on demand.
-    """
 
     def __init__(self, maxlen: int) -> None:
         self.timestamps: deque[float] = deque(maxlen=maxlen)
@@ -135,19 +125,6 @@ class GlobalCANContext:
 
 
 class FeaturePipeline:
-    """Per-ID sliding-window feature extractor for streaming CAN frames.
-
-    Parameters
-    ----------
-    window_size : int
-        Number of consecutive messages per ID before a feature vector is emitted.
-    known_ids : set[str] | None
-        Locked set of expected IDs (for the new-ID novelty flag).
-    label_policy : str
-        One of "any", "majority", "last".
-    include_presence_features : bool
-        If True, also emit ``is_new_id`` and ``active_ids_1s``.
-    """
 
     def __init__(
         self,
@@ -213,5 +190,4 @@ class FeaturePipeline:
 
 
 def fit_known_ids_on_normal_prefix(df: pd.DataFrame, n_normal: int = 20000) -> set[str]:
-    """Return the set of CAN IDs appearing in the first ``n_normal`` normal rows."""
     return set(df[df["label"] == "R"].head(n_normal)["can_id"].unique())

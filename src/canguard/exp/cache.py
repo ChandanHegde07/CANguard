@@ -1,4 +1,3 @@
-"""Disk cache for expensive feature / residual tables."""
 
 from __future__ import annotations
 
@@ -14,7 +13,7 @@ logger = logging.getLogger("canguard")
 
 
 class FeatureCache:
-    """Simple parquet/pickle cache keyed by a JSON-serializable fingerprint."""
+
 
     def __init__(self, root: str | Path) -> None:
         self.root = Path(root)

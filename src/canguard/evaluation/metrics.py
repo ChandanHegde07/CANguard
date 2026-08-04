@@ -1,4 +1,3 @@
-"""Classification metrics for anomaly detection evaluation."""
 
 from __future__ import annotations
 
@@ -8,25 +7,7 @@ from sklearn.metrics import average_precision_score, confusion_matrix, roc_auc_s
 
 
 def compute_metrics(y_test: np.ndarray, y_pred: np.ndarray, scores: np.ndarray) -> dict[str, float]:
-    """Compute standard binary-classification metrics from predictions+scores.
 
-    Mirrors the per-class reporting in ``pird_hcrl.ipynb``: precision, recall,
-    F1, FPR, plus ROC-AUC and PR-AUC computed from continuous ``scores``.
-
-    Parameters
-    ----------
-    y_test : np.ndarray
-        Ground-truth binary labels (1 = attack).
-    y_pred : np.ndarray
-        Binary predictions (1 = predicted attack).
-    scores : np.ndarray
-        Continuous anomaly scores (higher = more anomalous).
-
-    Returns
-    -------
-    dict[str, float]
-        Keys: fpr, precision, recall, f1, roc_auc, pr_auc, plus tp/fp/fn/tn.
-    """
     y_test = np.asarray(y_test)
     y_pred = np.asarray(y_pred)
     scores = np.asarray(scores)

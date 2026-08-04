@@ -1,8 +1,3 @@
-"""Block / cluster-aware bootstrap confidence intervals.
-
-Avoids treating successive CAN windows as IID by resampling contiguous time
-blocks (and optionally by can_id clusters).
-"""
 
 from __future__ import annotations
 
@@ -16,7 +11,6 @@ MetricFn = Callable[[np.ndarray, np.ndarray, np.ndarray], dict[str, float]]
 
 
 def _block_indices(n: int, block_size: int, rng: np.random.Generator) -> np.ndarray:
-    """Sample with replacement blocks of ``block_size`` covering ~n indices."""
     if n <= 0:
         return np.array([], dtype=int)
     block_size = max(1, min(block_size, n))
@@ -42,28 +36,7 @@ def bootstrap_metrics(
     metrics: tuple[str, ...] = ("precision", "recall", "f1", "roc_auc", "pr_auc", "fpr"),
     ci: float = 0.95,
 ) -> dict[str, dict[str, float]]:
-    """Block-bootstrap CIs for classification metrics.
 
-    Parameters
-    ----------
-    y_true, y_pred, scores
-        Test-set arrays (same length, chronological order preferred).
-    n_boot
-        Number of bootstrap replicates.
-    block_size
-        Contiguous window-block length (reduces IID assumption).
-    seed
-        RNG seed.
-    metrics
-        Metric keys from :func:`compute_metrics`.
-    ci
-        Confidence level (default 0.95).
-
-    Returns
-    -------
-    dict
-        ``{metric: {point, ci_low, ci_high, mean, std}}``
-    """
     y_true = np.asarray(y_true)
     y_pred = np.asarray(y_pred)
     scores = np.asarray(scores)
@@ -104,7 +77,6 @@ def bootstrap_metrics(
 
 
 def flatten_bootstrap(boot: dict[str, dict[str, float]], prefix: str = "") -> dict[str, float]:
-    """Flatten nested bootstrap dict for CSV rows."""
     row: dict[str, float] = {}
     for metric, stats in boot.items():
         for k, v in stats.items():

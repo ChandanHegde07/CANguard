@@ -1,4 +1,3 @@
-"""Isolation Forest anomaly detector."""
 
 from __future__ import annotations
 
@@ -9,7 +8,6 @@ from .base import BaseAnomalyDetector
 
 
 class IsolationForestDetector(BaseAnomalyDetector):
-    """Isolation Forest (higher score = more anomalous)."""
 
     name = "isolation_forest"
 

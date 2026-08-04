@@ -1,4 +1,3 @@
-"""One-Class SVM anomaly detector."""
 
 from __future__ import annotations
 
@@ -10,7 +9,6 @@ from .base import BaseAnomalyDetector
 
 
 class OneClassSVMDetector(BaseAnomalyDetector):
-    """One-Class SVM with internal scaling (higher = more anomalous)."""
 
     name = "one_class_svm"
 

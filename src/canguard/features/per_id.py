@@ -1,11 +1,3 @@
-"""Per-ID residual transformation (PIRD core).
-
-Fits per-ID mean/std from normal calibration windows, then normalizes any
-window by its ID's baseline (z-score). IDs unseen in calibration fall back to
-global normal statistics. NaNs in source features become 0.0 residuals.
-
-Vectorized implementation; numerically equivalent to the notebook port.
-"""
 
 from __future__ import annotations
 

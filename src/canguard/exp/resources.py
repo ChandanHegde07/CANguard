@@ -1,4 +1,3 @@
-"""Runtime, memory, and model-size measurement utilities."""
 
 from __future__ import annotations
 

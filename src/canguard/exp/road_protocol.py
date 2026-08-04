@@ -1,12 +1,3 @@
-"""Correct ROAD per-capture protocol for residualization studies.
-
-Key rules (fix audit B1–B4):
-  * Residual μ/σ fitted only on **pre-injection** windows (elapsed < start).
-  * Detector trained only on pre-injection normals.
-  * Threshold calibrated on a holdout of pre-injection normals.
-  * Test = windows with elapsed >= injection start (attack period + after).
-  * Raw and residual use the **same** train/test window indices.
-"""
 
 from __future__ import annotations
 
@@ -29,7 +20,6 @@ logger = logging.getLogger("canguard")
 
 
 def resolve_road_root(data_dir: str | Path) -> Path:
-    """Accept ``road/``, ``road/road/``, or a path that already contains attacks/."""
     p = Path(data_dir)
     candidates = [p, p / "road", Path("road/road"), Path("road")]
     for c in candidates:
@@ -47,7 +37,6 @@ def list_eval_captures(
     skip_unlabeled: bool = True,
     per_type: int | None = None,
 ) -> list[tuple[str, dict]]:
-    """Return (capture_name, meta) pairs eligible for evaluation."""
     loader = RoadLoader(road_root)
     attack_logs = {p.stem for p in loader._collect_logs("attacks")}
     items: list[tuple[str, dict]] = []
@@ -159,15 +148,6 @@ def build_road_raw_residual_splits(
     feature_cols: list[str] | None = None,
     min_pre_windows: int = 50,
 ) -> dict[str, Any]:
-    """Pre-injection train / post-start test splits for raw and residual.
-
-    Parameters
-    ----------
-    feature_table
-        Window table with ``elapsed`` and ``is_attack``.
-    injection_interval
-        ``[start_sec, end_sec]`` in capture-elapsed seconds.
-    """
     feature_cols = list(feature_cols or BEHAVIORAL_FEATURES_V1)
     start = float(injection_interval[0])
 

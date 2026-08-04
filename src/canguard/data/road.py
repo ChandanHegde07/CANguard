@@ -1,40 +1,3 @@
-"""ROAD (Real ORNL Automotive Dynamometer) CAN IDS dataset loader.
-
-Dataset layout (treated as immutable raw data):
-
-    <road_dir>/
-        ambient/    {capture}.log + capture_metadata.json
-        attacks/    {capture}.log + capture_metadata.json
-        signal_extractions/   (not consumed here)
-        data_table.csv
-        readme.md
-
-Raw frame format (from the ROAD readme):
-
-    (1030000000.001020) can0 6e0#595945450000FFFF
-
-* ``(seconds float)`` -- timestamp. Each capture uses a fixed per-capture base
-  epoch, so *elapsed* time = ``timestamp - first_timestamp``.
-* ``can0`` -- interface (ignored).
-* ``6e0`` -- CAN ID in hex, no ``0x`` prefix.
-* ``595945450000FFFF`` -- 8 payload bytes (16 hex chars). ROAD raw logs are
-  uniformly DLC=8 (no variable-DLC rows).
-
-Attack labeling:
-
-Frames are labeled attack by matching each capture's ``injection_interval``
-``[start_sec, end_sec]`` (in elapsed seconds) and ``injection_id`` from
-``attacks/capture_metadata.json``:
-* ``injection_id == "XXX"`` (fuzzing)  -> any frame in the interval is attack.
-* ``injection_id`` is a specific AID   -> a frame is attack iff it is on that
-  AID AND its timestamp lies in the injection interval.
-* ``injection_id is None`` (accelerator)-> no injected message exists; those
-  frames are left normal (they have no frame-level attack label).
-
-Output: the canonical ``CAN_SCHEMA`` columns plus an extra ``attack_type``
-column. ``label`` is ``"R"`` for normal and the canonical attack-type token
-otherwise; ``is_attack`` is derived as ``(attack_type != "R")``.
-"""
 
 from __future__ import annotations
 
@@ -52,11 +15,6 @@ _FRAME_RE = re.compile(r"^\(([0-9.]+)\)\s+\S+\s+([0-9A-Fa-f]+)#([0-9A-Fa-f]+)\s*
 
 
 def _attack_type_from_name(capture_name: str) -> str:
-    """Derive a canonical attack-type token from a capture filename.
-
-    Strips the ``_masquerade`` suffix and any trailing numeric index, e.g.
-    ``max_speedometer_attack_1_masquerade`` -> ``max_speedometer_attack``.
-    """
     base = capture_name
     if base.endswith("_masquerade"):
         base = base[: -len("_masquerade")]
@@ -67,21 +25,6 @@ def _attack_type_from_name(capture_name: str) -> str:
 
 
 def _parse_log(path: Path, metadata: dict | None) -> pd.DataFrame:
-    """Parse a raw ROAD ``.log`` into canonical-schema rows.
-
-    Parameters
-    ----------
-    path : Path
-        The ``.log`` file.
-    metadata : dict | None
-        Capture-level metadata entry (empty for ambient captures).
-
-    Returns
-    -------
-    pd.DataFrame
-        Rows with ``timestamp``, ``can_id``, ``dlc``, ``data_*``, and derived
-        ``is_attack`` + ``attack_type`` columns.
-    """
     metadata = metadata or {}
     path = Path(path)
     interval = metadata.get("injection_interval")
@@ -162,20 +105,6 @@ class RoadLoader(BaseDatasetLoader):
         load_attacks: bool = True,
         load_ambient: bool = True,
     ) -> None:
-        """Initialize with the ROAD root directory.
-
-        Parameters
-        ----------
-        data_dir : str | Path
-            ROAD dataset root (containing ``ambient/`` and ``attacks/``).
-        meta : dict | None
-            Optional merged metadata dict; if None, loaded from the capture
-            metadata JSON files under ``data_dir``.
-        load_attacks : bool
-            Whether to include attack captures (default True).
-        load_ambient : bool
-            Whether to include ambient captures (default True).
-        """
         super().__init__(data_dir)
         self.load_attacks = load_attacks
         self.load_ambient = load_ambient
@@ -198,20 +127,6 @@ class RoadLoader(BaseDatasetLoader):
         return sorted(d.glob("*.log"))
 
     def load(self, sample_size: int | None = None) -> pd.DataFrame:
-        """Load ROAD captures into the canonical schema.
-
-        Parameters
-        ----------
-        sample_size : int | None
-            If given, return only the first ``sample_size`` rows of the
-            concatenated frame table.
-
-        Returns
-        -------
-        pd.DataFrame
-            Canonical-schema rows with an extra ``attack_type`` column and a
-            derived ``is_attack`` column.
-        """
         frames = []
         pairs = (("ambient", self.load_ambient), ("attacks", self.load_attacks))
         for subdir, enabled in pairs:

@@ -1,5 +1,3 @@
-"""Shallow autoencoder via sklearn MLP (reconstruction-error anomaly score)."""
-
 from __future__ import annotations
 
 import numpy as np
@@ -10,8 +8,6 @@ from .base import BaseAnomalyDetector
 
 
 class AutoencoderDetector(BaseAnomalyDetector):
-    """MLP autoencoder: score = mean squared reconstruction error."""
-
     name = "autoencoder"
 
     def __init__(

@@ -1,4 +1,3 @@
-"""Build shared raw / residual feature matrices for Phase A."""
 
 from __future__ import annotations
 
@@ -76,13 +75,7 @@ def build_raw_and_residual_splits(
     train_frac: float = 0.2,
     test_frac: float = 0.4,
 ) -> dict[str, Any]:
-    """Chronological split + residualization with shared indices.
 
-    Returns dict with keys:
-      raw: {calib, train, test}
-      residual: {calib, train, test}
-      feature_cols, residual_cols
-    """
     feature_cols = list(feature_cols or BEHAVIORAL_FEATURES_V1)
     calib, train, test = temporal_split(feature_table, calib_frac, train_frac, test_frac)
     stats, gstats = fit_per_id_stats(calib, feature_cols)
