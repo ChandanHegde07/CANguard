@@ -1,6 +1,6 @@
 # CANguard
 
-Behavioral CAN Bus Intrusion Detection System built on **Per-ID Behavioral Residual Detection (PIRD)**, validated on the synthetic HCRL Car-Hacking Dataset and the real ROAD dataset. Includes an IEEE-style research paper.
+Behavioral CAN Bus Intrusion Detection System built on **Per-ID Behavioral Residual Detection (PIRD)**, validated on the synthetic HCRL Car-Hacking Dataset and the real ROAD dataset.
 
 ## System Architecture
 
