@@ -6,7 +6,7 @@ Behavioral CAN Bus Intrusion Detection System built on **Per-ID Behavioral Resid
 
 The full manuscript is available as an arXiv preprint:
 
-- **arXiv:** [2608.05548](https://arxiv.org/abs/2608.05548) — *"CANguard: Behavioral Residualization for Unsupervised Intrusion Detection in Automotive CAN Networks"*
+- **arXiv:** [2608.05548](https://arxiv.org/abs/2608.05548) — *"Behavioral Residualization for Unsupervised Intrusion Detection in Automotive CAN Networks"*
 
 
 ## System Architecture
