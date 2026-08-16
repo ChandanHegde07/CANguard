@@ -70,33 +70,31 @@ flowchart TD
 | `HCRL Car-Hacking/` | HCRL raw CSVs (git-ignored) |
 | `road/` | ROAD raw dataset (git-ignored) |
 
-## Setup
+## About
 
-```bash
-python3 -m venv .venv
-.venv/bin/pip install -e ".[dev]"
-.venv/bin/pytest
-```
+Modern vehicles rely on the **CAN (Controller Area Network) bus** to carry safety-critical messages between electronic control units (ECUs). Because CAN was designed with no built-in authentication or encryption, it is highly exposed to cyberattacks — an attacker who gains physical or remote access to the bus can inject or manipulate messages that control brakes, steering, engine, and other live systems.
 
-## Usage
+**CANguard** is an unsupervised behavior-based intrusion detection system for automotive CAN networks. Instead of inspecting raw message fields, it models the *normal* behavior of each CAN identifier (ID) over sliding windows — capturing timing (inter-arrival times), Data Length Code (DLC) statistics, and payload patterns — then converts those raw behavioral signals into per-ID **z-score residuals**. Any statistically significant deviation from an ID's learned normal behavior is flagged as anomalous.
 
-```bash
-# Run the HCRL pipeline and generate figures + results
-.venv/bin/python run_pipeline.py
+This residualization step is the key insight of the project: raw features alone are nearly useless for detection, but when each ID's own distribution is modeled and deviations are expressed as residuals, modern anomaly detectors can separate benign events from malicious traffic far more reliably.
 
-# Run a single experiment from a config
-.venv/bin/python -m experiments.runners.train_detector --config experiments/configs/hcrl.yaml
+## How It Works
 
-# Validate PIRD on ROAD (per-capture)
-.venv/bin/python -m experiments.runners.eval_road --config experiments/configs/road.yaml
+The detection pipeline follows a clear sequence of stages:
 
-# Research experiment phases (baselines, ROAD, statistics/runtime/latency)
-.venv/bin/python -m experiments.runners.run_phase_a   --config experiments/configs/phase_a.yaml
-.venv/bin/python -m experiments.runners.run_phase_b_road --config experiments/configs/phase_b_road.yaml
-.venv/bin/python -m experiments.runners.run_phase_c   --config experiments/configs/phase_c.yaml
-```
+1. **Data loading** — Automatically parses two real-world automotive datasets: the HCRL Car-Hacking Dataset (synthetic CAN traffic with injected attacks) and the ROAD dataset (real recorded driving sessions with realistic, stealth attacks).
+2. **Feature engineering** — Every message is organized into per-ID sliding windows, and each window is summarized by a set of behavioral features (timing, DLC, and payload-based statistics).
+3. **Residualization** — For each CAN ID, a statistical profile is fit over the windows; the profile is then used to transform every window into a per-ID z-score residual, expressing how unusual each observation is relative to that ID's normal behavior.
+4. **Detection** — An unsupervised Isolation Forest is trained on normal-only traffic and used to score new windows; anomalies are detected by each ID's departure from its learned residual distribution.
+5. **Evaluation** — Results are measured with precision, recall, F1, and ROC/PR curves, and rendered as diagnostic figures plus machine-readable tables.
 
-## Key Results (residual IF @ ~1% FPR, HCRL)
+## What Makes It Notable
+
+- **Unsupervised, per-ID detection** — No labeled attack data required for training; detection is driven purely by learning normal behavior.
+- **Validated on two complementary datasets** — HCRL for controlled synthetic attacks and ROAD for realistic, stealth attacks that reuse legitimate IDs, providing a fair evaluation of how well the approach generalizes beyond toy conditions.
+- **Transparent methodology** — The accompanying paper documents the residualization operator and reports an ablation showing why it is the enabling component of the system.
+
+## Key Results
 
 | Dataset | F1 | Recall | FPR |
 |---------|-----|--------|-----|
