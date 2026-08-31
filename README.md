@@ -1,13 +1,12 @@
 # CANguard
 
-Behavioral CAN Bus Intrusion Detection System built on **Per-ID Behavioral Residual Detection (PIRD)**, validated on the synthetic HCRL Car-Hacking Dataset and the real ROAD dataset.
+A behavioral CAN bus intrusion detection approach based on **Per-ID Behavioral Residual Detection (PIRD)**, evaluated on the synthetic HCRL Car-Hacking dataset and the real-world ROAD dataset.
 
 ## Paper & Citation
 
-The full manuscript is available as an arXiv preprint:
+A manuscript describing this work is available as an arXiv preprint (not yet peer-reviewed):
 
 - **arXiv:** [2608.05548](https://arxiv.org/abs/2608.05548) — *"Behavioral Residualization for Unsupervised Intrusion Detection in Automotive CAN Networks"*
-
 
 ## System Architecture
 
@@ -55,7 +54,7 @@ flowchart TD
 | Path | Description |
 |------|-------------|
 | `src/canguard/` | Library: `data`, `features`, `transforms`, `detectors`, `evaluation`, `visualization`, `utils` |
-| `papers/canguard_ieee.tex` | IEEE-style conference paper (LaTeX) |
+| `papers/canguard_ieee.tex` | IEEE-style conference paper draft (LaTeX) |
 | `paper/` | Revised paper build + `updated_figures`, `updated_tables` |
 | `notebooks/` | Research notebooks: `eda_hcrl`, `feature_eng_hcrl`, `pird_hcrl`, `pird_v2_extensions` |
 | `experiments/` | Config-driven runners: baseline, ROAD, and phase A/B/C pipelines |
@@ -72,29 +71,27 @@ flowchart TD
 
 ## About
 
-Modern vehicles rely on the **CAN (Controller Area Network) bus** to carry safety-critical messages between electronic control units (ECUs). Because CAN was designed with no built-in authentication or encryption, it is highly exposed to cyberattacks — an attacker who gains physical or remote access to the bus can inject or manipulate messages that control brakes, steering, engine, and other live systems.
+Modern vehicles use the **CAN (Controller Area Network) bus** to carry messages between electronic control units (ECUs). CAN has no built-in authentication or encryption, so a party with physical or remote access to the bus can inject or manipulate messages related to systems such as brakes, steering, or the engine.
 
-**CANguard** is an unsupervised behavior-based intrusion detection system for automotive CAN networks. Instead of inspecting raw message fields, it models the *normal* behavior of each CAN identifier (ID) over sliding windows — capturing timing (inter-arrival times), Data Length Code (DLC) statistics, and payload patterns — then converts those raw behavioral signals into per-ID **z-score residuals**. Any statistically significant deviation from an ID's learned normal behavior is flagged as anomalous.
+**CANguard** is an unsupervised, behavior-based intrusion detection approach for automotive CAN networks. Rather than inspecting raw message fields directly, it models the *normal* behavior of each CAN identifier (ID) over sliding windows — timing (inter-arrival times), Data Length Code (DLC) statistics, and payload patterns — and converts those signals into per-ID **z-score residuals**. Windows that deviate significantly from an ID's learned normal behavior are flagged as anomalous.
 
-This residualization step is the key insight of the project: raw features alone are nearly useless for detection, but when each ID's own distribution is modeled and deviations are expressed as residuals, modern anomaly detectors can separate benign events from malicious traffic far more reliably.
+The central idea tested here is that per-ID residualization matters: on the datasets evaluated, raw features alone perform poorly for detection, while modeling each ID's own distribution and expressing deviations as residuals lets a downstream anomaly detector separate benign from malicious traffic more effectively. This is evaluated directly via an ablation (see paper).
 
 ## How It Works
 
-The detection pipeline follows a clear sequence of stages:
+1. **Data loading** — Parses two datasets: the HCRL Car-Hacking dataset (synthetic CAN traffic with injected attacks) and the ROAD dataset (real recorded driving sessions with stealthier attacks).
+2. **Feature engineering** — Messages are organized into per-ID sliding windows, each summarized by behavioral features (timing, DLC, and payload-based statistics).
+3. **Residualization** — A statistical profile is fit per CAN ID over the windows, then used to transform each window into a per-ID z-score residual relative to that ID's normal behavior.
+4. **Detection** — An unsupervised Isolation Forest is trained on normal-only traffic and scores new windows; anomalies are flagged by departure from the learned residual distribution.
+5. **Evaluation** — Measured with precision, recall, F1, and ROC/PR curves, rendered as diagnostic figures and machine-readable tables.
 
-1. **Data loading** — Automatically parses two real-world automotive datasets: the HCRL Car-Hacking Dataset (synthetic CAN traffic with injected attacks) and the ROAD dataset (real recorded driving sessions with realistic, stealth attacks).
-2. **Feature engineering** — Every message is organized into per-ID sliding windows, and each window is summarized by a set of behavioral features (timing, DLC, and payload-based statistics).
-3. **Residualization** — For each CAN ID, a statistical profile is fit over the windows; the profile is then used to transform every window into a per-ID z-score residual, expressing how unusual each observation is relative to that ID's normal behavior.
-4. **Detection** — An unsupervised Isolation Forest is trained on normal-only traffic and used to score new windows; anomalies are detected by each ID's departure from its learned residual distribution.
-5. **Evaluation** — Results are measured with precision, recall, F1, and ROC/PR curves, and rendered as diagnostic figures plus machine-readable tables.
+## Key Characteristics
 
-## What Makes It Notable
+- **Unsupervised, per-ID detection** — training does not require labeled attack data; detection is driven by learning normal per-ID behavior.
+- **Evaluated on two datasets with different attack realism** — HCRL (controlled, synthetic attacks) and ROAD (real driving sessions with stealthier attacks that reuse legitimate IDs), which lets the results be checked for whether they hold up beyond the easier, synthetic setting.
+- **Documented methodology** — the accompanying paper describes the residualization operator and reports an ablation isolating its contribution.
 
-- **Unsupervised, per-ID detection** — No labeled attack data required for training; detection is driven purely by learning normal behavior.
-- **Validated on two complementary datasets** — HCRL for controlled synthetic attacks and ROAD for realistic, stealth attacks that reuse legitimate IDs, providing a fair evaluation of how well the approach generalizes beyond toy conditions.
-- **Transparent methodology** — The accompanying paper documents the residualization operator and reports an ablation showing why it is the enabling component of the system.
-
-## Key Results
+## Key Results (HCRL)
 
 | Dataset | F1 | Recall | FPR |
 |---------|-----|--------|-----|
@@ -103,7 +100,7 @@ The detection pipeline follows a clear sequence of stages:
 | RPM | 0.991 | 0.999 | 0.004 |
 | gear | 0.945 | 0.998 | 0.032 |
 
-Per-ID residuals work well on RPM/gear but **fail on DoS** (novel-ID flooding not captured by per-ID statistics). A supervised reference (HGB) reaches F1 = 1.0 on DoS/RPM/gear.
+Per-ID residuals perform well on RPM/gear but **fail on DoS** — novel-ID flooding is not captured by per-ID statistics, since DoS in this dataset is presence-based rather than a behavioral deviation of an existing ID. A supervised reference model (HGB), trained with labeled attacks, reaches F1 = 1.0 on DoS/RPM/gear; this is a different problem setting (supervised vs. unsupervised) and the comparison should be read as such, not as a direct apples-to-apples baseline.
 
 ## ROAD Validation (residual IF, per capture)
 
@@ -116,14 +113,15 @@ Per-ID residuals work well on RPM/gear but **fail on DoS** (novel-ID flooding no
 | reverse_light_off | 0.657 | 1.000 | 0.048 |
 | reverse_light_on | 0.544 | 0.997 | 0.053 |
 
-PIRD generalizes to ROAD for **targeted single-AID attacks** (recall ≈ 1.0, near-perfect ROC/PR-AUC) even though ROAD reuses legitimate AIDs. It **does not** generalize to cross-ID fuzzing with the frozen per-ID configuration. See [`docs/road_validation.md`](docs/road_validation.md).
+The method generalizes to ROAD for **targeted single-AID attacks** (recall ≈ 1.0 on those attack types) even though ROAD reuses legitimate AIDs, which is a harder setting than HCRL. It does **not** generalize well to cross-ID fuzzing under the frozen per-ID configuration (F1 = 0.273, recall = 0.340) — this is a genuine limitation, not an edge case to gloss over. See [`docs/road_validation.md`](docs/road_validation.md) for the full breakdown.
 
+## Limitations
 
-## Key Findings
-
-- All 4 HCRL attacks are **presence-based** — naive rules (new ID, dominant ID, constant byte) achieve F1 > 0.99.
-- The per-ID residual transform is the **enabling operator** (raw features alone are near-useless; ablation in the paper).
-- **Dataset limitation**: near-perfect scores on HCRL do not prove generalization to stealth attacks that reuse legitimate IDs; ROAD validates the harder setting.
+- **DoS detection is a known failure mode.** The per-ID residual approach is not well-suited to novel-ID flooding attacks, since these are detectable by ID *presence* rather than behavioral deviation of a tracked ID. A presence-based rule or a supervised model would likely be needed to cover this attack type in a deployed system.
+- **Cross-ID fuzzing on ROAD is weak** (F1 = 0.273). The frozen per-ID configuration does not capture attacks that manipulate patterns across multiple IDs rather than deviating a single ID's behavior.
+- **HCRL results alone would overstate performance.** Naive presence-based rules already reach F1 > 0.99 on all four HCRL attack types, meaning HCRL's synthetic attacks are easier than realistic in-vehicle attacks; ROAD results are the more meaningful indicator of real-world performance.
+- **Supervised comparison is not apples-to-apples.** The HGB reference uses labeled attack data during training; CANguard's approach does not. The comparison illustrates a ceiling, not a fair head-to-head.
+- **Preprint status.** The accompanying paper is an arXiv preprint and has not undergone peer review.
 
 ## License
 
