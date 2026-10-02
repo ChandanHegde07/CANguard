@@ -1,0 +1,93 @@
+family,dataset,severity,detection_probability,recall,fpr,f1,n,notes,detection_probability_naive
+normal_traffic,DoS,0.0,0.0549893605106954,0.0099417209461775,0.0549893605106954,0.0168751818446319,17858,FPR on untouched test normals,
+non_adaptive_existing,DoS,,0.0099417209461775,0.0099417209461775,0.0549893605106954,0.0168751818446319,5834,real HCRL injection in test split,
+normal_traffic,Fuzzy,0.0,0.1441311407804526,0.9776234567901234,0.1441311407804526,0.4728494122037693,19399,FPR on untouched test normals,
+non_adaptive_existing,Fuzzy,,0.9776234567901234,0.9776234567901234,0.1441311407804526,0.4728494122037693,1296,real HCRL injection in test split,
+normal_traffic,RPM,0.0,0.0042086196792925,0.9993919740575598,0.0042086196792925,0.9917538213998393,18771,FPR on untouched test normals,
+non_adaptive_existing,RPM,,0.9993919740575598,0.9993919740575598,0.0042086196792925,0.9917538213998393,4934,real HCRL injection in test split,
+normal_traffic,gear,0.0,0.0315795165738387,0.9975043194471108,0.0315795165738387,0.9456729456729456,18493,FPR on untouched test normals,
+non_adaptive_existing,gear,,0.9975043194471108,0.9975043194471108,0.0315795165738387,0.9456729456729456,5209,real HCRL injection in test split,
+adaptive_fixed_additive,DoS,0.25,0.3333333333333333,0.3333333333333333,0.04430766802785499,0.30163223848944426,5766,control-adjusted significant white-box fixed severity,0.33610822060353795
+adaptive_fixed_additive,DoS,0.5,0.8333333333333334,0.8333333333333334,0.04430766802785499,0.30686111485236256,5766,control-adjusted significant white-box fixed severity,0.34200485605272285
+adaptive_fixed_additive,DoS,0.75,0.8333333333333334,0.8333333333333334,0.04430766802785499,0.3229486637499708,5766,control-adjusted significant white-box fixed severity,0.35986819285466526
+adaptive_fixed_additive,DoS,1.0,0.8333333333333334,0.8333333333333334,0.04430766802785499,0.36158415289212337,5766,control-adjusted significant white-box fixed severity,0.40443981963232745
+adaptive_fixed_additive,DoS,1.5,1.0,1.0,0.04430766802785499,0.4721977849262681,5766,control-adjusted significant white-box fixed severity,0.5504682622268471
+adaptive_fixed_additive,DoS,2.0,1.0,1.0,0.04430766802785499,0.5862745023025518,5766,control-adjusted significant white-box fixed severity,0.7327436697884149
+adaptive_fixed_additive,DoS,3.0,1.0,1.0,0.04430766802785499,0.712715941404427,5766,control-adjusted significant white-box fixed severity,0.9729448491155047
+adaptive_fixed_mean_shift,DoS,0.25,0.0,0.0,0.04430766802785499,0.0,5766,control-adjusted significant white-box fixed severity,0.0
+adaptive_fixed_mean_shift,DoS,0.5,0.0,0.0,0.04430766802785499,0.0,5766,control-adjusted significant white-box fixed severity,0.0
+adaptive_fixed_mean_shift,DoS,0.75,0.0,0.0,0.04430766802785499,0.0,5766,control-adjusted significant white-box fixed severity,0.0
+adaptive_fixed_mean_shift,DoS,1.0,0.0,0.0,0.04430766802785499,0.0,5766,control-adjusted significant white-box fixed severity,0.0
+adaptive_fixed_mean_shift,DoS,1.5,0.0,0.0,0.04430766802785499,0.0,5766,control-adjusted significant white-box fixed severity,0.0
+adaptive_fixed_mean_shift,DoS,2.0,0.6666666666666666,0.6666666666666666,0.04430766802785499,0.4527074597851537,5766,control-adjusted significant white-box fixed severity,0.6687478321193202
+adaptive_fixed_mean_shift,DoS,3.0,0.8333333333333334,0.8333333333333334,0.04430766802785499,0.5891555237942979,5766,control-adjusted significant white-box fixed severity,0.83437391605966
+adaptive_fixed_additive,Fuzzy,0.25,0.5,0.5,0.14704870229837175,0.057466192493840475,5968,control-adjusted significant white-box fixed severity,0.1107573726541555
+adaptive_fixed_additive,Fuzzy,0.5,0.6666666666666666,0.6666666666666666,0.14704870229837175,0.08102702143289002,5968,control-adjusted significant white-box fixed severity,0.15985254691689008
+adaptive_fixed_additive,Fuzzy,0.75,0.6666666666666666,0.6666666666666666,0.14704870229837175,0.21397522720591808,5968,control-adjusted significant white-box fixed severity,0.4810656836461126
+adaptive_fixed_additive,Fuzzy,1.0,0.6666666666666666,0.6666666666666666,0.14704870229837175,0.26915384489226907,5968,control-adjusted significant white-box fixed severity,0.6234919571045576
+adaptive_fixed_additive,Fuzzy,1.5,0.6666666666666666,0.6666666666666666,0.14704870229837175,0.2842658314943385,5968,control-adjusted significant white-box fixed severity,0.6658847184986595
+adaptive_fixed_additive,Fuzzy,2.0,0.8333333333333334,0.8333333333333334,0.14704870229837175,0.3525119230326432,5968,control-adjusted significant white-box fixed severity,0.8275804289544236
+adaptive_fixed_additive,Fuzzy,3.0,1.0,1.0,0.14704870229837175,0.36515101968431063,5968,control-adjusted significant white-box fixed severity,0.8542225201072386
+adaptive_fixed_mean_shift,Fuzzy,0.25,0.0,0.0,0.14704870229837175,0.0,5968,control-adjusted significant white-box fixed severity,0.0
+adaptive_fixed_mean_shift,Fuzzy,0.5,0.5,0.5,0.14704870229837175,0.21173149587199824,5968,control-adjusted significant white-box fixed severity,0.5
+adaptive_fixed_mean_shift,Fuzzy,0.75,0.5,0.5,0.14704870229837175,0.21173149587199824,5968,control-adjusted significant white-box fixed severity,0.5
+adaptive_fixed_mean_shift,Fuzzy,1.0,0.5,0.5,0.14704870229837175,0.21173149587199824,5968,control-adjusted significant white-box fixed severity,0.5
+adaptive_fixed_mean_shift,Fuzzy,1.5,0.6666666666666666,0.6666666666666666,0.14704870229837175,0.28413702322676415,5968,control-adjusted significant white-box fixed severity,0.6720844504021448
+adaptive_fixed_mean_shift,Fuzzy,2.0,0.8333333333333334,0.8333333333333334,0.14704870229837175,0.35165950654559214,5968,control-adjusted significant white-box fixed severity,0.828083109919571
+adaptive_fixed_mean_shift,Fuzzy,3.0,0.8333333333333334,0.8333333333333334,0.14704870229837175,0.35165950654559214,5968,control-adjusted significant white-box fixed severity,0.828083109919571
+adaptive_fixed_additive,RPM,0.25,0.16666666666666666,0.16666666666666666,0.003896177229008588,0.020565883084358666,6368,control-adjusted significant white-box fixed severity,0.011149497487437186
+adaptive_fixed_additive,RPM,0.5,0.3333333333333333,0.3333333333333333,0.003896177229008588,0.03470181442769544,6368,control-adjusted significant white-box fixed severity,0.01931532663316583
+adaptive_fixed_additive,RPM,0.75,0.3333333333333333,0.3333333333333333,0.003896177229008588,0.058206096439016836,6368,control-adjusted significant white-box fixed severity,0.034233668341708545
+adaptive_fixed_additive,RPM,1.0,0.5,0.5,0.003896177229008588,0.09067239351034384,6368,control-adjusted significant white-box fixed severity,0.054334170854271356
+adaptive_fixed_additive,RPM,1.5,0.8333333333333334,0.8333333333333334,0.003896177229008588,0.19880625901026502,6368,control-adjusted significant white-box fixed severity,0.13662060301507536
+adaptive_fixed_additive,RPM,2.0,0.8333333333333334,0.8333333333333334,0.003896177229008588,0.2916802057405963,6368,control-adjusted significant white-box fixed severity,0.20603015075376885
+adaptive_fixed_additive,RPM,3.0,0.8333333333333334,0.8333333333333334,0.003896177229008588,0.5302722310331894,6368,control-adjusted significant white-box fixed severity,0.5061243718592965
+adaptive_fixed_mean_shift,RPM,0.25,0.0,0.0,0.003896177229008588,0.0,6368,control-adjusted significant white-box fixed severity,0.0
+adaptive_fixed_mean_shift,RPM,0.5,0.0,0.0,0.003896177229008588,0.0,6368,control-adjusted significant white-box fixed severity,0.0
+adaptive_fixed_mean_shift,RPM,0.75,0.0,0.0,0.003896177229008588,0.0,6368,control-adjusted significant white-box fixed severity,0.0
+adaptive_fixed_mean_shift,RPM,1.0,0.0,0.0,0.003896177229008588,0.0,6368,control-adjusted significant white-box fixed severity,0.0
+adaptive_fixed_mean_shift,RPM,1.5,0.0,0.0,0.003896177229008588,0.0,6368,control-adjusted significant white-box fixed severity,0.0
+adaptive_fixed_mean_shift,RPM,2.0,0.3333333333333333,0.3333333333333333,0.003896177229008588,0.3235729786779215,6368,control-adjusted significant white-box fixed severity,0.3327575376884422
+adaptive_fixed_mean_shift,RPM,3.0,0.5,0.5,0.003896177229008588,0.484476830664576,6368,control-adjusted significant white-box fixed severity,0.4993718592964824
+adaptive_fixed_additive,gear,0.25,0.5,0.5,0.032872104579160545,0.024012783758546832,6310,control-adjusted significant white-box fixed severity,0.018858954041204436
+adaptive_fixed_additive,gear,0.5,0.6666666666666666,0.6666666666666666,0.032872104579160545,0.07001612389031617,6310,control-adjusted significant white-box fixed severity,0.05705229793977813
+adaptive_fixed_additive,gear,0.75,1.0,1.0,0.032872104579160545,0.20474523166220257,6310,control-adjusted significant white-box fixed severity,0.1809825673534073
+adaptive_fixed_additive,gear,1.0,1.0,1.0,0.032872104579160545,0.37875647855312417,6310,control-adjusted significant white-box fixed severity,0.36434231378763865
+adaptive_fixed_additive,gear,1.5,1.0,1.0,0.032872104579160545,0.5749633508692699,6310,control-adjusted significant white-box fixed severity,0.6291600633914421
+adaptive_fixed_additive,gear,2.0,1.0,1.0,0.032872104579160545,0.7533993322307501,6310,control-adjusted significant white-box fixed severity,0.9381933438985737
+adaptive_fixed_additive,gear,3.0,1.0,1.0,0.032872104579160545,0.7858024009742844,6310,control-adjusted significant white-box fixed severity,1.0
+adaptive_fixed_mean_shift,gear,0.25,0.0,0.0,0.032872104579160545,0.0,6310,control-adjusted significant white-box fixed severity,0.0
+adaptive_fixed_mean_shift,gear,0.5,0.0,0.0,0.032872104579160545,0.0,6310,control-adjusted significant white-box fixed severity,0.0
+adaptive_fixed_mean_shift,gear,0.75,0.0,0.0,0.032872104579160545,0.0,6310,control-adjusted significant white-box fixed severity,0.0
+adaptive_fixed_mean_shift,gear,1.0,0.0,0.0,0.032872104579160545,0.0,6310,control-adjusted significant white-box fixed severity,0.0
+adaptive_fixed_mean_shift,gear,1.5,0.8333333333333334,0.8333333333333334,0.032872104579160545,0.6551784884711772,6310,control-adjusted significant white-box fixed severity,0.8334389857369255
+adaptive_fixed_mean_shift,gear,2.0,1.0,1.0,0.032872104579160545,0.7858024009742844,6310,control-adjusted significant white-box fixed severity,1.0
+adaptive_fixed_mean_shift,gear,3.0,1.0,1.0,0.032872104579160545,0.7858024009742844,6310,control-adjusted significant white-box fixed severity,1.0
+gradual_additive,DoS,0.25,0.3333333333333333,0.3333333333333333,0.05346091050613207,,18,control-adjusted significant gradual drift,
+gradual_additive,DoS,0.5,0.3333333333333333,0.3333333333333333,0.05346091050613207,,18,control-adjusted significant gradual drift,
+gradual_additive,DoS,0.75,0.3333333333333333,0.3333333333333333,0.05346091050613207,,18,control-adjusted significant gradual drift,
+gradual_additive,DoS,1.0,0.6666666666666666,0.6666666666666666,0.05346091050613207,,18,control-adjusted significant gradual drift,
+gradual_additive,DoS,1.5,0.9444444444444444,0.9444444444444444,0.05346091050613207,,18,control-adjusted significant gradual drift,
+gradual_additive,DoS,2.0,0.9444444444444444,0.9444444444444444,0.05346091050613207,,18,control-adjusted significant gradual drift,
+gradual_additive,DoS,3.0,1.0,1.0,0.05346091050613207,,18,control-adjusted significant gradual drift,
+gradual_additive,Fuzzy,0.25,0.2777777777777778,0.2777777777777778,0.14438801333403145,,18,control-adjusted significant gradual drift,
+gradual_additive,Fuzzy,0.5,0.5,0.5,0.14438801333403145,,18,control-adjusted significant gradual drift,
+gradual_additive,Fuzzy,0.75,0.5555555555555556,0.5555555555555556,0.14438801333403145,,18,control-adjusted significant gradual drift,
+gradual_additive,Fuzzy,1.0,0.6111111111111112,0.6111111111111112,0.14438801333403145,,18,control-adjusted significant gradual drift,
+gradual_additive,Fuzzy,1.5,0.6666666666666666,0.6666666666666666,0.14438801333403145,,18,control-adjusted significant gradual drift,
+gradual_additive,Fuzzy,2.0,0.7777777777777778,0.7777777777777778,0.14438801333403145,,18,control-adjusted significant gradual drift,
+gradual_additive,Fuzzy,3.0,0.8333333333333334,0.8333333333333334,0.14438801333403145,,18,control-adjusted significant gradual drift,
+gradual_additive,RPM,0.25,0.0,0.0,0.004168696876184289,,18,control-adjusted significant gradual drift,
+gradual_additive,RPM,0.5,0.05555555555555555,0.05555555555555555,0.004168696876184289,,18,control-adjusted significant gradual drift,
+gradual_additive,RPM,0.75,0.16666666666666666,0.16666666666666666,0.004168696876184289,,18,control-adjusted significant gradual drift,
+gradual_additive,RPM,1.0,0.16666666666666666,0.16666666666666666,0.004168696876184289,,18,control-adjusted significant gradual drift,
+gradual_additive,RPM,1.5,0.3333333333333333,0.3333333333333333,0.004168696876184289,,18,control-adjusted significant gradual drift,
+gradual_additive,RPM,2.0,0.3333333333333333,0.3333333333333333,0.004168696876184289,,18,control-adjusted significant gradual drift,
+gradual_additive,RPM,3.0,0.6111111111111112,0.6111111111111112,0.004168696876184289,,18,control-adjusted significant gradual drift,
+gradual_additive,gear,0.25,0.1111111111111111,0.1111111111111111,0.03188039355796186,,18,control-adjusted significant gradual drift,
+gradual_additive,gear,0.5,0.2777777777777778,0.2777777777777778,0.03188039355796186,,18,control-adjusted significant gradual drift,
+gradual_additive,gear,0.75,0.6666666666666666,0.6666666666666666,0.03188039355796186,,18,control-adjusted significant gradual drift,
+gradual_additive,gear,1.0,0.7777777777777778,0.7777777777777778,0.03188039355796186,,18,control-adjusted significant gradual drift,
+gradual_additive,gear,1.5,0.8333333333333334,0.8333333333333334,0.03188039355796186,,18,control-adjusted significant gradual drift,
+gradual_additive,gear,2.0,1.0,1.0,0.03188039355796186,,18,control-adjusted significant gradual drift,
+gradual_additive,gear,3.0,1.0,1.0,0.03188039355796186,,18,control-adjusted significant gradual drift,

@@ -1,0 +1,257 @@
+{
+  "meta": {
+    "experiment_id": "phase2_road_external",
+    "phase": 2,
+    "mode": "hybrid",
+    "dataset": "road",
+    "datasets": [
+      "correlated_signal_attack_1",
+      "fuzzing_attack_1",
+      "max_engine_coolant_temp_attack",
+      "max_speedometer_attack_1",
+      "reverse_light_off_attack_1",
+      "reverse_light_on_attack_1"
+    ],
+    "split": {},
+    "seed": 0,
+    "window_size": 30,
+    "sample_size": null,
+    "normalization": "per_id_zscore_calib_normal",
+    "detector": {
+      "kind": "isolation_forest",
+      "n_estimators": 200,
+      "random_state": 0
+    },
+    "evaluation": {
+      "val_holdout_fraction": 0.2,
+      "fpr_target": 0.01
+    },
+    "git_commit": "ddfbde6",
+    "timestamp_utc": "2026-10-02T07:02:02.644056+00:00"
+  },
+  "global": {
+    "window_frames": 200,
+    "normalization": "robust",
+    "id_activity_frac": 0.05,
+    "run_ablation": true,
+    "detector": {
+      "kind": "isolation_forest",
+      "n_estimators": 200,
+      "random_state": 0
+    }
+  },
+  "hybrid": {
+    "lambdas": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "ablation_severities": [
+      0.5,
+      1.0,
+      1.5
+    ]
+  },
+  "attack": {
+    "type": "adaptive_legitimate_id",
+    "target_features": "all_attackable",
+    "severities": [
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.5,
+      2.0,
+      3.0
+    ],
+    "directions": [
+      "positive",
+      "negative"
+    ],
+    "attack_modes": [
+      "additive",
+      "mean_shift"
+    ],
+    "example_severity": 1.0,
+    "drift": {
+      "rates": [
+        "slow"
+      ],
+      "shape": "exponential",
+      "horizon_windows": 200,
+      "fractions": null,
+      "save_trajectories": false
+    }
+  },
+  "adaptive_boundary": {
+    "global": {
+      "raw": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    },
+    "global_A_bus": {
+      "raw": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    },
+    "global_B_id_population": {
+      "raw": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    },
+    "global_C_cross_id": {
+      "raw": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    },
+    "global_D_bus_idpop": {
+      "raw": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    },
+    "global_E_all": {
+      "raw": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    },
+    "max": {
+      "raw": {
+        "alpha_50": 2.227002137806282,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": 1.9705882352941178,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    },
+    "or": {
+      "raw": {
+        "alpha_50": 1.6410426918473202,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": 1.8333333333333333,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    },
+    "pird": {
+      "raw": {
+        "alpha_50": 2.795639114473245,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": 1.7999999999999998,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    },
+    "weighted_0.25": {
+      "raw": {
+        "alpha_50": 1.6883927807715338,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": 1.1666666666666667,
+        "alpha_50_reason": "",
+        "alpha_90": 1.7615384615384615,
+        "alpha_90_reason": ""
+      }
+    },
+    "weighted_0.5": {
+      "raw": {
+        "alpha_50": 1.7200653416825484,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": 1.03125,
+        "alpha_50_reason": "",
+        "alpha_90": 1.4812500000000002,
+        "alpha_90_reason": ""
+      }
+    },
+    "weighted_0.75": {
+      "raw": {
+        "alpha_50": 2.169280212777747,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": 1.3181818181818181,
+        "alpha_50_reason": "",
+        "alpha_90": 2.557142857142857,
+        "alpha_90_reason": ""
+      }
+    }
+  },
+  "n_adaptive_rows": 4608
+}

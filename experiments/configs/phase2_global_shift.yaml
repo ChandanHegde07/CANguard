@@ -1,0 +1,43 @@
+# Phase 2 — diagnostic: normal-distribution shift of the global representation.
+#
+# Uses ONLY calibration-normal vs test-normal traffic. The global model is not
+# modified; this config only points at the frozen HCRL data/features.
+phase: 2
+experiment_id: phase2_global_shift
+
+seed: 0
+dataset: hcrl
+data_dir: data
+datasets: [DoS, Fuzzy, RPM, gear]
+sample_size: 60000
+window_size: 30
+feature_cols: null
+
+split:
+  calib_frac: 0.4
+  train_frac: 0.2
+  test_frac: 0.4
+
+detector:
+  kind: isolation_forest
+  n_estimators: 200
+  random_state: 0
+
+evaluation:
+  val_holdout_fraction: 0.2
+  fpr_target: 0.01
+
+# Frozen global representation (identical to phase2_hybrid.yaml).
+global:
+  window_frames: 200
+  normalization: robust
+  id_activity_frac: 0.05
+  run_ablation: false
+  detector:
+    kind: isolation_forest
+    n_estimators: 200
+    random_state: 0
+
+cache_dir: .cache/phase2
+output_dir: experiments/phase2
+figures_dir: figures/phase2

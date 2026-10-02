@@ -1,0 +1,96 @@
+{
+  "phase": 2,
+  "experiment_id": "phase2_road_external",
+  "seed": 0,
+  "dataset": "road",
+  "data_dir": "road/road",
+  "datasets": [
+    "correlated_signal_attack_1",
+    "fuzzing_attack_1",
+    "max_engine_coolant_temp_attack",
+    "max_speedometer_attack_1",
+    "reverse_light_off_attack_1",
+    "reverse_light_on_attack_1"
+  ],
+  "window_size": 30,
+  "max_frames_per_capture": null,
+  "min_pre_windows": 50,
+  "capture_sample": {
+    "per_type": 1,
+    "skip_masquerade": true,
+    "skip_unlabeled": true
+  },
+  "detector": {
+    "kind": "isolation_forest",
+    "n_estimators": 200,
+    "random_state": 0
+  },
+  "evaluation": {
+    "val_holdout_fraction": 0.2,
+    "fpr_target": 0.01
+  },
+  "global": {
+    "window_frames": 200,
+    "normalization": "robust",
+    "id_activity_frac": 0.05,
+    "run_ablation": true,
+    "detector": {
+      "kind": "isolation_forest",
+      "n_estimators": 200,
+      "random_state": 0
+    }
+  },
+  "hybrid": {
+    "lambdas": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "ablation_severities": [
+      0.5,
+      1.0,
+      1.5
+    ]
+  },
+  "targeting": {
+    "top_k": 3,
+    "min_calib_windows": 50,
+    "max_calib_attack_frac": 0.0,
+    "target_ids": null
+  },
+  "attack": {
+    "type": "adaptive_legitimate_id",
+    "target_features": "all_attackable",
+    "severities": [
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.5,
+      2.0,
+      3.0
+    ],
+    "directions": [
+      "positive",
+      "negative"
+    ],
+    "attack_modes": [
+      "additive",
+      "mean_shift"
+    ],
+    "example_severity": 1.0,
+    "drift": {
+      "rates": [
+        "slow"
+      ],
+      "shape": "exponential",
+      "horizon_windows": 200,
+      "fractions": null,
+      "save_trajectories": false
+    }
+  },
+  "run_gradual": false,
+  "cache_dir": ".cache/phase2_road",
+  "output_dir": "experiments/phase2/road_external",
+  "figures_dir": "figures/phase2"
+}

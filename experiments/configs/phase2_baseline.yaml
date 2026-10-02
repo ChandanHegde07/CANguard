@@ -1,0 +1,37 @@
+# Phase 2 — frozen PIRD baseline (HCRL, default PIRD configuration).
+#
+# This reproduces the existing PIRD pipeline (14 features, ws=30, temporal
+# 40/20/40, per-ID z-score residual on calibration normals, Isolation Forest
+# 200 trees, threshold at ~1% FPR on held-out train normals). PIRD is NOT
+# modified; this config only records it.
+#
+# data_dir is `data` (the HCRL CSVs live there); the historical
+# `HCRL Car-Hacking` directory is empty in this checkout.
+phase: 2
+experiment_id: phase2_baseline
+
+seed: 0
+dataset: hcrl
+data_dir: data
+datasets: [DoS, Fuzzy, RPM, gear]
+sample_size: 60000
+window_size: 30
+feature_cols: null            # null -> BEHAVIORAL_FEATURES_V1 (14 features)
+
+split:
+  calib_frac: 0.4
+  train_frac: 0.2
+  test_frac: 0.4
+
+detector:
+  kind: isolation_forest
+  n_estimators: 200
+  random_state: 0
+
+evaluation:
+  val_holdout_fraction: 0.2
+  fpr_target: 0.01
+
+cache_dir: .cache/phase2
+output_dir: experiments/phase2
+figures_dir: figures/phase2

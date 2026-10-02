@@ -1,0 +1,261 @@
+{
+  "meta": {
+    "experiment_id": "phase2_hybrid",
+    "phase": 2,
+    "mode": "hybrid",
+    "dataset": "hcrl",
+    "datasets": [
+      "DoS",
+      "Fuzzy",
+      "RPM",
+      "gear"
+    ],
+    "split": {
+      "calib_frac": 0.4,
+      "train_frac": 0.2,
+      "test_frac": 0.4
+    },
+    "seed": 0,
+    "window_size": 30,
+    "sample_size": 60000,
+    "normalization": "per_id_zscore_calib_normal",
+    "detector": {
+      "kind": "isolation_forest",
+      "n_estimators": 200,
+      "random_state": 0
+    },
+    "evaluation": {
+      "val_holdout_fraction": 0.2,
+      "fpr_target": 0.01
+    },
+    "git_commit": "ddfbde6",
+    "timestamp_utc": "2026-10-02T06:33:02.743953+00:00"
+  },
+  "global": {
+    "window_frames": 200,
+    "normalization": "robust",
+    "id_activity_frac": 0.05,
+    "run_ablation": true,
+    "detector": {
+      "kind": "isolation_forest",
+      "n_estimators": 200,
+      "random_state": 0
+    }
+  },
+  "hybrid": {
+    "lambdas": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "ablation_severities": [
+      0.5,
+      1.0,
+      1.5
+    ]
+  },
+  "attack": {
+    "type": "adaptive_legitimate_id",
+    "target_features": "all_attackable",
+    "severities": [
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.5,
+      2.0,
+      3.0
+    ],
+    "directions": [
+      "positive",
+      "negative"
+    ],
+    "attack_modes": [
+      "additive",
+      "mean_shift"
+    ],
+    "example_severity": 1.0,
+    "drift": {
+      "rates": [
+        "fast",
+        "medium",
+        "slow"
+      ],
+      "shape": "exponential",
+      "horizon_windows": 300,
+      "fractions": null,
+      "save_trajectories": true
+    }
+  },
+  "adaptive_boundary": {
+    "global": {
+      "raw": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    },
+    "global_A_bus": {
+      "raw": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    },
+    "global_B_id_population": {
+      "raw": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    },
+    "global_C_cross_id": {
+      "raw": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    },
+    "global_D_bus_idpop": {
+      "raw": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    },
+    "global_E_all": {
+      "raw": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    },
+    "max": {
+      "raw": {
+        "alpha_50": 1.53704974271012,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": 1.5,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    },
+    "or": {
+      "raw": {
+        "alpha_50": 1.28729217532845,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": 1.25,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    },
+    "pird": {
+      "raw": {
+        "alpha_50": 1.6275374039627983,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": 1.1666666666666667,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    },
+    "weighted_0.25": {
+      "raw": {
+        "alpha_50": null,
+        "alpha_50_reason": "ceiling_not_reached",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": 1.3846153846153846,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    },
+    "weighted_0.5": {
+      "raw": {
+        "alpha_50": 1.9460117428039525,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": 0.7083333333333333,
+        "alpha_50_reason": "",
+        "alpha_90": 2.24,
+        "alpha_90_reason": ""
+      }
+    },
+    "weighted_0.75": {
+      "raw": {
+        "alpha_50": 1.38865934543873,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": 0.4642857142857142,
+        "alpha_50_reason": "",
+        "alpha_90": 2.4000000000000004,
+        "alpha_90_reason": ""
+      }
+    }
+  },
+  "n_adaptive_rows": 3072
+}

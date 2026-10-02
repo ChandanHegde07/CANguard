@@ -1,0 +1,255 @@
+{
+  "meta": {
+    "experiment_id": "phase2_adaptive",
+    "phase": 2,
+    "mode": "adaptive",
+    "dataset": "hcrl",
+    "datasets": [
+      "DoS",
+      "Fuzzy",
+      "RPM",
+      "gear"
+    ],
+    "split": {
+      "calib_frac": 0.4,
+      "train_frac": 0.2,
+      "test_frac": 0.4
+    },
+    "seed": 0,
+    "window_size": 30,
+    "sample_size": 60000,
+    "normalization": "per_id_zscore_calib_normal",
+    "detector": {
+      "kind": "isolation_forest",
+      "n_estimators": 200,
+      "random_state": 0
+    },
+    "evaluation": {
+      "val_holdout_fraction": 0.2,
+      "fpr_target": 0.01
+    },
+    "git_commit": "ddfbde6",
+    "timestamp_utc": "2026-10-02T04:43:55.020692+00:00"
+  },
+  "attack": {
+    "type": "adaptive_legitimate_id",
+    "target_features": "all_attackable",
+    "severities": [
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.5,
+      2.0,
+      3.0
+    ],
+    "directions": [
+      "positive",
+      "negative"
+    ],
+    "attack_modes": [
+      "mean_shift",
+      "additive"
+    ],
+    "example_severity": 1.0,
+    "drift": {
+      "rates": [
+        "fast",
+        "medium",
+        "slow"
+      ],
+      "shape": "linear",
+      "horizon_windows": 300,
+      "fractions": null,
+      "save_trajectories": true
+    }
+  },
+  "targets": {
+    "DoS": [
+      "0316",
+      "0350",
+      "018f"
+    ],
+    "Fuzzy": [
+      "02c0",
+      "0316",
+      "0153"
+    ],
+    "RPM": [
+      "0002",
+      "018f",
+      "0153"
+    ],
+    "gear": [
+      "0316",
+      "018f",
+      "0260"
+    ]
+  },
+  "note": "'naive' detection is the raw flagged fraction and is inflated by each target ID's pre-existing control alarm rate. 'significant' detection requires the attack alarm rate to exceed the matched unmodified control (one-sided two-proportion z-test, p<0.05).",
+  "boundary_pooled": {
+    "naive": {
+      "alpha_50": 1.6275374039627983,
+      "alpha_50_reason": "",
+      "alpha_90": null,
+      "alpha_90_reason": "ceiling_not_reached"
+    },
+    "significant": {
+      "alpha_50": 1.1666666666666667,
+      "alpha_50_reason": "",
+      "alpha_90": null,
+      "alpha_90_reason": "ceiling_not_reached"
+    }
+  },
+  "boundary_by_mode": {
+    "additive": {
+      "naive": {
+        "alpha_50": 1.5247277676950999,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": 0.375,
+        "alpha_50_reason": "",
+        "alpha_90": 1.8000000000000005,
+        "alpha_90_reason": ""
+      }
+    },
+    "mean_shift": {
+      "naive": {
+        "alpha_50": 1.6844916425788614,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": 1.6875,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    }
+  },
+  "boundary_table": [
+    {
+      "severity": 0.25,
+      "n_attack": 48824,
+      "n_detected": 2789,
+      "detection_probability": 0.05712354579714894,
+      "detection_prob_ci_low": 0.055099564474559576,
+      "detection_prob_ci_high": 0.05921721499168657,
+      "precision": 0.053679003791596895,
+      "recall": 0.05712354579714894,
+      "f1": 0.05534773419592979,
+      "fpr": 0.05815752494594454,
+      "pr_auc": 0.1332368589917864,
+      "roc_auc": 0.5569050550123255,
+      "mean_max_residual_norm": 9.417800577561076,
+      "detection_probability_significant": 0.1875,
+      "mean_target_control_fpr": 0.08822162675541201
+    },
+    {
+      "severity": 0.5,
+      "n_attack": 48824,
+      "n_detected": 6393,
+      "detection_probability": 0.1309397017860069,
+      "detection_prob_ci_low": 0.12797645017325301,
+      "detection_prob_ci_high": 0.13396102608824126,
+      "precision": 0.1150627238530624,
+      "recall": 0.1309397017860069,
+      "f1": 0.12248886334243426,
+      "fpr": 0.05815752494594454,
+      "pr_auc": 0.1640057083830265,
+      "roc_auc": 0.6502014093123689,
+      "mean_max_residual_norm": 9.881857723504075,
+      "detection_probability_significant": 0.375,
+      "mean_target_control_fpr": 0.08822162675541201
+    },
+    {
+      "severity": 0.75,
+      "n_attack": 48824,
+      "n_detected": 9290,
+      "detection_probability": 0.19027527445518597,
+      "detection_prob_ci_low": 0.18681793065311697,
+      "detection_prob_ci_high": 0.19378135432531224,
+      "precision": 0.15891751342844435,
+      "recall": 0.19027527445518597,
+      "f1": 0.1731884193061278,
+      "fpr": 0.05815752494594454,
+      "pr_auc": 0.2045338549574772,
+      "roc_auc": 0.7359389950664056,
+      "mean_max_residual_norm": 10.341374754802883,
+      "detection_probability_significant": 0.4166666666666667,
+      "mean_target_control_fpr": 0.08822162675541201
+    },
+    {
+      "severity": 1.0,
+      "n_attack": 48824,
+      "n_detected": 11682,
+      "detection_probability": 0.23926757332459447,
+      "detection_prob_ci_low": 0.2355037779525986,
+      "detection_prob_ci_high": 0.24307239568682767,
+      "precision": 0.19198027937551357,
+      "recall": 0.23926757332459447,
+      "f1": 0.21303134744789107,
+      "fpr": 0.05815752494594454,
+      "pr_auc": 0.2794358167558884,
+      "roc_auc": 0.8238243670908013,
+      "mean_max_residual_norm": 10.819257948879695,
+      "detection_probability_significant": 0.4375,
+      "mean_target_control_fpr": 0.08822162675541201
+    },
+    {
+      "severity": 1.5,
+      "n_attack": 48824,
+      "n_detected": 21258,
+      "detection_probability": 0.435400622644601,
+      "detection_prob_ci_low": 0.43100788642740967,
+      "detection_prob_ci_high": 0.43980352375788095,
+      "precision": 0.3018487490415472,
+      "recall": 0.435400622644601,
+      "f1": 0.3565283018867925,
+      "fpr": 0.05815752494594454,
+      "pr_auc": 0.47558611530105294,
+      "roc_auc": 0.9136419454586725,
+      "mean_max_residual_norm": 11.822813584114096,
+      "detection_probability_significant": 0.625,
+      "mean_target_control_fpr": 0.08822162675541201
+    },
+    {
+      "severity": 2.0,
+      "n_attack": 48824,
+      "n_detected": 33623,
+      "detection_probability": 0.6886572177617565,
+      "detection_prob_ci_low": 0.6845351725661838,
+      "detection_prob_ci_high": 0.6927495772065769,
+      "precision": 0.4061190225990748,
+      "recall": 0.6886572177617565,
+      "f1": 0.510929605288151,
+      "fpr": 0.05815752494594454,
+      "pr_auc": 0.6356156389967806,
+      "roc_auc": 0.9508037995804318,
+      "mean_max_residual_norm": 12.867085695276439,
+      "detection_probability_significant": 0.8125,
+      "mean_target_control_fpr": 0.08822162675541201
+    },
+    {
+      "severity": 3.0,
+      "n_attack": 48824,
+      "n_detected": 39484,
+      "detection_probability": 0.8087006390299852,
+      "detection_prob_ci_low": 0.8051874920363848,
+      "detection_prob_ci_high": 0.8121652110984594,
+      "precision": 0.4453819428777693,
+      "recall": 0.8087006390299852,
+      "f1": 0.5744129884488929,
+      "fpr": 0.05815752494594454,
+      "pr_auc": 0.7933152009311307,
+      "roc_auc": 0.9770462563102206,
+      "mean_max_residual_norm": 15.209695979188629,
+      "detection_probability_significant": 0.875,
+      "mean_target_control_fpr": 0.08822162675541201
+    }
+  ]
+}

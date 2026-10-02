@@ -1,0 +1,13 @@
+dataset,subset,n,pird_only,global_only,both,neither
+DoS,all,23692,199,16882,841,5770
+DoS,attack,5834,0,5776,58,0
+DoS,normal,17858,199,11106,783,5770
+Fuzzy,all,20695,493,4343,3570,12289
+Fuzzy,attack,1296,200,26,1067,3
+Fuzzy,normal,19399,293,4317,2503,12286
+RPM,all,23705,4971,159,39,18536
+RPM,attack,4934,4893,0,38,3
+RPM,normal,18771,78,159,1,18533
+gear,all,23702,5746,50,34,17872
+gear,attack,5209,5166,0,30,13
+gear,normal,18493,580,50,4,17859

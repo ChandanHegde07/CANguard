@@ -1,0 +1,95 @@
+{
+  "phase": 2,
+  "experiment_id": "phase2_hybrid",
+  "seed": 0,
+  "dataset": "hcrl",
+  "data_dir": "data",
+  "datasets": [
+    "DoS",
+    "Fuzzy",
+    "RPM",
+    "gear"
+  ],
+  "sample_size": 60000,
+  "window_size": 30,
+  "feature_cols": null,
+  "split": {
+    "calib_frac": 0.4,
+    "train_frac": 0.2,
+    "test_frac": 0.4
+  },
+  "detector": {
+    "kind": "isolation_forest",
+    "n_estimators": 200,
+    "random_state": 0
+  },
+  "evaluation": {
+    "val_holdout_fraction": 0.2,
+    "fpr_target": 0.01
+  },
+  "global": {
+    "window_frames": 200,
+    "normalization": "robust",
+    "id_activity_frac": 0.05,
+    "run_ablation": true,
+    "detector": {
+      "kind": "isolation_forest",
+      "n_estimators": 200,
+      "random_state": 0
+    }
+  },
+  "hybrid": {
+    "lambdas": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "ablation_severities": [
+      0.5,
+      1.0,
+      1.5
+    ]
+  },
+  "targeting": {
+    "top_k": 3,
+    "min_calib_windows": 50,
+    "max_calib_attack_frac": 0.0,
+    "target_ids": null
+  },
+  "attack": {
+    "type": "adaptive_legitimate_id",
+    "target_features": "all_attackable",
+    "severities": [
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.5,
+      2.0,
+      3.0
+    ],
+    "directions": [
+      "positive",
+      "negative"
+    ],
+    "attack_modes": [
+      "additive",
+      "mean_shift"
+    ],
+    "example_severity": 1.0,
+    "drift": {
+      "rates": [
+        "fast",
+        "medium",
+        "slow"
+      ],
+      "shape": "exponential",
+      "horizon_windows": 300,
+      "fractions": null,
+      "save_trajectories": true
+    }
+  },
+  "cache_dir": ".cache/phase2",
+  "output_dir": "experiments/phase2",
+  "figures_dir": "figures/phase2"
+}

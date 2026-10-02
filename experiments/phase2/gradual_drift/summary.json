@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "experiment_id": "phase2_gradual",
+    "phase": 2,
+    "mode": "gradual",
+    "dataset": "hcrl",
+    "datasets": [
+      "DoS",
+      "Fuzzy",
+      "RPM",
+      "gear"
+    ],
+    "split": {
+      "calib_frac": 0.4,
+      "train_frac": 0.2,
+      "test_frac": 0.4
+    },
+    "seed": 0,
+    "window_size": 30,
+    "sample_size": 60000,
+    "normalization": "per_id_zscore_calib_normal",
+    "detector": {
+      "kind": "isolation_forest",
+      "n_estimators": 200,
+      "random_state": 0
+    },
+    "evaluation": {
+      "val_holdout_fraction": 0.2,
+      "fpr_target": 0.01
+    },
+    "git_commit": "ddfbde6",
+    "timestamp_utc": "2026-10-02T04:44:33.259793+00:00"
+  },
+  "attack": {
+    "type": "gradual_adaptive",
+    "target_features": "all_attackable",
+    "severities": [
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.5,
+      2.0,
+      3.0
+    ],
+    "directions": [
+      "positive",
+      "negative"
+    ],
+    "attack_modes": [
+      "additive"
+    ],
+    "drift": {
+      "rates": [
+        "fast",
+        "medium",
+        "slow"
+      ],
+      "shape": "exponential",
+      "horizon_windows": 300,
+      "fractions": null,
+      "save_trajectories": true
+    }
+  },
+  "note": "'naive' detection = any alarm in the horizon; it is inflated by the per-window false-alarm rate (~FPR). 'significant' detection requires the attack-window alarm rate to exceed the matched-control alarm rate (one-sided two-proportion z-test, p<0.05).",
+  "drift_boundary": {
+    "additive": {
+      "naive": {
+        "alpha_50": null,
+        "alpha_50_reason": "floor_exceeded",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      },
+      "significant": {
+        "alpha_50": 0.8888888888888888,
+        "alpha_50_reason": "",
+        "alpha_90": null,
+        "alpha_90_reason": "ceiling_not_reached"
+      }
+    }
+  }
+}

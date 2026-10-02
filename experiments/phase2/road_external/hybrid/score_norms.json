@@ -1,0 +1,38 @@
+{
+  "correlated_signal_attack_1": {
+    "local_center": 0.4171461883556349,
+    "local_scale": 0.051975717402817125,
+    "global_center": 0.4233444583663675,
+    "global_scale": 0.030004124276118694
+  },
+  "fuzzing_attack_1": {
+    "local_center": 0.4540221030685833,
+    "local_scale": 0.07218917531961075,
+    "global_center": 0.45816150694387864,
+    "global_scale": 0.027679416515912963
+  },
+  "max_engine_coolant_temp_attack": {
+    "local_center": 0.41683062797096215,
+    "local_scale": 0.04985172699941806,
+    "global_center": 0.4199419552220599,
+    "global_scale": 0.03438266095902357
+  },
+  "max_speedometer_attack_1": {
+    "local_center": 0.41867505878394223,
+    "local_scale": 0.051215659754948045,
+    "global_center": 0.43679549755739516,
+    "global_scale": 0.048833328626357135
+  },
+  "reverse_light_off_attack_1": {
+    "local_center": 0.4228615463125688,
+    "local_scale": 0.04665760193275417,
+    "global_center": 0.4460088754121789,
+    "global_scale": 0.03725163431072701
+  },
+  "reverse_light_on_attack_1": {
+    "local_center": 0.434925416333004,
+    "local_scale": 0.05027481258179031,
+    "global_center": 0.4469657123240025,
+    "global_scale": 0.03528731492626838
+  }
+}

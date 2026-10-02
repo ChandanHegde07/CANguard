@@ -1,0 +1,9 @@
+dataset,protocol,target_fpr,actual_test_normal_fpr,recall,n_calibration_normals,n_train_normals
+DoS,primary_calib_only,0.01,0.6657520439018927,1.0,17314,10080
+DoS,diagnostic_broad_calibration,0.01,0.0,0.0,27394,27394
+Fuzzy,primary_calib_only,0.01,0.3515645136347234,0.8433641975308642,19843,9854
+Fuzzy,diagnostic_broad_calibration,0.01,0.012010928398371,0.0354938271604938,29697,29697
+RPM,primary_calib_only,0.01,0.008523786692238,0.007701661937576,18413,9129
+RPM,diagnostic_broad_calibration,0.01,0.0116136593681743,0.0099310903931901,27542,27542
+gear,primary_calib_only,0.01,0.0029200237927864,0.0057592628143597,18825,9138
+gear,diagnostic_broad_calibration,0.01,0.0056778240415292,0.0115185256287195,27963,27963

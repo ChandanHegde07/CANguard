@@ -1,0 +1,22 @@
+{
+  "dataset": "road",
+  "protocol": "pre_injection",
+  "captures": [
+    "correlated_signal_attack_1",
+    "fuzzing_attack_1",
+    "max_engine_coolant_temp_attack",
+    "max_speedometer_attack_1",
+    "reverse_light_off_attack_1",
+    "reverse_light_on_attack_1"
+  ],
+  "attack_types": [
+    "correlated_signal_attack",
+    "fuzzing_attack",
+    "max_engine_coolant_temp_attack",
+    "max_speedometer_attack",
+    "reverse_light_off_attack",
+    "reverse_light_on_attack"
+  ],
+  "n_captures": 6,
+  "n_adaptive_rows": 64
+}

@@ -1,0 +1,75 @@
+# Phase 2 — frozen ROAD external validation (per-capture pre-injection protocol).
+#
+# This config only selects data and output locations. All global/hybrid
+# parameters are the frozen Phase 2 values. No ROAD attack/test observation
+# enters calibration (enforced by the pre-injection split).
+phase: 2
+experiment_id: phase2_road_external
+
+seed: 0
+dataset: road
+data_dir: road/road
+datasets: []                    # filled at runtime with eligible capture names
+window_size: 30
+max_frames_per_capture: null    # full captures (no sampling artifacts; all params frozen)
+min_pre_windows: 50
+
+capture_sample:
+  per_type: 1
+  skip_masquerade: true
+  skip_unlabeled: true
+
+detector:
+  kind: isolation_forest
+  n_estimators: 200
+  random_state: 0
+
+evaluation:
+  val_holdout_fraction: 0.2
+  fpr_target: 0.01
+
+# Frozen global representation (identical to phase2_hybrid.yaml).
+global:
+  window_frames: 200
+  normalization: robust
+  id_activity_frac: 0.05
+  run_ablation: true
+  detector:
+    kind: isolation_forest
+    n_estimators: 200
+    random_state: 0
+
+# Frozen hybrid combination.
+hybrid:
+  lambdas: [0.25, 0.5, 0.75]
+  ablation_severities: [0.5, 1.0, 1.5]
+
+targeting:
+  top_k: 3
+  min_calib_windows: 50
+  max_calib_attack_frac: 0.0
+  target_ids: null
+
+# Frozen adaptive attack grid. On ROAD the adaptive attack is applied only to
+# post-injection NORMAL windows (matched control), exactly as on HCRL.
+attack:
+  type: adaptive_legitimate_id
+  target_features: all_attackable
+  severities: [0.25, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0]
+  directions: [positive, negative]
+  attack_modes: [additive, mean_shift]
+  example_severity: 1.0
+  drift:
+    rates: [slow]
+    shape: exponential
+    horizon_windows: 200
+    fractions: null
+    save_trajectories: false
+
+# Gradual-drift external validation is not run on ROAD in this pass (the
+# synthetic gradual attack is an HCRL-internal result); documented in the report.
+run_gradual: false
+
+cache_dir: .cache/phase2_road
+output_dir: experiments/phase2/road_external
+figures_dir: figures/phase2

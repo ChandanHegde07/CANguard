@@ -1,0 +1,26 @@
+{
+  "DoS": {
+    "local_center": 0.3671522821902958,
+    "local_scale": 0.04449185553002475,
+    "global_center": 0.3927956348213487,
+    "global_scale": 0.018150418610501574
+  },
+  "Fuzzy": {
+    "local_center": 0.3402691244413975,
+    "local_scale": 0.034452038757572995,
+    "global_center": 0.3831525896561067,
+    "global_scale": 0.02342726148051655
+  },
+  "RPM": {
+    "local_center": 0.4251789111330455,
+    "local_scale": 0.06881402280638939,
+    "global_center": 0.5126649979796638,
+    "global_scale": 0.046010476134468306
+  },
+  "gear": {
+    "local_center": 0.3982130266917669,
+    "local_scale": 0.039254149519040875,
+    "global_center": 0.542375782574341,
+    "global_scale": 0.030006211396848354
+  }
+}

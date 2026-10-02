@@ -1,0 +1,185 @@
+{
+  "meta": {
+    "experiment_id": "phase2_global_shift",
+    "phase": 2,
+    "mode": "shift",
+    "dataset": "hcrl",
+    "datasets": [
+      "DoS",
+      "Fuzzy",
+      "RPM",
+      "gear"
+    ],
+    "split": {
+      "calib_frac": 0.4,
+      "train_frac": 0.2,
+      "test_frac": 0.4
+    },
+    "seed": 0,
+    "window_size": 30,
+    "sample_size": 60000,
+    "normalization": "per_id_zscore_calib_normal",
+    "detector": {
+      "kind": "isolation_forest",
+      "n_estimators": 200,
+      "random_state": 0
+    },
+    "evaluation": {
+      "val_holdout_fraction": 0.2,
+      "fpr_target": 0.01
+    },
+    "git_commit": "ddfbde6",
+    "timestamp_utc": "2026-10-02T06:36:55.238912+00:00"
+  },
+  "note": "Feature shift uses ONLY calibration-normal vs test-normal traffic. 'diagnostic_broad_calibration' is a labelled calibration-coverage diagnostic, not the primary frozen result.",
+  "top_shifted_features_per_dataset": {
+    "DoS": [
+      {
+        "feature": "g_active_id_ratio",
+        "family": "id_population",
+        "smd": 0.4847976069552977,
+        "ks": 0.1944462645924681,
+        "normalized_wasserstein": 0.4847976069472098
+      },
+      {
+        "feature": "g_n_unique_ids",
+        "family": "id_population",
+        "smd": 0.4847976069552953,
+        "ks": 0.1944462645924681,
+        "normalized_wasserstein": 0.4847976069549584
+      },
+      {
+        "feature": "g_iat_std_across_ids",
+        "family": "cross_id",
+        "smd": 0.2840924664502318,
+        "ks": 0.17370040859732158,
+        "normalized_wasserstein": 0.3563830661007992
+      },
+      {
+        "feature": "g_dlc_mean",
+        "family": "bus",
+        "smd": -0.2533391823519548,
+        "ks": 0.10749555685876,
+        "normalized_wasserstein": 0.2533391823427517
+      },
+      {
+        "feature": "g_iat_cv",
+        "family": "bus",
+        "smd": 0.2517172701391929,
+        "ks": 0.451244187570206,
+        "normalized_wasserstein": 0.6162970324095706
+      }
+    ],
+    "Fuzzy": [
+      {
+        "feature": "g_payload_std_across_ids",
+        "family": "cross_id",
+        "smd": 1.7058663245979535,
+        "ks": 0.8052402581461441,
+        "normalized_wasserstein": 1.7059536055617903
+      },
+      {
+        "feature": "g_payload_bus_mean",
+        "family": "bus",
+        "smd": 1.2934652440076666,
+        "ks": 0.6930013550336324,
+        "normalized_wasserstein": 1.3017199713727807
+      },
+      {
+        "feature": "g_n_unique_ids",
+        "family": "id_population",
+        "smd": 0.7601185587617711,
+        "ks": 0.27307792897270533,
+        "normalized_wasserstein": 0.7601185587612069
+      },
+      {
+        "feature": "g_active_id_ratio",
+        "family": "id_population",
+        "smd": 0.7601185587617689,
+        "ks": 0.27307792897270533,
+        "normalized_wasserstein": 0.7601185587476633
+      },
+      {
+        "feature": "g_id_entropy",
+        "family": "id_population",
+        "smd": 0.5891680093882129,
+        "ks": 0.2996858526712387,
+        "normalized_wasserstein": 0.5891680093762747
+      }
+    ],
+    "RPM": [
+      {
+        "feature": "g_active_id_ratio",
+        "family": "id_population",
+        "smd": 0.59901843779467,
+        "ks": 0.2417179867294263,
+        "normalized_wasserstein": 0.5990184377850767
+      },
+      {
+        "feature": "g_n_unique_ids",
+        "family": "id_population",
+        "smd": 0.5990184377946677,
+        "ks": 0.2417179867294263,
+        "normalized_wasserstein": 0.5990184377942674
+      },
+      {
+        "feature": "g_iat_max",
+        "family": "bus",
+        "smd": -0.46916597505622737,
+        "ks": 0.37489860086766724,
+        "normalized_wasserstein": 0.504330251672616
+      },
+      {
+        "feature": "g_iat_cv",
+        "family": "bus",
+        "smd": -0.4012427226241204,
+        "ks": 0.301592675480422,
+        "normalized_wasserstein": 0.6229447231528465
+      },
+      {
+        "feature": "g_iat_std_across_ids",
+        "family": "cross_id",
+        "smd": 0.36876203424204507,
+        "ks": 0.2231640239609347,
+        "normalized_wasserstein": 0.5441366626725708
+      }
+    ],
+    "gear": [
+      {
+        "feature": "g_active_id_ratio",
+        "family": "id_population",
+        "smd": 0.5079264875587554,
+        "ks": 0.21323769971754147,
+        "normalized_wasserstein": 0.5079264875503624
+      },
+      {
+        "feature": "g_n_unique_ids",
+        "family": "id_population",
+        "smd": 0.5079264875587542,
+        "ks": 0.21323769971754147,
+        "normalized_wasserstein": 0.5079264875584037
+      },
+      {
+        "feature": "g_iat_std",
+        "family": "bus",
+        "smd": -0.4951148611622219,
+        "ks": 0.3373030777447178,
+        "normalized_wasserstein": 0.5497539602135613
+      },
+      {
+        "feature": "g_iat_mean",
+        "family": "bus",
+        "smd": -0.43961027229093497,
+        "ks": 0.1582152911093957,
+        "normalized_wasserstein": 0.4406820702302361
+      },
+      {
+        "feature": "g_dlc_std",
+        "family": "bus",
+        "smd": 0.42867009830182085,
+        "ks": 0.1471148230309175,
+        "normalized_wasserstein": 0.42867009829943237
+      }
+    ]
+  }
+}

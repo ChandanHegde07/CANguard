@@ -1,0 +1,70 @@
+# Phase 2 (extension) — global/cross-ID detector + hybrid with frozen PIRD.
+#
+# The global representation is defined independently of the adaptive attack
+# results. Both branches use the same temporal split, calibration normals and
+# 1%-FPR threshold protocol as the frozen PIRD baseline.
+phase: 2
+experiment_id: phase2_hybrid
+
+seed: 0
+dataset: hcrl
+data_dir: data
+datasets: [DoS, Fuzzy, RPM, gear]
+sample_size: 60000
+window_size: 30
+feature_cols: null
+
+split:
+  calib_frac: 0.4
+  train_frac: 0.2
+  test_frac: 0.4
+
+detector:
+  kind: isolation_forest
+  n_estimators: 200
+  random_state: 0
+
+evaluation:
+  val_holdout_fraction: 0.2
+  fpr_target: 0.01
+
+# Global/cross-ID branch. Feature families: bus, id_population, cross_id.
+global:
+  window_frames: 200          # trailing window in emitted messages (causal)
+  normalization: robust       # 'robust' (median/IQR) or 'zscore'
+  id_activity_frac: 0.05
+  run_ablation: true          # families A-E
+  detector:                   # null -> reuse the PIRD detector config
+    kind: isolation_forest
+    n_estimators: 200
+    random_state: 0
+
+# Hybrid combination. The lambda grid is pre-defined and not tuned on attacks.
+hybrid:
+  lambdas: [0.25, 0.5, 0.75]
+  ablation_severities: [0.5, 1.0, 1.5]
+
+targeting:
+  top_k: 3
+  min_calib_windows: 50
+  max_calib_attack_frac: 0.0
+  target_ids: null
+
+# Same pre-registered attack grid as phase2_adaptive.yaml (unchanged).
+attack:
+  type: adaptive_legitimate_id
+  target_features: all_attackable
+  severities: [0.25, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0]
+  directions: [positive, negative]
+  attack_modes: [additive, mean_shift]
+  example_severity: 1.0
+  drift:
+    rates: [fast, medium, slow]
+    shape: exponential
+    horizon_windows: 300
+    fractions: null
+    save_trajectories: true
+
+cache_dir: .cache/phase2
+output_dir: experiments/phase2
+figures_dir: figures/phase2
