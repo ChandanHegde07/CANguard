@@ -1,4 +1,3 @@
-"""Anomaly detectors."""
 
 from .autoencoder import AutoencoderDetector
 from .base import BaseAnomalyDetector

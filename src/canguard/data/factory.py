@@ -1,4 +1,3 @@
-"""Factory for dataset loaders."""
 
 from __future__ import annotations
 
@@ -18,15 +17,6 @@ _REGISTRY: dict[str, type[BaseDatasetLoader]] = {
 
 
 def get_loader(name: str, data_dir: str | Path) -> BaseDatasetLoader:
-    """Return a configured loader instance for ``name``.
-
-    Parameters
-    ----------
-    name : str
-        Dataset name key (e.g. ``"hcrl"``, later ``"road"``).
-    data_dir : str | Path
-        Path the loader reads from (per-loader semantics; see each loader).
-    """
     try:
         loader_cls = _REGISTRY[name.lower()]
     except KeyError:
@@ -38,6 +28,5 @@ def get_loader(name: str, data_dir: str | Path) -> BaseDatasetLoader:
 
 
 def register_loader(name: str, loader_cls: type[BaseDatasetLoader]) -> None:
-    """Register a new loader (used to add ROAD without touching core)."""
     _REGISTRY[name.lower()] = loader_cls
     logger.info("Registered loader '%s' as %s", name, loader_cls.__name__)

@@ -1,5 +1,3 @@
-"""Local Outlier Factor (novelty mode) anomaly detector."""
-
 from __future__ import annotations
 
 import numpy as np
@@ -9,7 +7,6 @@ from .base import BaseAnomalyDetector
 
 
 class LOFDetector(BaseAnomalyDetector):
-    """LOF in novelty=True mode (higher = more anomalous)."""
 
     name = "lof"
 

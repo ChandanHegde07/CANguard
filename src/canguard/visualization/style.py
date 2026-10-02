@@ -1,7 +1,3 @@
-"""IEEE-consistent matplotlib defaults for all CANguard figures.
-
-Single-column width ≈ 3.5 in; double-column ≈ 7.16 in (IEEEtran).
-"""
 
 from __future__ import annotations
 
@@ -26,7 +22,6 @@ IEEE_DOUBLE_COL = 7.16
 
 
 def apply_ieee_style() -> None:
-    """Apply shared IEEE-oriented rcParams (serif, sizes, save dpi)."""
     mpl.rcParams.update(
         {
             "font.family": "serif",
@@ -67,7 +62,6 @@ def figsize_double(height: float = 2.6) -> tuple[float, float]:
 
 
 def save_ieee_figure(fig: plt.Figure, path: str | Path, *, close: bool = True) -> Path:
-    """Save figure at 300 dpi with IEEE style already applied."""
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(path, dpi=300, bbox_inches="tight", pad_inches=0.02)

@@ -1,4 +1,3 @@
-"""Heatmap visualization (cross-attack and ablation matrices)."""
 
 from __future__ import annotations
 
@@ -21,21 +20,7 @@ def plot_cross_attack_matrix(
     fpr_matrix: pd.DataFrame,
     figsize=(12, 5),
 ):
-    """Plot recall and FPR cross-attack heatmaps side by side.
 
-    Parameters
-    ----------
-    recall_matrix : pd.DataFrame
-        Rows = source, columns = target, values = recall.
-    fpr_matrix : pd.DataFrame
-        Rows = source, columns = target, values = FPR.
-    figsize : tuple
-        Figure size.
-
-    Returns
-    -------
-    matplotlib.figure.Figure
-    """
     fig, axes = plt.subplots(1, 2, figsize=figsize)
     specs = [
         (axes[0], recall_matrix.values, "Recall (source -> target)", "RdYlGn", 0.0, 1.0),

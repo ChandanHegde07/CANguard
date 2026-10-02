@@ -1,4 +1,3 @@
-"""Detector factory / registry for Phase A experiments."""
 
 from __future__ import annotations
 
@@ -32,7 +31,6 @@ def list_detectors() -> list[str]:
 
 
 def create_detector(kind: str, **kwargs: Any) -> BaseAnomalyDetector:
-    """Instantiate a detector by registry key."""
     key = kind.lower().strip()
     if key not in _REGISTRY:
         raise ValueError(f"Unknown detector '{kind}'. Available: {list_detectors()}")

@@ -1,20 +1,3 @@
-"""Lightweight sequence reconstruction baseline (CANet / LSTM-AE inspired).
-
-This is an **external comparison point**, not a new SOTA claim.
-
-Design (explicit comparison basis):
-  * Operates on the **same 14-d window feature matrix** (raw or residual) as
-    every other detector in the CANguard harness — not raw CAN byte streams.
-  * At each index i, builds a short temporal sequence of the last L feature
-    vectors (zero-padded at the start), flattens it, and trains an MLP
-    autoencoder to reconstruct that sequence. Anomaly score = MSE.
-  * Implemented with sklearn MLPRegressor for commodity-CPU feasibility
-    (no PyTorch/CUDA required). Functionally a sequence-MLP-AE stand-in for
-    the class of reconstruction / deep-sequence methods cited in related work.
-
-If a true LSTM-over-raw-frames baseline is needed later, it should be a
-separate detector with a documented protocol deviation (different input).
-"""
 
 from __future__ import annotations
 
@@ -26,7 +9,6 @@ from .base import BaseAnomalyDetector
 
 
 class SequenceAutoencoderDetector(BaseAnomalyDetector):
-    """Short-sequence MLP autoencoder on window feature vectors."""
 
     name = "sequence_autoencoder"
 

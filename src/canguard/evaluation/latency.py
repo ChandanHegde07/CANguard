@@ -1,4 +1,3 @@
-"""Detection latency: attack start → first true positive."""
 
 from __future__ import annotations
 
@@ -12,19 +11,7 @@ def detection_latency(
     y_pred: np.ndarray,
     scores: np.ndarray | None = None,
 ) -> dict:
-    """Compute latency for the first attack segment in a test sequence.
 
-    Parameters
-    ----------
-    timestamps
-        Window timestamps (seconds), chronological.
-    y_true, y_pred
-        Binary labels/predictions aligned with timestamps.
-
-    Returns
-    -------
-    dict with delay_frames, delay_ms, detected, attack_start_idx, detect_idx, ...
-    """
     y_true = np.asarray(y_true).astype(int)
     y_pred = np.asarray(y_pred).astype(int)
     timestamps = np.asarray(timestamps, dtype=float)

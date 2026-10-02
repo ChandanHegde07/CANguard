@@ -1,4 +1,4 @@
-"""Elliptic Envelope (robust covariance) anomaly detector."""
+
 
 from __future__ import annotations
 
@@ -10,7 +10,6 @@ from .base import BaseAnomalyDetector
 
 
 class EllipticEnvelopeDetector(BaseAnomalyDetector):
-    """Robust Gaussian envelope (higher = more anomalous)."""
 
     name = "elliptic_envelope"
 

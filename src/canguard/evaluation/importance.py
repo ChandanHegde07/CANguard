@@ -1,4 +1,3 @@
-"""Permutation importance and leave-one-feature-out ablation."""
 
 from __future__ import annotations
 

@@ -1,4 +1,3 @@
-"""Logging helpers for experiment runners."""
 
 from __future__ import annotations
 

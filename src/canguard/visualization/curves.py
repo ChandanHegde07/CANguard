@@ -1,4 +1,3 @@
-"""ROC / PR curve visualization."""
 
 from __future__ import annotations
 
@@ -19,25 +18,6 @@ def plot_roc_pr(
     title_prefix: str = "",
     figsize=(10, 4),
 ):
-    """Plot ROC and PR curves side by side with the operating point marked.
-
-    Parameters
-    ----------
-    y_test : np.ndarray
-        Binary ground-truth labels.
-    scores : np.ndarray
-        Continuous anomaly scores.
-    fpr_at_op : float | None
-        If given, plots a marker on the ROC curve at the achieved FPR.
-    title_prefix : str
-        Prefix added to subplot titles.
-    figsize : tuple
-        Figure size.
-
-    Returns
-    -------
-    matplotlib.figure.Figure
-    """
     y_test = np.asarray(y_test)
     scores = np.asarray(scores)
     try:
@@ -84,23 +64,7 @@ def plot_roc_pr(
 
 
 def plot_threshold_sweep(sweep_rows: list[dict], title: str = "", figsize=(6, 4), ax=None):
-    """Plot recall and actual-FPR vs target-FPR from a threshold sweep.
-
-    Parameters
-    ----------
-    sweep_rows : list[dict]
-        Rows from :func:`canguard.evaluation.threshold.sweep_thresholds` with
-        keys target_FPR, recall, actual_FPR.
-    title : str
-        Plot title.
-    figsize : tuple
-        Figure size.
-    ax : matplotlib.axes.Axes | None
-
-    Returns
-    -------
-    matplotlib.axes.Axes
-    """
+    
     if ax is None:
         _, ax = plt.subplots(figsize=figsize)
     targets = [r["target_FPR"] for r in sweep_rows]

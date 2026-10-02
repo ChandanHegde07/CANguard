@@ -1,4 +1,3 @@
-"""High-level anomaly-detector evaluation orchestration."""
 
 from __future__ import annotations
 
@@ -97,7 +96,6 @@ def cross_attack_evaluate(
     val_holdout_fraction: float = VAL_HOLDOUT_FRACTION,
     fpr_target: float = FPR_TARGET_DEFAULT,
 ) -> dict[str, float]:
-    """Train on source normals, threshold on source holdout, test target."""
     source = source_train_normals_df.reset_index(drop=True)
     n = len(source)
     if n < 10:

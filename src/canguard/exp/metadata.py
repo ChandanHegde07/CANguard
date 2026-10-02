@@ -1,8 +1,3 @@
-"""Protocol / phase versioning for all experiment tables.
-
-Manuscript and aggregation code MUST use these tags so stale (pre-fix)
-ROAD numbers cannot silently re-enter paper tables.
-"""
 
 from __future__ import annotations
 
@@ -54,11 +49,7 @@ def ensure_protocol_column(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def assert_road_protocol_ok(df: pd.DataFrame) -> None:
-    """Raise if any row is not from the corrected ROAD pre-injection protocol.
 
-    Accepts protocol_version or legacy ``protocol`` column equal to
-    pre_injection_v1 (or documented frame-selection variant).
-    """
     if df is None or len(df) == 0:
         raise ValueError("Empty ROAD table — cannot verify protocol")
 
