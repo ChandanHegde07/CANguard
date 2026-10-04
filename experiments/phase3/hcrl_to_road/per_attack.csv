@@ -1,0 +1,7 @@
+attack,attack_window_count,attack_frame_count,attack_recall,attack_precision,attack_f1,attack_actual_fpr
+correlated_signal_attack_1,1673,0,0.0,0.0,0.0,1.0
+fuzzing_attack_1,1102,322,1.0,0.29219600725952816,0.45224719101123595,1.0
+max_engine_coolant_temp_attack,413,0,0.0,0.0,0.0,1.0
+max_speedometer_attack_1,3221,0,0.0,0.0,0.0,1.0
+reverse_light_off_attack_1,804,0,0.0,0.0,0.0,1.0
+reverse_light_on_attack_1,2514,0,0.0,0.0,0.0,1.0

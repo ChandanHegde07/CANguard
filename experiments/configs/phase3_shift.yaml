@@ -1,0 +1,7 @@
+# Phase 3 — consolidated source→target distribution-shift diagnostic.
+# Aggregates per-transfer feature_shift/per_id_shift tables produced by
+# run_phase3_transfer. Diagnostic only; attack samples are never used.
+phase: 3
+experiment_id: phase3_shift
+output_dir: experiments/phase3
+feature_cols: null

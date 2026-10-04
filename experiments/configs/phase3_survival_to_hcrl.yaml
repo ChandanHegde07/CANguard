@@ -1,0 +1,27 @@
+# Phase 3 — zero-shot transfer HCRL Survival (source) -> HCRL (target).
+# STATUS: PENDING — HCRL Survival Analysis not available locally.
+phase: 3
+experiment_id: phase3_survival_to_hcrl
+seed: 0
+window_size: 30
+feature_cols: null
+split: {calib_frac: 0.4, train_frac: 0.2, test_frac: 0.4}
+detector: {kind: isolation_forest, n_estimators: 200, random_state: 0}
+evaluation: {fpr_target: 0.01, fixed_fpr_targets: [0.001, 0.01, 0.05, 0.10]}
+
+source:
+  dataset: hcrl_survival
+  data_dir: data/Survival
+  loader: survival
+  vehicles: [hyundai_sonata, kia_soul, chevrolet_spark]
+
+target:
+  dataset: hcrl
+  data_dir: data
+  datasets: [DoS, Fuzzy, RPM, gear]
+  sample_size: 60000
+
+cache_dir: .cache/phase3
+output_dir: experiments/phase3/survival_to_hcrl
+pending: true
+pending_reason: "HCRL Survival Analysis not available locally"

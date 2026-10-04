@@ -1,0 +1,15 @@
+# Phase 3 — GEM-CAN cross-capture transfer between the two independent sessions.
+# Source capture normals -> fit/freeze -> target capture evaluated.
+phase: 3
+experiment_id: phase3_gem_capture_transfer
+seed: 0
+window_size: 30
+feature_cols: null
+detector: {kind: isolation_forest, n_estimators: 200, random_state: 0}
+evaluation: {fpr_target: 0.01, fixed_fpr_targets: [0.001, 0.01, 0.05, 0.10]}
+
+dataset:
+  data_dir: GEM_CAN_Dataset_R2/GEM_CAN_Dataset_R2
+
+cache_dir: .cache/phase3
+output_dir: experiments/phase3/gem_captures

@@ -1,0 +1,80 @@
+{
+  "experiment_id": "phase3_road_to_hcrl",
+  "result": {
+    "n_target_frames": 91794,
+    "n_target_ids": 28,
+    "n_known_id_windows": 10339,
+    "n_unseen_id_windows": 81455,
+    "target_unseen_id_window_fraction": 0.8873673660587837,
+    "target_unseen_id_frame_fraction": 0.8873673660587837,
+    "source_threshold": 0.5764106703429492,
+    "source_validation_fpr": 0.010002795192269296,
+    "n_source_ids": 77,
+    "n_shared_ids": 3,
+    "n_source_only_ids": 74,
+    "n_target_only_ids": 25,
+    "id_count_overlap": 0.10714285714285714,
+    "frame_weighted_overlap": 0.1126326339412162,
+    "primary_precision": 0.01682948060740884,
+    "primary_recall": 1.0,
+    "primary_f1": 0.033101873870446115,
+    "primary_roc_auc": 0.5915254620599193,
+    "primary_pr_auc": 0.10302559801520246,
+    "target_actual_fpr": 1.0,
+    "primary_tp": 174,
+    "primary_fp": 10165,
+    "primary_fn": 0,
+    "primary_tn": 0,
+    "fallback_precision": 0.24065040650406505,
+    "fallback_recall": 0.00865547692847535,
+    "fallback_f1": 0.01670994693462798,
+    "fallback_roc_auc": 0.5094843461885289,
+    "fallback_pr_auc": 0.20762643234631237,
+    "fallback_actual_fpr": 0.007256510659456772,
+    "fixed_fpr": [
+      {
+        "target_fpr": 0.001,
+        "threshold": 0.6435193979573047,
+        "actual_fpr": 1.0,
+        "recall": 1.0,
+        "precision": 0.01682948060740884,
+        "f1": 0.033101873870446115,
+        "operating_point": "source_selected"
+      },
+      {
+        "target_fpr": 0.01,
+        "threshold": 0.5764106703429492,
+        "actual_fpr": 1.0,
+        "recall": 1.0,
+        "precision": 0.01682948060740884,
+        "f1": 0.033101873870446115,
+        "operating_point": "source_selected"
+      },
+      {
+        "target_fpr": 0.05,
+        "threshold": 0.5067307849444834,
+        "actual_fpr": 1.0,
+        "recall": 1.0,
+        "precision": 0.01682948060740884,
+        "f1": 0.033101873870446115,
+        "operating_point": "source_selected"
+      },
+      {
+        "target_fpr": 0.1,
+        "threshold": 0.47437433182285654,
+        "actual_fpr": 1.0,
+        "recall": 1.0,
+        "precision": 0.01682948060740884,
+        "f1": 0.033101873870446115,
+        "operating_point": "source_selected"
+      }
+    ]
+  },
+  "source_model": {
+    "n_calib": 150255,
+    "n_if": 50085,
+    "n_val": 50086,
+    "n_known_ids": 77,
+    "threshold": 0.5764106703429492
+  }
+}

@@ -30,5 +30,7 @@ papers/*
 
 data/
 road/
+GEM_CAN_Dataset_R2/
+survival/
 .cache/
 paper/*

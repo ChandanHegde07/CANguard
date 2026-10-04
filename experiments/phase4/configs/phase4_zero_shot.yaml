@@ -1,0 +1,42 @@
+# Phase 4 — zero-shot transfer matrix (ID-agnostic CAN-TFM, next-event objective).
+# Source normals only for pretraining; target domains contribute nothing to
+# fitting or threshold selection. Target-recalibration diagnostic is separate.
+phase: 4
+experiment_id: phase4_zero_shot
+seed: 0
+length: 128
+stride: 128
+max_frames_per_capture: 120000
+max_train_windows: 30000
+fpr_target: 0.01
+
+tokenizer: {payload_mode: byte, id_mode: none, id_bits: 11}
+
+model:
+  backbone: transformer
+  d_model: 128
+  nhead: 4
+  num_layers: 4
+  dim_feedforward: 256
+  dropout: 0.1
+
+train:
+  objective: next_event
+  epochs: 5
+  batch_size: 128
+  lr: 0.001
+  weight_decay: 0.0
+
+sources:
+  - [hcrl]
+  - [road]
+  - [gem_can]
+  - [sonata]
+  - [kia_soul]
+  - [chevrolet_spark]
+
+targets: [hcrl, road, gem_can, sonata, kia_soul, chevrolet_spark]
+
+run_recalibration_diagnostic: false
+cache_dir: .cache/phase4
+output_dir: experiments/phase4/results/zero_shot

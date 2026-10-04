@@ -1,0 +1,37 @@
+{
+  "phase": 3,
+  "experiment_id": "phase3_capture_transfer",
+  "seed": 0,
+  "window_size": 30,
+  "feature_cols": null,
+  "detector": {
+    "kind": "isolation_forest",
+    "n_estimators": 200,
+    "random_state": 0
+  },
+  "evaluation": {
+    "fpr_target": 0.01,
+    "fixed_fpr_targets": [
+      0.001,
+      0.01,
+      0.05,
+      0.1
+    ]
+  },
+  "source": {
+    "dataset": "road",
+    "data_dir": "road/road"
+  },
+  "target": {
+    "dataset": "road",
+    "data_dir": "road/road"
+  },
+  "capture_sample": {
+    "per_type": 1,
+    "skip_masquerade": true,
+    "skip_unlabeled": true
+  },
+  "max_frames_per_capture": null,
+  "cache_dir": ".cache/phase3",
+  "output_dir": "experiments/phase3/cross_capture"
+}

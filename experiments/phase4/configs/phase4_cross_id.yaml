@@ -1,0 +1,33 @@
+# Phase 4 — cross-ID zero-shot: evaluate only on target IDs unseen in source.
+# This is impossible for per-ID PIRD; it is the central architectural test.
+phase: 4
+experiment_id: phase4_cross_id
+seed: 0
+length: 128
+max_frames_per_capture: 120000
+max_train_windows: 30000
+fpr_target: 0.01
+
+tokenizer: {payload_mode: byte, id_mode: none, id_bits: 11}
+
+model:
+  backbone: transformer
+  d_model: 128
+  nhead: 4
+  num_layers: 4
+  dim_feedforward: 256
+  dropout: 0.1
+
+train: {objective: next_event, epochs: 5, batch_size: 128, lr: 0.001}
+
+sources:
+  - [hcrl]
+  - [road]
+  - [sonata]
+  - [kia_soul]
+
+targets: [road, gem_can, sonata, kia_soul, chevrolet_spark]
+subsets: [unseen, seen]
+
+cache_dir: .cache/phase4
+output_dir: experiments/phase4/results/cross_id

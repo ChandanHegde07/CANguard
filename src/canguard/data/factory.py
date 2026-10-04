@@ -5,14 +5,18 @@ import logging
 from pathlib import Path
 
 from .base import BaseDatasetLoader
+from .gem_can import GemCanLoader
 from .hcrl import HCRLLoader
 from .road import RoadLoader
+from .survival import SurvivalLoader
 
 logger = logging.getLogger(__name__)
 
 _REGISTRY: dict[str, type[BaseDatasetLoader]] = {
     "hcrl": HCRLLoader,
     "road": RoadLoader,
+    "gem_can": GemCanLoader,
+    "survival": SurvivalLoader,
 }
 
 

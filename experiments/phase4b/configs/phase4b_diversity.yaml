@@ -1,0 +1,41 @@
+# Phase 4B — staged pretraining-diversity experiment (secondary question).
+# Increasing normal-traffic diversity is the only intended change; architecture,
+# objective, windows and evaluation are held fixed. Target Chevrolet Spark is
+# never in any source set; GEM-CAN is added only in the largest stage.
+phase: 4
+experiment_id: phase4b_diversity
+seed: 0
+length: 128
+max_frames_per_capture: 120000
+max_train_windows: 20000
+max_val_windows: 3000
+max_val_repr: 30000
+max_eval_frames: 40000
+knn_refs: 3000
+shrinkage: 0.1
+fpr_target: 0.01
+run_probe: false
+
+tokenizer: {payload_mode: byte, id_mode: none, id_bits: 11}
+
+model:
+  backbone: transformer
+  d_model: 128
+  nhead: 4
+  num_layers: 4
+  dim_feedforward: 256
+  dropout: 0.1
+
+train: {objective: next_event, epochs: 5, batch_size: 128, lr: 0.001}
+
+sources:
+  - [sonata]
+  - [sonata, kia_soul]
+  - [hcrl, road, sonata, kia_soul, gem_can]
+
+backbones: [transformer]
+
+targets: [chevrolet_spark, gem_can]
+
+cache_dir: .cache/phase4
+output_dir: experiments/phase4b/results/diversity

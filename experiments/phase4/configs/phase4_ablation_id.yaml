@@ -1,0 +1,35 @@
+# Phase 4 — ID-representation / backbone ablation (the core ID-agnostic test).
+# Target GEM-CAN is used because it is ID-disjoint from every other dataset,
+# so PIRD cannot apply at all. If CAN-TFM needs ID embeddings to work here, the
+# ID-agnostic hypothesis is falsified.
+phase: 4
+experiment_id: phase4_ablation_id
+seed: 0
+length: 128
+max_frames_per_capture: 120000
+max_train_windows: 15000
+fpr_target: 0.01
+
+tokenizer: {payload_mode: byte, id_mode: none, id_bits: 11}
+
+model:
+  backbone: transformer
+  d_model: 128
+  nhead: 4
+  num_layers: 4
+  dim_feedforward: 256
+  dropout: 0.1
+
+train: {objective: next_event, epochs: 3, batch_size: 128, lr: 0.001}
+
+source: [hcrl, road, sonata]
+target: gem_can
+
+grid:
+  id_mode: [none, numeric, bit]
+  backbone: [transformer]
+  length: [128]
+  objective: [next_event]
+
+cache_dir: .cache/phase4
+output_dir: experiments/phase4/results/ablation_id

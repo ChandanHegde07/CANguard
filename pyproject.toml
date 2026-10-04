@@ -52,11 +52,15 @@ select = ["E", "F", "W", "I", "N", "UP"]
 [tool.ruff.lint.per-file-ignores]
 # Test code: keep ML-conventional uppercase X and verbatim notebook
 # references (incl. variable named `l`) for fidelity.
-"tests/*.py" = ["N806", "E741"]
+"tests/*.py" = ["N803", "N806", "E741"]
 # Detector/evaluation API: `X`, `X_test` are the standard sklearn/sci-kit
 # matrix arguments.
 "src/canguard/detectors/*.py" = ["N803"]
 "src/canguard/evaluation/*.py" = ["N806"]
+# Foundation model: `X`, `Xt`, `Vt`, `z` follow ML convention.
+"src/canguard/foundation/*.py" = ["N803", "N806", "N812", "N815"]
+"experiments/phase4/*.py" = ["N803", "N806", "N812", "N815"]
+"experiments/phase4b/*.py" = ["N803", "N806", "N812", "N815"]
 # Notebook build scripts embed literal cell source lines (long on purpose).
 "notebooks/_build_*.py" = ["E501", "E741"]
 # Research notebooks: allow long prose-heavy cell lines and compact semicolon

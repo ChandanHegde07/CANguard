@@ -181,6 +181,13 @@ class FeaturePipeline:
             if feats is not None:
                 if "label" in df.columns:
                     feats["label"] = row["label"]
+                # Carry per-frame attack classification when available so that
+                # per-attack metrics can be computed (additive; does not affect
+                # the behavioural feature matrix).
+                if "attack_type" in df.columns:
+                    feats["attack_type"] = row["attack_type"]
+                if "capture" in df.columns:
+                    feats["capture"] = row["capture"]
                 records.append(feats)
         return pd.DataFrame(records)
 

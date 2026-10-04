@@ -1,0 +1,14 @@
+{
+  "n_rows": 288,
+  "sources": [
+    "hcrl",
+    "sonata",
+    "gem_can"
+  ],
+  "backbones": [
+    "transformer",
+    "gru"
+  ],
+  "context_length": 128,
+  "seed": 0
+}

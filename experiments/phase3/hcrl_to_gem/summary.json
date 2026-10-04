@@ -1,0 +1,39 @@
+{
+  "experiment_id": "phase3_hcrl_to_gem",
+  "result": {
+    "n_target_frames": 142670,
+    "n_target_ids": 14,
+    "n_known_id_windows": 0,
+    "n_unseen_id_windows": 142670,
+    "target_unseen_id_window_fraction": 1.0,
+    "target_unseen_id_frame_fraction": 1.0,
+    "source_threshold": 0.5058917681073213,
+    "source_validation_fpr": 0.010081173081958628,
+    "n_source_ids": 25,
+    "n_shared_ids": 0,
+    "n_source_only_ids": 25,
+    "n_target_only_ids": 14,
+    "id_count_overlap": 0.0,
+    "frame_weighted_overlap": 0.0,
+    "primary_precision": NaN,
+    "primary_recall": NaN,
+    "primary_f1": NaN,
+    "primary_roc_auc": NaN,
+    "primary_pr_auc": NaN,
+    "target_actual_fpr": NaN,
+    "fallback_precision": 0.29661456508025513,
+    "fallback_recall": 1.0,
+    "fallback_f1": 0.45752156896663565,
+    "fallback_roc_auc": 0.23246842777961488,
+    "fallback_pr_auc": 0.29300147405115806,
+    "fallback_actual_fpr": 1.0,
+    "fixed_fpr": []
+  },
+  "source_model": {
+    "n_calib": 74395,
+    "n_if": 30563,
+    "n_val": 7638,
+    "n_known_ids": 25,
+    "threshold": 0.5058917681073213
+  }
+}

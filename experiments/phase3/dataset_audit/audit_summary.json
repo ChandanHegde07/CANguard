@@ -1,0 +1,14 @@
+{
+  "available": [
+    "gem_can",
+    "hcrl",
+    "hcrl_survival",
+    "road"
+  ],
+  "missing": [],
+  "survival_vehicles": [
+    "chevrolet_spark",
+    "kia_soul",
+    "sonata"
+  ]
+}

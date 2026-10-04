@@ -1,0 +1,57 @@
+{
+  "n_transfers": 10,
+  "transfers": [
+    {
+      "source_domain": "gem_can",
+      "target_domain": "hcrl"
+    },
+    {
+      "source_domain": "hcrl",
+      "target_domain": "gem_can"
+    },
+    {
+      "source_domain": "hcrl",
+      "target_domain": "road"
+    },
+    {
+      "source_domain": "road",
+      "target_domain": "hcrl"
+    },
+    {
+      "source_domain": "survival:chevrolet_spark",
+      "target_domain": "survival:kia_soul"
+    },
+    {
+      "source_domain": "survival:chevrolet_spark",
+      "target_domain": "survival:sonata"
+    },
+    {
+      "source_domain": "survival:kia_soul",
+      "target_domain": "survival:chevrolet_spark"
+    },
+    {
+      "source_domain": "survival:kia_soul",
+      "target_domain": "survival:sonata"
+    },
+    {
+      "source_domain": "survival:sonata",
+      "target_domain": "survival:chevrolet_spark"
+    },
+    {
+      "source_domain": "survival:sonata",
+      "target_domain": "survival:kia_soul"
+    }
+  ],
+  "mean_abs_smd_by_transfer": {
+    "gem_can\u2192hcrl": 0.5632295665921335,
+    "hcrl\u2192gem_can": 0.5633199764201262,
+    "hcrl\u2192road": 0.7334006499992032,
+    "road\u2192hcrl": 0.2712079474239193,
+    "survival:chevrolet_spark\u2192survival:kia_soul": 0.6025150827791969,
+    "survival:chevrolet_spark\u2192survival:sonata": 0.5403912027648102,
+    "survival:kia_soul\u2192survival:chevrolet_spark": 0.8285926357390327,
+    "survival:kia_soul\u2192survival:sonata": 0.2191162970551206,
+    "survival:sonata\u2192survival:chevrolet_spark": 0.6915411222891563,
+    "survival:sonata\u2192survival:kia_soul": 0.1532212793981335
+  }
+}

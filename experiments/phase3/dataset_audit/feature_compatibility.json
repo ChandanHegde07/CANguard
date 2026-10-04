@@ -1,0 +1,6 @@
+{
+  "behavioral_features": "shared 14-feature schema (ws=30)",
+  "id_canonicalization": "hex int (lowercase, no leading zeros)",
+  "note": "GEM-CAN uses 29-bit extended IDs; Survival uses 11-bit IDs. Both are parsed by the same behavioural pipeline before statistics.",
+  "incompatible_features": []
+}

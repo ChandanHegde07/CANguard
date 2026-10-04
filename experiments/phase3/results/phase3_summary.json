@@ -1,0 +1,9 @@
+{
+  "transfer_matrix_rows": 4,
+  "transfers": [
+    "gem_can\u2192hcrl",
+    "hcrl\u2192gem_can",
+    "hcrl\u2192road",
+    "road\u2192hcrl"
+  ]
+}

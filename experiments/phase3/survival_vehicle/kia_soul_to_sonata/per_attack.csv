@@ -1,0 +1,4 @@
+source_vehicle,target_vehicle,attack,attack_window_count,attack_frame_count,attack_recall,attack_precision,attack_f1,attack_actual_fpr
+kia_soul,sonata,Normal,357856,8612,0.8397584765443568,0.0755465950756824,0.13862240154876798,0.2533959065867989
+kia_soul,sonata,fuzzy,193,193,0.772020725388601,1.0,0.871345029239766,0.0
+kia_soul,sonata,malfunction,15974,15974,0.9989357706272693,1.0,0.9994676020168488,0.0

@@ -1,0 +1,2 @@
+source_dataset,target_dataset,experiment_id,diagnostic,n_known_id_windows,n_unseen_id_windows,target_actual_fpr,primary_precision,primary_recall,primary_f1,primary_roc_auc,primary_pr_auc
+road,road,phase3_hcrl_to_road,target_recalibration,335919,2246,0.02420623960226871,0.6750172473266643,0.6376002932431882,0.6557754738716096,0.8149722513120778,0.5728660028263348

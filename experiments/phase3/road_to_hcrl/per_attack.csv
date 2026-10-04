@@ -1,0 +1,5 @@
+attack,attack_window_count,attack_frame_count,attack_recall,attack_precision,attack_f1,attack_actual_fpr
+DoS,2429,0,0.0,0.0,0.0,1.0
+Fuzzy,2675,174,1.0,0.06504672897196262,0.12214812214812217,1.0
+RPM,2658,0,0.0,0.0,0.0,1.0
+gear,2577,0,0.0,0.0,0.0,1.0

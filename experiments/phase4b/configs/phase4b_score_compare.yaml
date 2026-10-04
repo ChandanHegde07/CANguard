@@ -1,0 +1,40 @@
+# Phase 4B — Experiment A: representation-density vs next-event scoring.
+# Same frozen model/representations per (source, backbone); density statistics
+# are fitted on source-validation normals only. Inference representations causal.
+phase: 4
+experiment_id: phase4b_score_compare
+seed: 0
+length: 128
+max_frames_per_capture: 120000
+max_train_windows: 30000
+max_val_windows: 3000
+max_val_repr: 30000
+max_eval_frames: 40000
+knn_refs: 3000
+shrinkage: 0.1
+fpr_target: 0.01
+run_probe: false
+
+tokenizer: {payload_mode: byte, id_mode: none, id_bits: 11}
+
+model:
+  backbone: transformer
+  d_model: 128
+  nhead: 4
+  num_layers: 4
+  dim_feedforward: 256
+  dropout: 0.1
+
+train: {objective: next_event, epochs: 5, batch_size: 128, lr: 0.001}
+
+sources:
+  - [hcrl]
+  - [sonata]
+  - [gem_can]
+
+backbones: [transformer, gru]
+
+targets: [hcrl, road, gem_can, sonata, kia_soul, chevrolet_spark]
+
+cache_dir: .cache/phase4
+output_dir: experiments/phase4b/results/score_compare

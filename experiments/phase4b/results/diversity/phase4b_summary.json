@@ -1,0 +1,13 @@
+{
+  "n_rows": 104,
+  "sources": [
+    "sonata",
+    "sonata+kia_soul",
+    "hcrl+road+sonata+kia_soul+gem_can"
+  ],
+  "backbones": [
+    "transformer"
+  ],
+  "context_length": 128,
+  "seed": 0
+}

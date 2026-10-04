@@ -1,0 +1,3 @@
+source_vehicle,target_vehicle,attack,attack_window_count,attack_frame_count,attack_recall,attack_precision,attack_f1,attack_actual_fpr
+chevrolet_spark,sonata,Normal,59678,1488,1.0,0.024933811454807466,0.04865448124775202,1.0
+chevrolet_spark,sonata,fuzzy,127,127,1.0,1.0,1.0,0.0

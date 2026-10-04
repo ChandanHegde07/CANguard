@@ -1,0 +1,3 @@
+source_vehicle,target_vehicle,attack,attack_window_count,attack_frame_count,attack_recall,attack_precision,attack_f1,attack_actual_fpr
+kia_soul,chevrolet_spark,Normal,1530,33,1.0,0.021568627450980392,0.04222648752399232,1.0
+kia_soul,chevrolet_spark,fuzzy,2,2,1.0,1.0,1.0,0.0

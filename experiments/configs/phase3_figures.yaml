@@ -1,0 +1,4 @@
+# Phase 3 — figure/matrix aggregation configuration.
+phase: 3
+experiment_id: phase3_figures
+output_dir: experiments/phase3

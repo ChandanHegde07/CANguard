@@ -1,0 +1,11 @@
+# Phase 3 — dataset audit configuration.
+phase: 3
+experiment_id: phase3_dataset_audit
+
+hcrl_dir: data
+road_dir: road/road
+gem_can_dir: GEM_CAN_Dataset_R2/GEM_CAN_Dataset_R2
+survival_dir: survival
+sample_size: 20000
+
+output_dir: experiments/phase3/dataset_audit

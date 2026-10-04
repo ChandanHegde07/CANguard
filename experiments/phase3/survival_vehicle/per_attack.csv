@@ -1,0 +1,15 @@
+source_vehicle,target_vehicle,attack,attack_window_count,attack_frame_count,attack_recall,attack_precision,attack_f1,attack_actual_fpr
+sonata,kia_soul,Normal,460150,11866,0.9621607955503119,0.05105924339118885,0.09697242524493671,0.47332940725076067
+sonata,kia_soul,fuzzy,436,436,0.9311926605504587,1.0,0.9643705463182898,0.0
+sonata,kia_soul,malfunction,7401,7401,1.0,1.0,1.0,0.0
+sonata,chevrolet_spark,Normal,1578,33,1.0,0.02091254752851711,0.040968342644320296,1.0
+sonata,chevrolet_spark,fuzzy,2,2,1.0,1.0,1.0,0.0
+kia_soul,sonata,Normal,357856,8612,0.8397584765443568,0.0755465950756824,0.13862240154876798,0.2533959065867989
+kia_soul,sonata,fuzzy,193,193,0.772020725388601,1.0,0.871345029239766,0.0
+kia_soul,sonata,malfunction,15974,15974,0.9989357706272693,1.0,0.9994676020168488,0.0
+kia_soul,chevrolet_spark,Normal,1530,33,1.0,0.021568627450980392,0.04222648752399232,1.0
+kia_soul,chevrolet_spark,fuzzy,2,2,1.0,1.0,1.0,0.0
+chevrolet_spark,sonata,Normal,59678,1488,1.0,0.024933811454807466,0.04865448124775202,1.0
+chevrolet_spark,sonata,fuzzy,127,127,1.0,1.0,1.0,0.0
+chevrolet_spark,kia_soul,Normal,20347,830,1.0,0.040792254386396026,0.07838692921565849,1.0
+chevrolet_spark,kia_soul,fuzzy,44,44,1.0,1.0,1.0,0.0
