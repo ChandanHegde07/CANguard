@@ -175,7 +175,7 @@ def build_global_features(
 
     # ---- bus-level -------------------------------------------------------
     n_frames = ts.rolling(window=w, min_periods=1).count().to_numpy(dtype=float)
-    duration = (ts - ts.shift(w - 1)).to_numpy(dtype=float)
+    duration = (ts - ts.shift(w - 1)).to_numpy(dtype=float, copy=True)
     leading = np.arange(n) < (w - 1)
     duration[leading] = ts.to_numpy()[leading] - ts.to_numpy()[0]
     duration = np.where(duration > 0, duration, np.nan)

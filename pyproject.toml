@@ -57,6 +57,9 @@ select = ["E", "F", "W", "I", "N", "UP"]
 # matrix arguments.
 "src/canguard/detectors/*.py" = ["N803"]
 "src/canguard/evaluation/*.py" = ["N806"]
+# Residualization strategies: `X` (feature matrix) and `R` (residual matrix)
+# are the ML-conventional names used throughout the feature/eval code.
+"src/canguard/transforms/*.py" = ["N803", "N806"]
 # Foundation model: `X`, `Xt`, `Vt`, `z` follow ML convention.
 "src/canguard/foundation/*.py" = ["N803", "N806", "N812", "N815"]
 "experiments/phase4/*.py" = ["N803", "N806", "N812", "N815"]
