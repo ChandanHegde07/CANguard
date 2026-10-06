@@ -22,7 +22,7 @@ flowchart TD
     subgraph Features
         CS --> Win["canguard.features · PerIDWindow"]
         Win --> BF["14 BEHAVIORAL_FEATURES<br/>IAT • DLC • payload • misc"]
-        BF --> Res["per-ID z-score residual<br/>fit_per_id_stats → transform_residuals"]
+        BF --> Res["residualization strategies<br/>raw • global z • per-ID z • MAD • quantile"]
     end
 
     subgraph Splits
@@ -37,29 +37,31 @@ flowchart TD
 
     subgraph Evaluation
         IF --> M["canguard.evaluation<br/>precision • recall • F1 • ROC • PR"]
+        M --> D["deployment metrics<br/>Recall@FPR • FPR@recall • FP/hour • latency"]
         M --> V["canguard.visualization"]
         V --> F["figures/ (.png)"]
         M --> O["results/ · tables/ (.json/.csv)"]
     end
 ```
 
-**Pipeline**: per-ID sliding windows → 14 behavioral features → z-score residuals per ID → Isolation Forest (normal-only train) → metrics / figures / results.
+**Pipeline**: per-ID sliding windows → 14 behavioral features → pluggable residualization strategy → Isolation Forest (normal-only train) → detection + deployment metrics / figures / results.
 
 **Evaluation pathways**
 - **HCRL** — one continuous stream per attack → single 40/20/40 temporal split.
 - **ROAD** — independent driving-session captures → per-capture split (residuals fitted on pre-injection normals), since temporal continuity does not span captures.
+- **Phase 1 validation** — cross-condition transfer, global-threshold deployment, representation comparison, and window-size sweeps (see below).
 
 ## Project Structure
 
 | Path | Description |
 |------|-------------|
-| `src/canguard/` | Library: `data`, `features`, `transforms`, `detectors`, `evaluation`, `visualization`, `utils` |
+| `src/canguard/` | Library: `data`, `features`, `transforms` (residualization strategies), `detectors`, `evaluation` (metrics + deployment metrics), `visualization`, `utils` |
 | `papers/canguard_ieee.tex` | IEEE-style conference paper draft (LaTeX) |
 | `paper/` | Revised paper build + `updated_figures`, `updated_tables` |
 | `notebooks/` | Research notebooks: `eda_hcrl`, `feature_eng_hcrl`, `pird_hcrl`, `pird_v2_extensions` |
-| `experiments/` | Config-driven runners: baseline, ROAD, and phase A/B/C pipelines |
-| `experiments/configs/` | YAML configs: `hcrl.yaml`, `road.yaml`, `phase_a.yaml`, `phase_b_road.yaml`, `phase_c.yaml` |
-| `tests/` | `pytest` suite (61 tests: loader + feature/residual/detector parity) |
+| `experiments/` | Config-driven runners: baseline, ROAD, phase A/B/C pipelines, and the Phase 1 PIRD validation framework |
+| `experiments/configs/` | YAML configs: `hcrl.yaml`, `road.yaml`, `phase_a.yaml`, `phase_b_road.yaml`, `phase_c.yaml`, `phase1_pird_validation.yaml` |
+| `tests/` | `pytest` suite covering loaders, feature/residual/detector parity, evaluation metrics, and the Phase 1 validation framework |
 | `tables/` | Consolidated result CSV/JSON (baselines, CIs, importance, latency, errors) |
 | `run_pipeline.py` | One-command HCRL pipeline → `results/` + `figures/` |
 | `figures/` | Generated diagnostic plots (`.png`) |
@@ -81,15 +83,45 @@ The central idea tested here is that per-ID residualization matters: on the data
 
 1. **Data loading** — Parses two datasets: the HCRL Car-Hacking dataset (synthetic CAN traffic with injected attacks) and the ROAD dataset (real recorded driving sessions with stealthier attacks).
 2. **Feature engineering** — Messages are organized into per-ID sliding windows, each summarized by behavioral features (timing, DLC, and payload-based statistics).
-3. **Residualization** — A statistical profile is fit per CAN ID over the windows, then used to transform each window into a per-ID z-score residual relative to that ID's normal behavior.
+3. **Residualization** — A statistical profile is fit per CAN ID over the windows, then used to transform each window into a residual relative to that ID's normal behavior. The default is a per-ID z-score, with global, robust MAD, and quantile variants available as first-class alternatives.
 4. **Detection** — An unsupervised Isolation Forest is trained on normal-only traffic and scores new windows; anomalies are flagged by departure from the learned residual distribution.
-5. **Evaluation** — Measured with precision, recall, F1, and ROC/PR curves, rendered as diagnostic figures and machine-readable tables.
+5. **Evaluation** — Measured with precision, recall, F1, and ROC/PR curves, plus deployment-oriented operating points (Recall@fixed FPR, FPR@target recall, false alarms per hour, detection latency), rendered as diagnostic figures and machine-readable tables.
+
+## Validation Framework (Phase 1)
+
+Phase 1 exists to answer a narrower question than "does detection work": **is per-ID residualization actually responsible for the result, and would the detector be usable in a vehicle?** It is organized around four experiment groups that are all driven by a single configuration and report deployment-oriented metrics alongside the usual F1.
+
+**1. Cross-condition generalization.** The model is fit entirely on one driving condition's normal traffic and then frozen — per-ID statistics, detector, and threshold — before being evaluated on a *different* condition's stream. No target data participates in fitting or threshold selection, so this measures whether learned behavioral patterns carry across captures and operating conditions rather than only within one recording.
+
+**2. Global-threshold deployment.** Instead of tuning a separate operating point per dataset, a single threshold is pooled from validation normals and applied everywhere. This is compared against per-dataset thresholds, with the spread of recall and FPR across conditions reported, to show how consistently one fixed operating point transfers — the realistic deployment constraint.
+
+**3. Residualization strategy comparison.** The representation is treated as a controlled variable. Five strategies are compared end to end:
+
+| Strategy | Definition |
+|----------|------------|
+| `raw` | Identity — the raw behavioral features, no residualization |
+| `global_z` | Global standardization: `(x − μ) / σ` over all normals |
+| `per_id_z` | Per-ID z-score residual (the PIRD operator) |
+| `per_id_mad` | Robust per-ID residual using median and MAD |
+| `per_id_quantile` | Per-ID empirical CDF mapped to standard-normal quantiles |
+
+Comparing these isolates residualization as the driver of improvement, and checks whether the gain is specific to z-scoring or holds for robust (MAD) and distribution-free (quantile) variants. Unseen or data-poor IDs fall back to global statistics so deployment to a new vehicle does not break.
+
+**4. Window-size sensitivity and latency.** Window length is swept across a range of sizes, reporting detection quality against the cost of scoring each window and the resulting detection delay. This exposes the performance/latency trade-off rather than fixing one window size a priori.
+
+**Deployment-oriented metrics.** Every group reports, in addition to precision/recall/F1 and ROC/PR:
+
+- **Recall@fixed FPR** — attack coverage at a stated false-positive budget.
+- **FPR@target recall** — the false-positive cost of reaching a safety recall level (e.g. 95%).
+- **False alarms per hour** — absolute alarm load on normal traffic, normalized by observed wall-clock time.
+- **Detection latency** — time between attack onset and first detection, aggregated over attack segments.
 
 ## Key Characteristics
 
 - **Unsupervised, per-ID detection** — training does not require labeled attack data; detection is driven by learning normal per-ID behavior.
 - **Evaluated on two datasets with different attack realism** — HCRL (controlled, synthetic attacks) and ROAD (real driving sessions with stealthier attacks that reuse legitimate IDs), which lets the results be checked for whether they hold up beyond the easier, synthetic setting.
 - **Documented methodology** — the accompanying paper describes the residualization operator and reports an ablation isolating its contribution.
+- **Validated for deployment realism** — Phase 1 tests cross-condition generalization, a single global operating threshold, alternative residualization strategies, and the window-size/latency trade-off, and reports operating-point metrics (Recall@FPR, FPR@recall, false alarms per hour, detection latency).
 
 ## Key Results (HCRL)
 
