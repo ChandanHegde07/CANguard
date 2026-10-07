@@ -72,6 +72,15 @@ def test_hcrl_sample_size_head_behavior(tmp_path: Path) -> None:
     assert list(got_sample["label"]) == list(ref["label"])
 
 
+@pytest.mark.parametrize("n", [1, 3, 5])
+def test_hcrl_sample_size_matches_full_parse_head(tmp_path: Path, n: int) -> None:
+    """The memory-bounded head path must equal 'parse everything then head(n)'."""
+    csv_path = _write_tiny_csv(tmp_path)
+    full = _notebook_loader(csv_path).head(n).reset_index(drop=True)
+    got = HCRLLoader(csv_path).load(sample_size=n).reset_index(drop=True)
+    pd.testing.assert_frame_equal(got, full)
+
+
 def test_hcrl_variable_dlc_padding(tmp_path: Path) -> None:
     csv_path = _write_tiny_csv(tmp_path)
     df = HCRLLoader(csv_path).load()

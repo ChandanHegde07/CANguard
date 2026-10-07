@@ -1,0 +1,46 @@
+phase: 1
+experiment_id: phase1_pird_validation
+seed: 0
+data_dir: data
+datasets:
+- DoS
+- Fuzzy
+- RPM
+- gear
+sample_size: 500000
+split:
+  calib_frac: 0.4
+  train_frac: 0.2
+  test_frac: 0.4
+window_size: 30
+window_sizes:
+- 10
+- 20
+- 30
+- 50
+- 100
+feature_cols: null
+detector:
+  kind: isolation_forest
+  n_estimators: 200
+  random_state: 0
+evaluation:
+  fpr_target: 0.01
+  fixed_fpr_targets:
+  - 0.001
+  - 0.01
+  - 0.05
+  recall_target: 0.95
+  val_holdout_fraction: 0.2
+strategies:
+- raw
+- global_z
+- per_id_z
+- per_id_mad
+- per_id_quantile
+strategy: per_id_z
+threshold_strategies:
+- per_id_z
+- global_z
+cache_dir: .cache/phase1
+output_dir: experiments/phase1
